@@ -3,278 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AURELIA | Luxury Ready-to-Wear</title>
+  <title>MAHA ATELIER | Aesthetic & Elevated Menswear</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Luxury Serif + Clean Sans -->
+  <!-- Google Fonts: Luxury Serif + Modern Editorial Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .font-serif-luxury {
       font-family: 'Cormorant Garamond', Georgia, serif;
     }
   </style>
 </head>
-<body class="bg-[#FAF9F6] text-[#1A1A1A] antialiased selection:bg-neutral-800 selection:text-white">
+<body class="bg-[#FBFBF9] text-[#141413] antialiased selection:bg-neutral-900 selection:text-white">
 
-  <!-- Top Announcement Bar (International Trust Signal) -->
-  <div class="bg-[#111111] text-[#E5E0D8] text-[11px] uppercase tracking-[0.2em] py-2.5 px-4 text-center border-b border-neutral-800 flex justify-between items-center sm:px-8">
-    <span class="hidden md:inline">Complimentary Worldwide Express Delivery on orders over $250</span>
-    <span class="mx-auto md:mx-0">Certified Sustainable Luxury &bull; Ethical Craftsmanship</span>
-    <div class="hidden md:flex items-center space-x-3">
-      <span>Currency: </span>
-      <select class="bg-transparent text-white border-none text-[11px] focus:outline-none cursor-pointer">
-        <option value="USD" class="bg-neutral-900">USD ($)</option>
-        <option value="EUR" class="bg-neutral-900">EUR (€)</option>
-        <option value="INR" class="bg-neutral-900">INR (₹)</option>
-      </select>
+  <!-- Floating WhatsApp Quick Help Button -->
+  <a href="https://wa.me/918271988708?text=Hello%20MAHA%20ATELIER,%20I%20want%20to%20inquire%20about%20your%20menswear%20collection." 
+     target="_blank" 
+     class="fixed bottom-6 right-6 z-50 bg-[#121212] hover:bg-neutral-800 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 border border-neutral-700 transition transform hover:scale-105 duration-300">
+    <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400"></i>
+    <span class="text-xs uppercase tracking-widest font-semibold pr-1 hidden sm:inline">Concierge</span>
+  </a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#0D0D0D] text-[#ECE7DF] text-[11px] uppercase tracking-[0.22em] py-2.5 px-4 text-center border-b border-neutral-800 flex justify-between items-center sm:px-8">
+    <span class="hidden md:inline">Express Dispatch Across India &bull; Worldwide Shipping Available</span>
+    <span class="mx-auto md:mx-0">Gen-Z Aesthetic &bull; Limited Run Menswear</span>
+    <div class="hidden md:flex items-center space-x-3 text-[11px]">
+      <span>CURRENCY:</span>
+      <span class="font-bold text-white">INR (₹)</span>
     </div>
   </div>
 
   <!-- Header / Navigation -->
-  <header class="sticky top-0 z-50 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#EBE7DF] transition-all">
+  <header class="sticky top-0 z-40 bg-[#FBFBF9]/95 backdrop-blur-md border-b border-[#EAE6DF] transition-all">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
       
       <!-- Nav Links -->
-      <nav class="hidden md:flex space-x-9 text-[12px] tracking-[0.18em] uppercase font-medium text-neutral-700">
-        <a href="#collection" class="hover:text-black transition">Collections</a>
-        <a href="#edition" class="hover:text-black transition">Limited Edition</a>
+      <nav class="hidden md:flex space-x-9 text-[12px] tracking-[0.2em] uppercase font-semibold text-neutral-700">
+        <a href="#drops" class="hover:text-black transition">Current Drops</a>
+        <a href="#aesthetic" class="hover:text-black transition">Aesthetic Edit</a>
         <a href="#atelier" class="hover:text-black transition">The Atelier</a>
-        <a href="#story" class="hover:text-black transition">Our Heritage</a>
+        <a href="#contact" class="hover:text-black transition">Contact</a>
       </nav>
 
       <!-- Brand Logo -->
       <div class="text-center">
-        <a href="#" class="font-serif-luxury text-3xl md:text-4xl tracking-[0.25em] font-medium text-neutral-950 block">AURELIA</a>
-        <span class="text-[9px] uppercase tracking-[0.4em] text-neutral-400 block -mt-1">London &bull; Milan &bull; Paris</span>
+        <a href="#" class="font-serif-luxury text-2xl md:text-3xl tracking-[0.3em] font-medium text-neutral-950 block">MAHA ATELIER</a>
+        <span class="text-[9px] uppercase tracking-[0.4em] text-neutral-400 block -mt-1">Ranchi &bull; Worldwide</span>
       </div>
 
       <!-- User Actions -->
       <div class="flex items-center space-x-6 text-neutral-800">
-        <button class="hover:opacity-60 transition" aria-label="Search"><i data-lucide="search" class="w-4 h-4"></i></button>
-        <button class="hover:opacity-60 transition" aria-label="Account"><i data-lucide="user" class="w-4 h-4"></i></button>
-        <button class="hover:opacity-60 transition relative" aria-label="Shopping Bag">
-          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-          <span class="absolute -top-1.5 -right-2 bg-neutral-900 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </button>
+        <a href="https://wa.me/918271988708" target="_blank" class="hover:opacity-60 transition text-xs flex items-center gap-1.5 font-medium tracking-wider">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">+91 8271988708</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section (Classy Editorial Look) -->
-  <section class="relative min-h-[85vh] flex items-center justify-center bg-[#171615] text-[#FAF9F6] overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" 
-         alt="Luxury Editorial Look" 
-         class="absolute inset-0 w-full h-full object-cover object-center opacity-45 filter grayscale-[25%]" />
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center justify-center bg-[#11100F] text-[#FAF9F6] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" 
+         alt="MAHA ATELIER Menswear Lookbook" 
+         class="absolute inset-0 w-full h-full object-cover object-center opacity-40 filter grayscale-[15%]" />
     
     <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-      <p class="text-xs uppercase tracking-[0.35em] text-[#E0D8CB] mb-4 font-light">Spring / Summer 2026 Édition</p>
+      <span class="inline-block text-[11px] uppercase tracking-[0.35em] text-[#D8CEBC] mb-4 font-medium border-b border-[#D8CEBC]/40 pb-1">Gen-Z Menswear &bull; Édition 2026</span>
       <h1 class="font-serif-luxury text-5xl md:text-7xl font-normal tracking-tight leading-tight mb-6">
-        Timeless Elegance, <br/> Crafted For The Discerning.
+        Elevated Silhouettes, <br/> Effortless Swagger.
       </h1>
       <p class="text-neutral-300 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed mb-9 tracking-wide">
-        Artisanal tailoring with sustainably sourced virgin wool, mulberry silk, and organic linens. Made to endure generations.
+        Artisanal streetwear and minimalist old-money menswear. Crafted from heavy-gauge French terry, raw linen, and structured cottons.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#collection" class="bg-[#FAF9F6] text-neutral-950 px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-medium hover:bg-neutral-200 transition duration-300 min-w-[200px]">
-          Explore Collection
+        <a href="#drops" class="bg-[#FAF9F6] text-neutral-950 px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-neutral-200 transition duration-300 min-w-[200px]">
+          Shop Latest Drop
         </a>
-        <a href="#atelier" class="border border-white/40 text-white px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-medium hover:bg-white/10 transition duration-300 min-w-[200px]">
-          View Lookbook
+        <a href="https://wa.me/918271988708?text=Hi%20MAHA%20ATELIER,%20I%20want%20to%20view%20your%20custom%20menswear%20catalog." 
+           target="_blank" 
+           class="border border-white/50 text-white px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white/10 transition duration-300 min-w-[200px] flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Order
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Global Trust Factors / Credentials Strip -->
-  <section class="border-b border-[#EBE7DF] bg-[#F4F1EA] py-7 px-6">
+  <!-- Trust Credentials -->
+  <section class="border-b border-[#E8E4DB] bg-[#F4F0E8] py-7 px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div class="flex flex-col items-center">
-        <i data-lucide="globe-2" class="w-5 h-5 text-neutral-700 mb-2"></i>
-        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Global Express</h4>
-        <p class="text-[11px] text-neutral-500 font-light mt-0.5">DHL Express to 140+ countries</p>
+        <i data-lucide="package-check" class="w-5 h-5 text-neutral-800 mb-2"></i>
+        <h4 class="text-[11px] font-bold uppercase tracking-[0.16em]">Direct WhatsApp Orders</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Instant confirmation & tracking</p>
       </div>
       <div class="flex flex-col items-center">
-        <i data-lucide="shield-check" class="w-5 h-5 text-neutral-700 mb-2"></i>
-        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Authenticity Certified</h4>
-        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Individually serialized garment tags</p>
+        <i data-lucide="scissors" class="w-5 h-5 text-neutral-800 mb-2"></i>
+        <h4 class="text-[11px] font-bold uppercase tracking-[0.16em]">Custom Fit Available</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Tailored to your measurements</p>
       </div>
       <div class="flex flex-col items-center">
-        <i data-lucide="rotate-ccw" class="w-5 h-5 text-neutral-700 mb-2"></i>
-        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Complimentary Returns</h4>
-        <p class="text-[11px] text-neutral-500 font-light mt-0.5">14-day international doorstep pick-up</p>
+        <i data-lucide="truck" class="w-5 h-5 text-neutral-800 mb-2"></i>
+        <h4 class="text-[11px] font-bold uppercase tracking-[0.16em]">Nationwide Express</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Dispatched directly from Ranchi</p>
       </div>
       <div class="flex flex-col items-center">
-        <i data-lucide="lock" class="w-5 h-5 text-neutral-700 mb-2"></i>
-        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Secure Checkout</h4>
-        <p class="text-[11px] text-neutral-500 font-light mt-0.5">256-bit encrypted global payments</p>
+        <i data-lucide="shield-check" class="w-5 h-5 text-neutral-800 mb-2"></i>
+        <h4 class="text-[11px] font-bold uppercase tracking-[0.16em]">100% Premium Fabrics</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Heavyweight GSM & breathability</p>
       </div>
     </div>
   </section>
 
-  <!-- Featured Curated Capsule -->
-  <section id="collection" class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
-    <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-[#EAE6DE] pb-6">
+  <!-- Curated Menswear Drops Grid -->
+  <section id="drops" class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+    <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-[#E8E4DB] pb-6">
       <div>
-        <span class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 block mb-1">Curated Capsule</span>
-        <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-900 font-normal">The Summer Solstice Edit</h2>
+        <span class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 block mb-1">Aesthetic Menswear</span>
+        <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-900 font-normal">The Capsule 01 Drop</h2>
       </div>
-      <a href="#" class="mt-4 md:mt-0 text-[11px] tracking-[0.2em] uppercase font-medium text-neutral-600 hover:text-black border-b border-neutral-400 pb-0.5">
-        View All 32 Pieces &rarr;
-      </a>
+      <p class="text-xs text-neutral-500 uppercase tracking-widest mt-2 md:mt-0 font-medium">Limited To 50 Units Each</p>
     </div>
 
     <!-- Product Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
       
       <!-- Product 1 -->
-      <div class="group cursor-pointer">
-        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
-          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=987&auto=format&fit=crop" 
-               alt="Trench Coat" 
-               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
-          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-neutral-900 text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Limited</span>
+      <div class="group flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden bg-[#EBE7DF] aspect-[3/4] mb-4">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Heavyweight Boxy Tee" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <span class="absolute top-3 left-3 bg-neutral-950 text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">280 GSM</span>
+          </div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Streetwear Essential</p>
+          <h3 class="font-serif-luxury text-lg text-neutral-900">Heavyweight Boxy Drop-Shoulder Tee</h3>
+          <p class="text-xs text-neutral-800 mt-1 font-semibold tracking-wider">₹1,499</p>
         </div>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Outerwear</p>
-        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">The Verona Silk-Wool Trench</h3>
-        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$780 &bull; €720</p>
+        <a href="https://wa.me/918271988708?text=Hi%20MAHA%20ATELIER,%20I%20want%20to%20order%20the%20Heavyweight%20Boxy%20Drop-Shoulder%20Tee%20(₹1,499)." 
+           target="_blank" 
+           class="mt-4 w-full bg-neutral-900 hover:bg-neutral-800 text-white text-xs uppercase tracking-widest py-3 text-center transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Order On WhatsApp
+        </a>
       </div>
 
       <!-- Product 2 -->
-      <div class="group cursor-pointer">
-        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1020&auto=format&fit=crop" 
-               alt="Tailored Blazer" 
-               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+      <div class="group flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden bg-[#EBE7DF] aspect-[3/4] mb-4">
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Cuban Collar Linen Shirt" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-neutral-950 text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Old Money</span>
+          </div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Resort & Casual</p>
+          <h3 class="font-serif-luxury text-lg text-neutral-900">Textured Cuban Collar Linen Shirt</h3>
+          <p class="text-xs text-neutral-800 mt-1 font-semibold tracking-wider">₹2,199</p>
         </div>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Tailoring</p>
-        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Oatmeal Linen Structured Blazer</h3>
-        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$540 &bull; €495</p>
+        <a href="https://wa.me/918271988708?text=Hi%20MAHA%20ATELIER,%20I%20want%20to%20order%20the%20Textured%20Cuban%20Collar%20Linen%20Shirt%20(₹2,199)." 
+           target="_blank" 
+           class="mt-4 w-full bg-neutral-900 hover:bg-neutral-800 text-white text-xs uppercase tracking-widest py-3 text-center transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Order On WhatsApp
+        </a>
       </div>
 
       <!-- Product 3 -->
-      <div class="group cursor-pointer">
-        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
-          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=988&auto=format&fit=crop" 
-               alt="Evening Slip Dress" 
-               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
-          <span class="absolute top-3 left-3 bg-black text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Atelier Exclusive</span>
+      <div class="group flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden bg-[#EBE7DF] aspect-[3/4] mb-4">
+            <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Relaxed Pleated Trousers" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <span class="absolute top-3 left-3 bg-neutral-950 text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Trending</span>
+          </div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Tailored Bottoms</p>
+          <h3 class="font-serif-luxury text-lg text-neutral-900">Wide-Leg Relaxed Pleated Trousers</h3>
+          <p class="text-xs text-neutral-800 mt-1 font-semibold tracking-wider">₹2,899</p>
         </div>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Dresses</p>
-        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Draped Satin Column Gown</h3>
-        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$890 &bull; €820</p>
+        <a href="https://wa.me/918271988708?text=Hi%20MAHA%20ATELIER,%20I%20want%20to%20order%20the%20Wide-Leg%20Relaxed%20Pleated%20Trousers%20(₹2,899)." 
+           target="_blank" 
+           class="mt-4 w-full bg-neutral-900 hover:bg-neutral-800 text-white text-xs uppercase tracking-widest py-3 text-center transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Order On WhatsApp
+        </a>
       </div>
 
       <!-- Product 4 -->
-      <div class="group cursor-pointer">
-        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
-          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=987&auto=format&fit=crop" 
-               alt="Cashmere Knitwear" 
-               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+      <div class="group flex flex-col justify-between">
+        <div>
+          <div class="relative overflow-hidden bg-[#EBE7DF] aspect-[3/4] mb-4">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Oversized Utility Overshirt" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          </div>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Outerwear</p>
+          <h3 class="font-serif-luxury text-lg text-neutral-900">Heavy Twill Minimalist Overshirt</h3>
+          <p class="text-xs text-neutral-800 mt-1 font-semibold tracking-wider">₹3,499</p>
         </div>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Knitwear</p>
-        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Pure Mongolian Cashmere Turtleneck</h3>
-        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$420 &bull; €390</p>
+        <a href="https://wa.me/918271988708?text=Hi%20MAHA%20ATELIER,%20I%20want%20to%20order%20the%20Heavy%20Twill%20Minimalist%20Overshirt%20(₹3,499)." 
+           target="_blank" 
+           class="mt-4 w-full bg-neutral-900 hover:bg-neutral-800 text-white text-xs uppercase tracking-widest py-3 text-center transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Order On WhatsApp
+        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- Editorial Brand Story (Builds Trust & Heritage) -->
-  <section id="atelier" class="bg-[#F3EFEA] py-20 px-6 lg:px-12 border-t border-b border-[#E8E2D7]">
+  <!-- Editorial Brand Story -->
+  <section id="atelier" class="bg-[#F4F0E8] py-20 px-6 lg:px-12 border-t border-b border-[#E8E4DB]">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div>
-        <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500 block mb-3">Artisanal Pedigree</span>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500 block mb-3">Behind The Label</span>
         <h2 class="font-serif-luxury text-4xl md:text-5xl leading-snug text-neutral-900 mb-6">
-          Precision cutting, slow craftsmanship, zero compromise.
+          Tailored in Ranchi, Designed for the Global Street.
         </h2>
         <p class="text-neutral-600 text-sm font-light leading-relaxed mb-6">
-          Every garment is crafted in limited batches within family-owned heritage workshops in Tuscany and Lyon. We reject mass production in pursuit of structural purity, luxurious hand-feel, and longevity.
+          MAHA ATELIER is built for individuals who appreciate unpretentious, high-aesthetic dressing. We cut out mass-produced synthetics in favor of textured natural fabrics, relaxed proportions, and sharp tailoring.
         </p>
         <div class="grid grid-cols-2 gap-4 border-t border-neutral-300 pt-6">
           <div>
             <h5 class="font-serif-luxury text-2xl text-neutral-900">100%</h5>
-            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Traceable European Fabrics</p>
+            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Ethical Pure Fabrics</p>
           </div>
           <div>
-            <h5 class="font-serif-luxury text-2xl text-neutral-900">Limited Runs</h5>
-            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Max 150 Units Per Design</p>
+            <h5 class="font-serif-luxury text-2xl text-neutral-900">Direct Delivery</h5>
+            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Dispatched From Ranchi Hub</p>
           </div>
         </div>
       </div>
       <div class="h-96 md:h-[480px] bg-neutral-300 overflow-hidden shadow-sm">
-        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1074&auto=format&fit=crop" 
-             alt="Luxury Atelier Workshop" 
+        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=1000&auto=format&fit=crop" 
+             alt="MAHA Atelier Studio Fitting" 
              class="w-full h-full object-cover filter grayscale-[15%]" />
       </div>
     </div>
   </section>
 
-  <!-- Client Testimonial / Press Trust -->
-  <section class="max-w-4xl mx-auto py-20 px-6 text-center">
-    <div class="flex justify-center space-x-1 text-neutral-700 mb-4">
-      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+  <!-- Contact & Custom Inquiries Strip -->
+  <section id="contact" class="max-w-5xl mx-auto py-20 px-6 text-center">
+    <span class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 block mb-2">Concierge & Client Care</span>
+    <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-900 mb-4 font-normal">Need Custom Sizing or Bulk Orders?</h2>
+    <p class="text-neutral-600 text-sm max-w-xl mx-auto mb-8 font-light">
+      Connect directly with our master tailor via WhatsApp or email for measurements and personalized styling support.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+      <a href="https://wa.me/918271988708?text=Hello%20MAHA%20ATELIER,%20I%20have%20a%20query%20regarding%20an%20order." 
+         target="_blank" 
+         class="bg-[#121212] text-white px-8 py-3.5 text-xs uppercase tracking-widest font-semibold hover:bg-neutral-800 transition flex items-center gap-2">
+        <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i> WhatsApp +91 8271988708
+      </a>
+      <a href="mailto:care@mahaatelier.com" 
+         class="border border-neutral-400 text-neutral-800 px-8 py-3.5 text-xs uppercase tracking-widest font-semibold hover:bg-neutral-100 transition flex items-center gap-2">
+        <i data-lucide="mail" class="w-4 h-4"></i> care@mahaatelier.com
+      </a>
     </div>
-    <blockquote class="font-serif-luxury text-2xl md:text-3xl text-neutral-900 italic mb-4 font-normal leading-relaxed">
-      "The cut and drape of the trench coat rival Savile Row bespoke standards. Packaging, customer support, and delivery to New York were flawless."
-    </blockquote>
-    <p class="text-xs uppercase tracking-[0.25em] text-neutral-500">— Eleanor Vance, Verified Client (Manhattan, NY)</p>
   </section>
 
   <!-- High-End Minimalist Footer -->
-  <footer class="bg-[#121212] text-[#A6A29B] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-800">
+  <footer class="bg-[#0F0F0E] text-[#9E9B95] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-800">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-14 text-xs">
       
       <!-- Col 1 -->
       <div>
-        <h4 class="font-serif-luxury text-2xl text-white tracking-[0.2em] mb-4">AURELIA</h4>
+        <h4 class="font-serif-luxury text-2xl text-white tracking-[0.25em] mb-4">MAHA ATELIER</h4>
         <p class="text-neutral-400 font-light leading-relaxed mb-4">
-          An international design house dedicated to quiet luxury and timeless apparel.
+          Contemporary aesthetic menswear tailored for the modern generation. Built with intent in Ranchi, delivering everywhere.
         </p>
-        <span class="text-[11px] text-neutral-500">&copy; 2026 AURELIA ATELIER LTD.</span>
+        <span class="text-[11px] text-neutral-500">&copy; 2026 MAHA ATELIER. All rights reserved.</span>
       </div>
 
       <!-- Col 2 -->
       <div>
-        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-4">Client Relations</h5>
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-semibold mb-4">Customer Care</h5>
         <ul class="space-y-2.5 font-light">
-          <li><a href="#" class="hover:text-white transition">Private Client Consultation</a></li>
-          <li><a href="#" class="hover:text-white transition">Track Global Shipment</a></li>
-          <li><a href="#" class="hover:text-white transition">International Customs & Taxes</a></li>
-          <li><a href="#" class="hover:text-white transition">Returns & Exchanges</a></li>
+          <li><a href="https://wa.me/918271988708" class="hover:text-white transition">Direct WhatsApp Support</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping Policy (Pan-India)</a></li>
+          <li><a href="#" class="hover:text-white transition">Size Guide & Fit Assistance</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns & Replacements</a></li>
         </ul>
       </div>
 
       <!-- Col 3 -->
       <div>
-        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-4">The Maison</h5>
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-semibold mb-4">Maison Details</h5>
         <ul class="space-y-2.5 font-light">
-          <li><a href="#" class="hover:text-white transition">Sustainability Manifesto</a></li>
-          <li><a href="#" class="hover:text-white transition">Fabric Traceability</a></li>
-          <li><a href="#" class="hover:text-white transition">Flagship Salons</a></li>
-          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-neutral-400"></i> Ranchi, Jharkhand, India</li>
+          <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-neutral-400"></i> care@mahaatelier.com</li>
+          <li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-neutral-400"></i> +91 8271988708</li>
         </ul>
       </div>
 
-      <!-- Col 4: Newsletter -->
+      <!-- Col 4 -->
       <div>
-        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-3">Privé Invitation</h5>
-        <p class="text-neutral-400 font-light mb-3">Subscribe for private salon access and unreleased capsule notifications.</p>
-        <div class="flex border-b border-neutral-600 pb-1">
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-semibold mb-3">Exclusive Drops</h5>
+        <p class="text-neutral-400 font-light mb-3">Join our private drop list for secret seasonal drops and limited pieces.</p>
+        <div class="flex border-b border-neutral-700 pb-1">
           <input type="email" placeholder="Enter your email" class="bg-transparent text-white text-xs w-full focus:outline-none placeholder-neutral-500" />
           <button class="text-white text-xs uppercase tracking-widest hover:opacity-70">&rarr;</button>
         </div>
@@ -282,13 +317,12 @@
 
     </div>
 
-    <!-- Bottom Badges -->
-    <div class="max-w-7xl mx-auto pt-8 border-t border-neutral-800/80 flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-wider text-neutral-500">
-      <p>GENUINE LUXURY CERTIFIED &bull; ISO 14001 SUSTAINABLE PRODUCTION</p>
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-wider text-neutral-500">
+      <p>AUTHENTIC HAND-FINISHED TAILORING &bull; ZERO MASS WASTE</p>
       <div class="flex space-x-4 mt-4 sm:mt-0 uppercase">
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
-        <span>Legal Notice</span>
       </div>
     </div>
   </footer>
