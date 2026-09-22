@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA | Luxury Ready-to-Wear</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Luxury Serif + Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-[#1A1A1A] antialiased selection:bg-neutral-800 selection:text-white">
+
+  <!-- Top Announcement Bar (International Trust Signal) -->
+  <div class="bg-[#111111] text-[#E5E0D8] text-[11px] uppercase tracking-[0.2em] py-2.5 px-4 text-center border-b border-neutral-800 flex justify-between items-center sm:px-8">
+    <span class="hidden md:inline">Complimentary Worldwide Express Delivery on orders over $250</span>
+    <span class="mx-auto md:mx-0">Certified Sustainable Luxury &bull; Ethical Craftsmanship</span>
+    <div class="hidden md:flex items-center space-x-3">
+      <span>Currency: </span>
+      <select class="bg-transparent text-white border-none text-[11px] focus:outline-none cursor-pointer">
+        <option value="USD" class="bg-neutral-900">USD ($)</option>
+        <option value="EUR" class="bg-neutral-900">EUR (€)</option>
+        <option value="INR" class="bg-neutral-900">INR (₹)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#EBE7DF] transition-all">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-9 text-[12px] tracking-[0.18em] uppercase font-medium text-neutral-700">
+        <a href="#collection" class="hover:text-black transition">Collections</a>
+        <a href="#edition" class="hover:text-black transition">Limited Edition</a>
+        <a href="#atelier" class="hover:text-black transition">The Atelier</a>
+        <a href="#story" class="hover:text-black transition">Our Heritage</a>
+      </nav>
+
+      <!-- Brand Logo -->
+      <div class="text-center">
+        <a href="#" class="font-serif-luxury text-3xl md:text-4xl tracking-[0.25em] font-medium text-neutral-950 block">AURELIA</a>
+        <span class="text-[9px] uppercase tracking-[0.4em] text-neutral-400 block -mt-1">London &bull; Milan &bull; Paris</span>
+      </div>
+
+      <!-- User Actions -->
+      <div class="flex items-center space-x-6 text-neutral-800">
+        <button class="hover:opacity-60 transition" aria-label="Search"><i data-lucide="search" class="w-4 h-4"></i></button>
+        <button class="hover:opacity-60 transition" aria-label="Account"><i data-lucide="user" class="w-4 h-4"></i></button>
+        <button class="hover:opacity-60 transition relative" aria-label="Shopping Bag">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span class="absolute -top-1.5 -right-2 bg-neutral-900 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Classy Editorial Look) -->
+  <section class="relative min-h-[85vh] flex items-center justify-center bg-[#171615] text-[#FAF9F6] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" 
+         alt="Luxury Editorial Look" 
+         class="absolute inset-0 w-full h-full object-cover object-center opacity-45 filter grayscale-[25%]" />
+    
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.35em] text-[#E0D8CB] mb-4 font-light">Spring / Summer 2026 Édition</p>
+      <h1 class="font-serif-luxury text-5xl md:text-7xl font-normal tracking-tight leading-tight mb-6">
+        Timeless Elegance, <br/> Crafted For The Discerning.
+      </h1>
+      <p class="text-neutral-300 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed mb-9 tracking-wide">
+        Artisanal tailoring with sustainably sourced virgin wool, mulberry silk, and organic linens. Made to endure generations.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#collection" class="bg-[#FAF9F6] text-neutral-950 px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-medium hover:bg-neutral-200 transition duration-300 min-w-[200px]">
+          Explore Collection
+        </a>
+        <a href="#atelier" class="border border-white/40 text-white px-9 py-3.5 text-xs uppercase tracking-[0.2em] font-medium hover:bg-white/10 transition duration-300 min-w-[200px]">
+          View Lookbook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Trust Factors / Credentials Strip -->
+  <section class="border-b border-[#EBE7DF] bg-[#F4F1EA] py-7 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="flex flex-col items-center">
+        <i data-lucide="globe-2" class="w-5 h-5 text-neutral-700 mb-2"></i>
+        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Global Express</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">DHL Express to 140+ countries</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <i data-lucide="shield-check" class="w-5 h-5 text-neutral-700 mb-2"></i>
+        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Authenticity Certified</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">Individually serialized garment tags</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <i data-lucide="rotate-ccw" class="w-5 h-5 text-neutral-700 mb-2"></i>
+        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Complimentary Returns</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">14-day international doorstep pick-up</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <i data-lucide="lock" class="w-5 h-5 text-neutral-700 mb-2"></i>
+        <h4 class="text-[11px] font-semibold uppercase tracking-[0.15em]">Secure Checkout</h4>
+        <p class="text-[11px] text-neutral-500 font-light mt-0.5">256-bit encrypted global payments</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Curated Capsule -->
+  <section id="collection" class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+    <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-[#EAE6DE] pb-6">
+      <div>
+        <span class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 block mb-1">Curated Capsule</span>
+        <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-900 font-normal">The Summer Solstice Edit</h2>
+      </div>
+      <a href="#" class="mt-4 md:mt-0 text-[11px] tracking-[0.2em] uppercase font-medium text-neutral-600 hover:text-black border-b border-neutral-400 pb-0.5">
+        View All 32 Pieces &rarr;
+      </a>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+      
+      <!-- Product 1 -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=987&auto=format&fit=crop" 
+               alt="Trench Coat" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-neutral-900 text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Limited</span>
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Outerwear</p>
+        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">The Verona Silk-Wool Trench</h3>
+        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$780 &bull; €720</p>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1020&auto=format&fit=crop" 
+               alt="Tailored Blazer" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Tailoring</p>
+        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Oatmeal Linen Structured Blazer</h3>
+        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$540 &bull; €495</p>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=988&auto=format&fit=crop" 
+               alt="Evening Slip Dress" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <span class="absolute top-3 left-3 bg-black text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Atelier Exclusive</span>
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Dresses</p>
+        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Draped Satin Column Gown</h3>
+        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$890 &bull; €820</p>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden bg-[#ECE8E1] aspect-[3/4] mb-4">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=987&auto=format&fit=crop" 
+               alt="Cashmere Knitwear" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 mb-1">Knitwear</p>
+        <h3 class="font-serif-luxury text-lg text-neutral-900 group-hover:underline">Pure Mongolian Cashmere Turtleneck</h3>
+        <p class="text-xs text-neutral-700 mt-1 font-light tracking-wider">$420 &bull; €390</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Editorial Brand Story (Builds Trust & Heritage) -->
+  <section id="atelier" class="bg-[#F3EFEA] py-20 px-6 lg:px-12 border-t border-b border-[#E8E2D7]">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500 block mb-3">Artisanal Pedigree</span>
+        <h2 class="font-serif-luxury text-4xl md:text-5xl leading-snug text-neutral-900 mb-6">
+          Precision cutting, slow craftsmanship, zero compromise.
+        </h2>
+        <p class="text-neutral-600 text-sm font-light leading-relaxed mb-6">
+          Every garment is crafted in limited batches within family-owned heritage workshops in Tuscany and Lyon. We reject mass production in pursuit of structural purity, luxurious hand-feel, and longevity.
+        </p>
+        <div class="grid grid-cols-2 gap-4 border-t border-neutral-300 pt-6">
+          <div>
+            <h5 class="font-serif-luxury text-2xl text-neutral-900">100%</h5>
+            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Traceable European Fabrics</p>
+          </div>
+          <div>
+            <h5 class="font-serif-luxury text-2xl text-neutral-900">Limited Runs</h5>
+            <p class="text-[10px] uppercase tracking-wider text-neutral-500 mt-1">Max 150 Units Per Design</p>
+          </div>
+        </div>
+      </div>
+      <div class="h-96 md:h-[480px] bg-neutral-300 overflow-hidden shadow-sm">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1074&auto=format&fit=crop" 
+             alt="Luxury Atelier Workshop" 
+             class="w-full h-full object-cover filter grayscale-[15%]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Testimonial / Press Trust -->
+  <section class="max-w-4xl mx-auto py-20 px-6 text-center">
+    <div class="flex justify-center space-x-1 text-neutral-700 mb-4">
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+    </div>
+    <blockquote class="font-serif-luxury text-2xl md:text-3xl text-neutral-900 italic mb-4 font-normal leading-relaxed">
+      "The cut and drape of the trench coat rival Savile Row bespoke standards. Packaging, customer support, and delivery to New York were flawless."
+    </blockquote>
+    <p class="text-xs uppercase tracking-[0.25em] text-neutral-500">— Eleanor Vance, Verified Client (Manhattan, NY)</p>
+  </section>
+
+  <!-- High-End Minimalist Footer -->
+  <footer class="bg-[#121212] text-[#A6A29B] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-14 text-xs">
+      
+      <!-- Col 1 -->
+      <div>
+        <h4 class="font-serif-luxury text-2xl text-white tracking-[0.2em] mb-4">AURELIA</h4>
+        <p class="text-neutral-400 font-light leading-relaxed mb-4">
+          An international design house dedicated to quiet luxury and timeless apparel.
+        </p>
+        <span class="text-[11px] text-neutral-500">&copy; 2026 AURELIA ATELIER LTD.</span>
+      </div>
+
+      <!-- Col 2 -->
+      <div>
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-4">Client Relations</h5>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="#" class="hover:text-white transition">Private Client Consultation</a></li>
+          <li><a href="#" class="hover:text-white transition">Track Global Shipment</a></li>
+          <li><a href="#" class="hover:text-white transition">International Customs & Taxes</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns & Exchanges</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div>
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-4">The Maison</h5>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="#" class="hover:text-white transition">Sustainability Manifesto</a></li>
+          <li><a href="#" class="hover:text-white transition">Fabric Traceability</a></li>
+          <li><a href="#" class="hover:text-white transition">Flagship Salons</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div>
+        <h5 class="text-[11px] uppercase tracking-[0.2em] text-white font-medium mb-3">Privé Invitation</h5>
+        <p class="text-neutral-400 font-light mb-3">Subscribe for private salon access and unreleased capsule notifications.</p>
+        <div class="flex border-b border-neutral-600 pb-1">
+          <input type="email" placeholder="Enter your email" class="bg-transparent text-white text-xs w-full focus:outline-none placeholder-neutral-500" />
+          <button class="text-white text-xs uppercase tracking-widest hover:opacity-70">&rarr;</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Badges -->
+    <div class="max-w-7xl mx-auto pt-8 border-t border-neutral-800/80 flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-wider text-neutral-500">
+      <p>GENUINE LUXURY CERTIFIED &bull; ISO 14001 SUSTAINABLE PRODUCTION</p>
+      <div class="flex space-x-4 mt-4 sm:mt-0 uppercase">
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Legal Notice</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
