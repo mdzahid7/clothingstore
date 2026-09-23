@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ÉPURE ATELIER | Ralph Lauren & Brioni Heritage Menswear</title>
+  <title>ÉPURE ATELIER | High-End Tailored Menswear India</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Premium Fonts: Bodoni Moda (Italian/Brioni Heritage) + Plus Jakarta Sans -->
+  <!-- Google Fonts: Bodoni Moda (Old-Money Heritage) + Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -31,17 +31,17 @@
       scrollbar-width: none;
     }
 
-    /* Preloader Animation */
-    @keyframes royalCrest {
+    /* Brioni style minimal loader */
+    @keyframes royalPulse {
       0%, 100% { transform: scale(1); opacity: 0.95; }
-      50% { transform: scale(1.05); opacity: 0.4; }
+      50% { transform: scale(1.06); opacity: 0.4; }
     }
     .animate-royal {
-      animation: royalCrest 1.8s ease-in-out infinite;
+      animation: royalPulse 1.8s ease-in-out infinite;
     }
 
     #preloader {
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
     }
     #preloader.fade-out {
       opacity: 0;
@@ -50,10 +50,10 @@
     }
   </style>
 </head>
-<body class="bg-[#F9F7F2] text-[#1D1B18] antialiased selection:bg-[#1E293B] selection:text-white">
+<body class="bg-[#F8F6F0] text-[#191715] antialiased selection:bg-[#1A2232] selection:text-white">
 
-  <!-- ================= RALPH LAUREN / BRIONI PRELOADER ================= -->
-  <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF8F5] flex flex-col items-center justify-center border-8 border-[#ECE5D8]">
+  <!-- ================= LUXURY MINIMAL PRELOADER ================= -->
+  <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF8F4] flex flex-col items-center justify-center border-8 border-[#ECE5D8]">
     <div class="animate-royal flex flex-col items-center">
       <div class="w-16 h-16 border-[1.5px] border-[#1C2434] rounded-none flex items-center justify-center mb-3 bg-white shadow-md relative">
         <div class="w-13 h-13 border border-[#B58A4A]/50 flex items-center justify-center p-2">
@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <p class="font-heritage text-[11px] uppercase tracking-[0.45em] text-[#1C2434] font-semibold mt-2">ÉPURE ATELIER</p>
+    <p class="font-heritage text-[11px] uppercase tracking-[0.45em] text-[#1C2434] font-bold mt-2">ÉPURE ATELIER</p>
     <div class="flex items-center gap-2 mt-1">
       <span class="h-px w-6 bg-[#B58A4A]/40"></span>
       <span class="text-[8px] uppercase tracking-[0.35em] text-[#B58A4A] font-semibold">BESPOKE MENSWEAR</span>
@@ -69,87 +69,88 @@
     </div>
   </div>
 
-  <!-- ================= DIRECT ONLINE CHECKOUT & PAYMENT MODAL ================= -->
+  <!-- ================= PROFESSIONAL INDIAN ONLINE PAYMENT CHECKOUT MODAL ================= -->
   <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-[#FCFAF7] border border-[#E3DAC8] rounded-xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8">
+    <div class="bg-white border border-[#E3DAC8] rounded-xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-6">
       
       <!-- Close Button -->
       <button onclick="closeCheckout()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 transition text-2xl leading-none">&times;</button>
 
-      <div class="border-b border-[#EADFCF] pb-4 mb-5 text-center">
-        <span class="text-[9px] uppercase tracking-[0.3em] text-[#B58A4A] font-bold block mb-1">Encrypted Payment Gateway</span>
-        <h3 class="font-heritage text-2xl text-neutral-900 font-medium" id="modalProductTitle">Selected Bespoke Garment</h3>
-        <p class="text-sm font-bold text-neutral-800 mt-1" id="modalProductPrice">$0.00 USD</p>
+      <div class="border-b border-[#EFE8DD] pb-4 mb-5 text-center">
+        <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Instant Checkout & Payment</span>
+        <h3 class="font-heritage text-2xl text-neutral-900 font-semibold" id="modalProductTitle">Selected Garment</h3>
+        <p class="text-base font-bold text-neutral-900 mt-1" id="modalProductPrice">₹0</p>
+        <span class="inline-block text-[9px] text-emerald-700 bg-emerald-50 font-bold px-2 py-0.5 rounded mt-1">Free Express Pan-India Delivery</span>
       </div>
 
-      <!-- Shipping & Customer Form -->
+      <!-- Customer Checkout Form -->
       <form onsubmit="handleDirectPayment(event)" class="space-y-4 text-xs">
         <div>
-          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Full Name</label>
-          <input required type="text" placeholder="Lord / Mr. Jonathan Vance" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Full Name</label>
+          <input required type="text" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Email Address</label>
-            <input required type="email" placeholder="client@privatemail.com" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Mobile Number (for Tracking)</label>
+            <input required type="tel" placeholder="+91 98765 43210" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
           </div>
           <div>
-            <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Phone (with Country Code)</label>
-            <input required type="tel" placeholder="+1 (555) 019-2834 / +91" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">City & Pincode</label>
+            <input required type="text" placeholder="e.g. Mumbai, 400001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
           </div>
         </div>
 
         <div>
-          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Shipping Destination Address</label>
-          <textarea required rows="2" placeholder="Street Address, City, State, Postal Code, Country" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition"></textarea>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Complete Delivery Address</label>
+          <textarea required rows="2" placeholder="House/Flat No, Apartment, Street, Locality" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition"></textarea>
         </div>
 
-        <!-- Payment Method Selector -->
+        <!-- Payment Options (RuPay, UPI, NetBanking, COD) -->
         <div class="pt-2">
-          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-2 text-[10px]">Select Payment Gateway</label>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-2 text-[10px]">Select Payment Mode</label>
           
           <div class="space-y-2">
-            <!-- RuPay / UPI / India -->
-            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+            <!-- RuPay / Debit / Credit Cards -->
+            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer hover:border-neutral-900 bg-[#FAF9F6] transition">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="paymentOption" value="rupay_upi" checked class="accent-neutral-900" />
+                <input type="radio" name="paymentOption" value="rupay_cards" checked class="accent-neutral-900" />
                 <div>
-                  <span class="font-bold text-neutral-900 block text-[11px]">RuPay Cards, UPI & Net Banking</span>
-                  <span class="text-neutral-500 text-[10px]">GPay, PhonePe, Paytm, All Indian Bank RuPay Cards</span>
+                  <span class="font-bold text-neutral-900 block text-[11px]">RuPay / Visa / MasterCard</span>
+                  <span class="text-neutral-500 text-[10px]">Debit, Credit & Corporate Cards</span>
                 </div>
               </div>
-              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Zero Fee</span>
+              <span class="text-[9px] bg-neutral-900 text-white font-bold px-2 py-0.5 rounded">Fast</span>
             </label>
 
-            <!-- International Credit Cards / Amex -->
-            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+            <!-- UPI: GPay, PhonePe, Paytm -->
+            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer hover:border-neutral-900 bg-[#FAF9F6] transition">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="paymentOption" value="international_cards" class="accent-neutral-900" />
+                <input type="radio" name="paymentOption" value="upi" class="accent-neutral-900" />
                 <div>
-                  <span class="font-bold text-neutral-900 block text-[11px]">International Credit & Debit Cards</span>
-                  <span class="text-neutral-500 text-[10px]">Visa, Mastercard, American Express, Apple Pay</span>
+                  <span class="font-bold text-neutral-900 block text-[11px]">Instant UPI QR & Apps</span>
+                  <span class="text-neutral-500 text-[10px]">Google Pay, PhonePe, Paytm, BHIM UPI</span>
                 </div>
               </div>
-              <span class="text-[9px] bg-neutral-100 text-neutral-700 font-bold px-2 py-0.5 rounded">Global</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">0% Fee</span>
             </label>
 
-            <!-- PayPal International -->
-            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+            <!-- Cash on Delivery / WhatsApp Confirmation -->
+            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer hover:border-neutral-900 bg-[#FAF9F6] transition">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="paymentOption" value="paypal" class="accent-neutral-900" />
+                <input type="radio" name="paymentOption" value="cod" class="accent-neutral-900" />
                 <div>
-                  <span class="font-bold text-neutral-900 block text-[11px]">PayPal & International Wire</span>
-                  <span class="text-neutral-500 text-[10px]">Instant checkout in USD, EUR, GBP, CAD</span>
+                  <span class="font-bold text-neutral-900 block text-[11px]">Cash on Delivery (COD)</span>
+                  <span class="text-neutral-500 text-[10px]">Pay when your package arrives at your door</span>
                 </div>
               </div>
-              <span class="text-[9px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">PayPal</span>
+              <span class="text-[9px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">Available</span>
             </label>
           </div>
         </div>
 
-        <button type="submit" class="w-full bg-[#18212F] hover:bg-[#0F1622] text-[#FAF7F2] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold transition duration-300 shadow-md flex items-center justify-center gap-2 mt-4">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-[#C89B55]"></i> Secure Checkout & Pay
+        <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold transition duration-300 shadow-lg flex items-center justify-center gap-2 mt-4">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#C89B55]"></i> Confirm Order & Proceed
         </button>
       </form>
     </div>
@@ -162,50 +163,50 @@
   </div>
 
   <!-- Floating Concierge WhatsApp -->
-  <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20would%20like%20to%20place%20a%20bespoke%20order." 
+  <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20would%20like%20to%20order%20from%20your%20collection." 
      target="_blank" 
      class="fixed bottom-6 right-6 z-40 bg-[#161D2B] hover:bg-black text-[#F7F4EC] px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#B58A4A]/50 transition transform hover:scale-105 duration-300">
     <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold pr-1">Private WhatsApp</span>
+    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold pr-1">WhatsApp Order</span>
   </a>
 
-  <!-- Top Announcement Bar (Ralph Lauren Classic Navy) -->
-  <div class="bg-[#0F172A] text-[#E2E8F0] text-[10px] uppercase tracking-[0.24em] py-2.5 px-4 border-b border-neutral-800 flex justify-between items-center sm:px-10">
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#0B1323] text-[#E2E8F0] text-[10px] uppercase tracking-[0.24em] py-2.5 px-4 border-b border-neutral-800 flex justify-between items-center sm:px-10">
     <div class="hidden md:flex items-center gap-2 text-[#C89B55]">
-      <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-      <span>Secured Payments: RuPay, UPI, Visa, Amex & PayPal</span>
+      <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+      <span>Free Express Shipping All Over India &bull; Dispatched in 24 Hours</span>
     </div>
-    <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">COMPLIMENTARY AIR DISPATCH WORLDWIDE</span>
+    <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">LIMITED RUN BESPOKE MENSWEAR</span>
     <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C89B55]">
-      <span>CURRENCY:</span>
-      <span class="font-bold text-white">USD ($) &bull; INR (₹)</span>
+      <span class="text-neutral-400">PAYMENTS:</span>
+      <span class="font-bold text-white">RuPay &bull; UPI &bull; Cards &bull; COD</span>
     </div>
   </div>
 
-  <!-- Navigation Header (Polo Ralph Lauren & Brioni Elegance) -->
-  <header class="sticky top-0 z-30 bg-[#F9F7F2]/95 backdrop-blur-md border-b border-[#E7DECE] transition-all">
+  <!-- Navigation Header (Refined Old-Money Elegance) -->
+  <header class="sticky top-0 z-30 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-[#E7DECE] transition-all">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-22 flex items-center justify-between">
       
       <nav class="hidden md:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#334155]">
-        <a href="#collection" class="hover:text-[#0F172A] transition">The Collection</a>
-        <a href="#brioni" class="hover:text-[#0F172A] transition">Brioni Suiting</a>
-        <a href="#polo" class="hover:text-[#0F172A] transition">Polo Heritage</a>
-        <a href="#checkout-strip" class="hover:text-[#0F172A] transition">Online Payment</a>
+        <a href="#collection" class="hover:text-[#0B1323] transition">The Collection</a>
+        <a href="#craft" class="hover:text-[#0B1323] transition">Fabric & Fit</a>
+        <a href="#payment-strip" class="hover:text-[#0B1323] transition">Payment Modes</a>
+        <a href="#care" class="hover:text-[#0B1323] transition">Customer Care</a>
       </nav>
 
-      <!-- Center Logo -->
+      <!-- Center Brand Logo -->
       <div class="text-center py-2">
-        <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0F172A] block uppercase">ÉPURE ATELIER</a>
+        <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0B1323] block uppercase">ÉPURE ATELIER</a>
         <div class="flex items-center justify-center gap-2 mt-0.5">
           <span class="h-px w-4 bg-[#B58A4A]/60"></span>
-          <span class="text-[8px] uppercase tracking-[0.45em] text-[#8C6D46] font-bold">BRIONI &bull; RALPH LAUREN &bull; HERMÈS EDITS</span>
+          <span class="text-[8px] uppercase tracking-[0.4em] text-[#8C6D46] font-bold">HAUTE COUTURE &bull; TAILORED MENSWEAR</span>
           <span class="h-px w-4 bg-[#B58A4A]/60"></span>
         </div>
       </div>
 
       <!-- Right Client Support -->
       <div class="flex items-center space-x-3">
-        <a href="https://wa.me/918271988708" target="_blank" class="bg-[#0F172A] text-white px-4 py-2 rounded-none text-[10px] tracking-[0.18em] uppercase font-bold flex items-center gap-1.5 hover:bg-[#1E293B] transition">
+        <a href="https://wa.me/918271988708" target="_blank" class="bg-[#0B1323] text-white px-4 py-2 rounded text-[10px] tracking-[0.18em] uppercase font-bold flex items-center gap-1.5 hover:bg-[#1C263B] transition shadow-sm">
           <i data-lucide="message-circle" class="w-3 h-3 text-[#C89B55]"></i>
           <span>WhatsApp Help</span>
         </a>
@@ -213,219 +214,215 @@
     </div>
   </header>
 
-  <!-- ================= RALPH LAUREN CINEMATIC HERO BANNER ================= -->
-  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A101D] border-b border-[#1E293B]">
-    <!-- Editorial Ralph Lauren Styled Shot -->
+  <!-- ================= CINEMATIC HERO BANNER ================= -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#070D18] border-b border-[#1E293B]">
     <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=2000&auto=format&fit=crop" 
-         alt="Bespoke Luxury Menswear" 
-         class="absolute inset-0 w-full h-full object-cover object-top opacity-50 filter contrast-[110%] saturate-[90%]" />
+         alt="ÉPURE Atelier Luxury Menswear" 
+         class="absolute inset-0 w-full h-full object-cover object-top opacity-45 filter contrast-[110%] saturate-[90%]" />
     
-    <!-- Old-Money Dark Navy & Rich Espresso Vignette -->
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0A101D] via-[#0D1527]/60 to-[#0A101D]/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#070D18] via-[#0A1222]/60 to-[#070D18]/80"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_#050810_90%)]"></div>
 
     <div class="relative z-10 text-center px-6 max-w-3xl mx-auto text-[#FAF7F0]">
-      <div class="inline-flex items-center gap-2 border border-[#C89B55]/50 bg-[#0F172A]/80 backdrop-blur-md px-4 py-1 mb-5">
+      <div class="inline-flex items-center gap-2 border border-[#C89B55]/50 bg-[#0B1323]/80 backdrop-blur-md px-4 py-1 mb-5">
         <span class="w-1.5 h-1.5 rounded-full bg-[#C89B55]"></span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-[#E2D4BF] font-semibold">Old-Money Sartorial Edit &bull; Autumn 2026</span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-[#E2D4BF] font-semibold">Autumn / Winter Menswear Collection 2026</span>
       </div>
 
-      <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-[#FFFFFF]">
-        The Roman Precision, <br/>
-        <span class="italic font-light text-[#EADFCB]">The Country Club Drape.</span>
+      <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-white">
+        Quiet Sartorial Power, <br/>
+        <span class="italic font-light text-[#EADFCB]">Architectural Drape.</span>
       </h1>
 
       <p class="text-[#CBD5E1] text-xs sm:text-sm font-light max-w-xl mx-auto leading-relaxed mb-9 tracking-wider">
-        Inspired by the master bespoke tailoring of Brioni and the enduring sporting grace of Ralph Lauren. Every piece is cut from virgin combed wool, heavy silk, and 260 GSM textured cottons.
+        Handcrafted tailored clothing made from virgin combed wool, structured flax, and heavy 260 GSM pima cottons. Dispatched directly to clients across India.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#collection" class="bg-[#FAF7F0] text-[#0F172A] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] transition duration-300 min-w-[210px] shadow-lg">
-          View Collections
+        <a href="#collection" class="bg-[#FAF7F0] text-[#0B1323] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] transition duration-300 min-w-[210px] shadow-lg rounded-sm">
+          Shop The Collection
         </a>
-        <button onclick="openCheckout('Private Capsule Order', '$185.00 USD')" class="border border-[#C89B55] text-[#FAF7F0] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#0F172A] transition duration-300 min-w-[210px] flex items-center justify-center gap-2">
-          <i data-lucide="credit-card" class="w-4 h-4 text-[#C89B55]"></i> Online Checkout
+        <button onclick="openCheckout('Exclusive Atelier Membership Drop', '₹4,999')" class="border border-[#C89B55] text-[#FAF7F0] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#0B1323] transition duration-300 min-w-[210px] flex items-center justify-center gap-2 rounded-sm">
+          <i data-lucide="credit-card" class="w-4 h-4 text-[#C89B55]"></i> Instant Online Buy
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Accepted Payment Gateways Banner (RuPay, Visa, UPI, Amex) -->
-  <section id="checkout-strip" class="border-b border-[#E2D7C5] bg-[#F1ECE1] py-5 px-6">
+  <!-- Accepted Payment Gateways Banner (Indian Payment Channels) -->
+  <section id="payment-strip" class="border-b border-[#E2D7C5] bg-[#F1ECE1] py-5 px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-      <div class="flex items-center gap-3">
-        <i data-lucide="lock" class="w-4 h-4 text-emerald-700"></i>
-        <span class="uppercase tracking-widest text-[11px] font-bold text-neutral-800">Direct Online Payments Supported:</span>
+      <div class="flex items-center gap-2.5">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i>
+        <span class="uppercase tracking-widest text-[11px] font-bold text-neutral-800">Verified Indian Payment Gateways Supported:</span>
       </div>
       
-      <!-- Payment Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-2.5 text-[10px] uppercase tracking-wider font-bold">
+      <div class="flex flex-wrap items-center justify-center gap-2 text-[10px] uppercase tracking-wider font-bold">
         <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-neutral-800">RuPay Debit & Credit</span>
-        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-emerald-700">Instant UPI (GPay / PhonePe)</span>
-        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-blue-800">Visa & Mastercard</span>
-        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-neutral-900">American Express</span>
-        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-blue-600">PayPal Global (USD / EUR)</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-emerald-700">Google Pay & PhonePe UPI</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-blue-800">Paytm & BHIM</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-neutral-900">Visa / Mastercard</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-amber-800">Cash on Delivery (COD)</span>
       </div>
     </div>
   </section>
 
-  <!-- ================= RALPH LAUREN, BRIONI & HERMÈS CURATED WARDROBE ================= -->
+  <!-- ================= THE NEW CURATED CLOTHING COLLECTION ================= -->
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
       <div>
-        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Maison Catalog 2026</span>
-        <h2 class="font-heritage text-3xl md:text-4xl text-[#0F172A] font-medium">Curated Ready-to-Wear</h2>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Maison Catalog</span>
+        <h2 class="font-heritage text-3xl md:text-4xl text-[#0B1323] font-medium">Bespoke Essentials & Tailoring</h2>
       </div>
       <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Choose Direct Online Checkout or WhatsApp Concierge</p>
     </div>
 
-    <!-- Product Grid -->
+    <!-- 4 High-End Ralph Lauren & Brioni Style Items -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- PRODUCT 1: POLO RALPH LAUREN CABLE-KNIT CASHMERE -->
-      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Polo Ralph Lauren Cable Knit" 
-                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
-            <span class="absolute top-2.5 left-2.5 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Polo Heritage</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
-            </span>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Scottish Spun Cashmere</p>
-          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Classic Polo Cable-Knit Sweater</h3>
-          
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0F172A] tracking-wider">$145.00 USD</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">$220.00</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹11,999 INR)</span>
-          </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Full-gauge natural yarn with ribbed cuffs.</p>
-        </div>
-
-        <!-- Action Buttons: Direct Online Checkout vs WhatsApp -->
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('The Classic Polo Cable-Knit Sweater', '$145.00 USD')" 
-                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Classic%20Polo%20Cable-Knit%20Sweater%20($145.00%20USD)." 
-             target="_blank" 
-             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- PRODUCT 2: BRIONI ROMAN DOUBLE-BREASTED SUIT -->
+      <!-- ITEM 1: BRIONI TAILORED SUIT BLAZER -->
       <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop')">
             <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Brioni Bespoke Tailoring" 
+                 alt="Tailored Suit Blazer" 
                  class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
-            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Sartoria Brioni</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#0B1323] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Tailored Suiting</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
           <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Super 150s Virgin Wool</p>
-          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Roman Cut Double-Breasted Suit</h3>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">The Double-Breasted Wool Blazer</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0F172A] tracking-wider">$285.00 USD</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">$390.00</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹23,499 INR)</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹8,999</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹14,500</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(38% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Full canvas chest piece with horn buttons.</p>
+          <p class="text-[10px] text-neutral-500 mt-1">Full canvas chest piece with natural horn buttons.</p>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('The Roman Cut Double-Breasted Suit', '$285.00 USD')" 
-                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          <button onclick="openCheckout('The Double-Breasted Wool Blazer', '₹8,999')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Roman%20Cut%20Double-Breasted%20Suit%20($285.00%20USD)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Double-Breasted%20Wool%20Blazer%20(₹8,999)." 
              target="_blank" 
-             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-sm">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
       </div>
 
-      <!-- PRODUCT 3: HERMÈS BESPOKE TWILL OVERSHIRT -->
+      <!-- ITEM 2: POLO RALPH LAUREN STYLE CABLE-KNIT CASHMERE SWEATER -->
+      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Cable Knit Cashmere Sweater" 
+                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
+            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Cashmere Knit</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Grade-A Spun Cashmere</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Classic Cable-Knit Crewneck</h3>
+          
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹4,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹7,200</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+          <p class="text-[10px] text-neutral-500 mt-1">Full-gauge tactile cable weave with ribbed trims.</p>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Classic Cable-Knit Crewneck', '₹4,499')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Classic%20Cable-Knit%20Crewneck%20(₹4,499)." 
+             target="_blank" 
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-sm">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 3: LUXURY STRUCTURED FIELD OVERSHIRT -->
       <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop')">
             <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Hermès Style Twill Overshirt" 
+                 alt="Resort Linen Overshirt" 
                  class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
-            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Hermès Drape</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Heavy Twill</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Saddle Twill & French Linen</p>
-          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Saddle-Stitched Resort Overshirt</h3>
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Textured Linen & Twill</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">The Structured Linen Resort Overshirt</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0F172A] tracking-wider">$95.00 USD</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">$140.00</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹7,899 INR)</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹3,299</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹4,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(34% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Pre-washed Normandy flax with mother-of-pearl fastenings.</p>
+          <p class="text-[10px] text-neutral-500 mt-1">Pre-washed Belgian flax with horn buttons.</p>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('The Saddle-Stitched Resort Overshirt', '$95.00 USD')" 
-                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          <button onclick="openCheckout('The Structured Linen Resort Overshirt', '₹3,299')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Saddle-Stitched%20Resort%20Overshirt%20($95.00%20USD)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Structured%20Linen%20Resort%20Overshirt%20(₹3,299)." 
              target="_blank" 
-             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-sm">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
       </div>
 
-      <!-- PRODUCT 4: RALPH LAUREN PLEATED CHINO TROUSERS -->
+      <!-- ITEM 4: BRIONI STYLE DOUBLE-PLEATED CHINOS -->
       <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1200&auto=format&fit=crop')">
             <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Tailored Pleated Trousers" 
+                 alt="Tailored Double-Pleated Trousers" 
                  class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
-            <span class="absolute top-2.5 left-2.5 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Classic Cut</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#0B1323] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Sartorial Trousers</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavy British Gabardine</p>
-          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Double-Pleated Country Club Trousers</h3>
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">High-Twist Heavy Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Double-Pleated Sartorial Trousers</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0F172A] tracking-wider">$85.00 USD</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">$125.00</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹6,999 INR)</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,899</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹4,200</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(31% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">High-rise waistband with side brass adjusters.</p>
+          <p class="text-[10px] text-neutral-500 mt-1">High-rise waist with adjustable brass side-tabs.</p>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('The Double-Pleated Country Club Trousers', '$85.00 USD')" 
-                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          <button onclick="openCheckout('Double-Pleated Sartorial Trousers', '₹2,899')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Double-Pleated%20Country%20Club%20Trousers%20($85.00%20USD)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Double-Pleated%20Sartorial%20Trousers%20(₹2,899)." 
              target="_blank" 
-             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-sm">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
@@ -434,98 +431,98 @@
     </div>
   </section>
 
-  <!-- ================= EDITORIAL STORY (ENGLISH DOMINANT) ================= -->
-  <section id="brioni" class="bg-[#0F172A] text-[#F8FAFC] py-20 px-6 lg:px-12 border-t border-b border-neutral-800">
+  <!-- ================= LUXURY EDITORIAL STORY (PURE ENGLISH) ================= -->
+  <section id="craft" class="bg-[#0B1323] text-[#F8FAFC] py-20 px-6 lg:px-12 border-t border-b border-neutral-800">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div>
         <div class="inline-block border-b border-[#C89B55]/40 pb-1 mb-3">
-          <span class="text-[9px] uppercase tracking-[0.4em] text-[#C89B55] font-bold">THE SARTORIAL CODE</span>
+          <span class="text-[9px] uppercase tracking-[0.4em] text-[#C89B55] font-bold">OUR CRAFT CODE</span>
         </div>
         <h2 class="font-heritage text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-white mb-6">
-          Uncompromised Craft, <br/>
-          <span class="italic font-light text-[#E2D4BF]">Understated Elegance.</span>
+          Uncompromised Quality, <br/>
+          <span class="italic font-light text-[#E2D4BF]">Tailored with Precision.</span>
         </h2>
         <p class="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed mb-6">
-          At ÉPURE ATELIER, luxury is not loud logos. It is the weight of pure combed fiber in the hand, the balance of a broad-shouldered drape, and the quiet dignity of timeless styling found in the grand tailoring houses of Rome and the private clubs of New England.
+          At ÉPURE ATELIER, luxury is about substance. It is the weight of pure combed fiber in your hands, the drape of a broad-shouldered jacket, and the quiet distinction of clothes made to outlive passing trends. Every single order is inspected and hand-packaged with care.
         </p>
         <div class="grid grid-cols-2 gap-6 pt-6 border-t border-neutral-800">
           <div>
             <span class="font-heritage text-2xl font-bold text-white">100% PURE</span>
-            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Virgin Wool & Flax</p>
+            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Virgin Wool & Pure Flax</p>
           </div>
           <div>
-            <span class="font-heritage text-2xl font-bold text-white">WORLDWIDE</span>
-            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Complimentary Transit</p>
+            <span class="font-heritage text-2xl font-bold text-white">PAN-INDIA</span>
+            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Express Air Delivery</p>
           </div>
         </div>
       </div>
       <div class="border border-[#334155] p-2 bg-[#020617]">
         <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" 
-             alt="Master Tailor" 
+             alt="Master Craftsman" 
              class="w-full h-full object-cover filter contrast-[105%]" />
       </div>
     </div>
   </section>
 
-  <!-- ================= EXPENSIVE LUXURY FOOTER ================= -->
-  <footer class="bg-[#090D16] text-[#94A3B8] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-900 text-xs">
+  <!-- ================= FOOTER ================= -->
+  <footer id="care" class="bg-[#070D18] text-[#94A3B8] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-900 text-xs">
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
       <div>
         <h4 class="font-heritage text-2xl text-white tracking-[0.3em] mb-4">ÉPURE ATELIER</h4>
         <p class="text-neutral-400 font-light leading-relaxed mb-4">
-          A modern institution of bespoke menswear. Inspired by the heritage of Ralph Lauren, Brioni, and Hermès.
+          A modern institution of bespoke menswear. Dedicated to precision cut, timeless fabric, and uncompromising dignity. Dispatched across all pin codes in India.
         </p>
         <span class="text-[10px] text-neutral-500">&copy; 2026 ÉPURE ATELIER. All Rights Reserved.</span>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Private Concierge</h5>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Client Support</h5>
         <ul class="space-y-2.5 font-light">
           <li><a href="https://wa.me/918271988708" class="hover:text-white transition">Direct WhatsApp: +91 8271988708</a></li>
-          <li><a href="mailto:concierge@epureatelier.com" class="hover:text-white transition">concierge@epureatelier.com</a></li>
-          <li><span class="text-neutral-500">Hours: 9:00 AM – 8:00 PM IST</span></li>
+          <li><a href="mailto:concierge@epureatelier.com" class="hover:text-white transition">care@epureatelier.com</a></li>
+          <li><span class="text-neutral-500">Fast Dispatch from Jharkhand Hub</span></li>
         </ul>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Supported Payments</h5>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Indian Payment Modes</h5>
         <ul class="space-y-2 font-light text-neutral-400">
           <li>&bull; RuPay Debit & Credit Cards</li>
-          <li>&bull; Instant UPI (Google Pay, PhonePe, Paytm)</li>
-          <li>&bull; Visa, MasterCard & American Express</li>
-          <li>&bull; PayPal Global USD/EUR Transfers</li>
+          <li>&bull; Google Pay, PhonePe, Paytm (UPI)</li>
+          <li>&bull; Net Banking (All Indian Banks)</li>
+          <li>&bull; Cash on Delivery (COD) Available</li>
         </ul>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Global Fulfillment</h5>
-        <p class="text-neutral-400 font-light mb-3">All bespoke drops are dispatched directly via insured air courier.</p>
-        <span class="inline-block border border-[#C89B55]/50 px-3 py-1 text-[9px] uppercase tracking-widest text-[#C89B55] font-semibold">100% Verified Sartorial House</span>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Order Guarantee</h5>
+        <p class="text-neutral-400 font-light mb-3">Complimentary size exchanges and dedicated WhatsApp assistance on all orders.</p>
+        <span class="inline-block border border-[#C89B55]/50 px-3 py-1 text-[9px] uppercase tracking-widest text-[#C89B55] font-semibold">100% Genuine Fabrics</span>
       </div>
     </div>
 
     <div class="max-w-7xl mx-auto pt-6 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center text-[9px] tracking-[0.2em] text-neutral-500">
-      <p>OLD-MONEY SARTORIAL CODES &bull; ZERO INDUSTRIAL COMPROMISE</p>
+      <p>HANDCRAFTED LUXURY MENSWEAR &bull; PAN-INDIA SHIPPING &bull; ZERO COMPROMISE</p>
       <div class="flex space-x-5 mt-3 sm:mt-0 uppercase font-semibold">
         <span>Terms of Sale</span>
-        <span>Client Privacy</span>
-        <span>Authentication Guarantee</span>
+        <span>Shipping Policy</span>
+        <span>Privacy</span>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts: Modal, Preloader, Zoom, Checkout Handlers -->
+  <!-- Scripts -->
   <script>
     lucide.createIcons();
 
-    // Smooth Preloader Fade
+    // Smooth Preloader
     window.addEventListener('load', () => {
       setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
           preloader.classList.add('fade-out');
         }
-      }, 600);
+      }, 550);
     });
 
     // Image Zoom Modal
@@ -558,14 +555,18 @@
       modal.classList.add('hidden');
     }
 
-    // Mock direct payment checkout trigger
+    // Direct Indian payment checkout trigger
     function handleDirectPayment(e) {
       e.preventDefault();
       const product = document.getElementById('modalProductTitle').innerText;
       const price = document.getElementById('modalProductPrice').innerText;
       const paymentMethod = document.querySelector('input[name="paymentOption"]:checked').value;
       
-      alert(`[Payment Gateway Redirect]\n\nProcessing order for: ${product} (${price})\nPayment Channel: ${paymentMethod.toUpperCase()}\n\nConnecting to RuPay/UPI/Card Payment Gateway...`);
+      let methodText = "RuPay / Cards";
+      if(paymentMethod === "upi") methodText = "Instant UPI (GPay/PhonePe)";
+      if(paymentMethod === "cod") methodText = "Cash on Delivery";
+
+      alert(`[Order Confirmation]\n\nGarment: ${product}\nTotal: ${price}\nPayment Mode: ${methodText}\n\nThank you! Your order details have been initiated. You will receive an instant dispatch update.`);
       closeCheckout();
     }
   </script>
