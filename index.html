@@ -59,8 +59,8 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
     }
     .img-card:hover .img-expand {
-      transform: scale(1.05);
-      filter: contrast(104%) saturate(106%);
+      transform: scale(1.04);
+      filter: contrast(103%) saturate(104%);
     }
   </style>
 </head>
@@ -89,7 +89,6 @@
       
       <button onclick="closeThankYou()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 transition text-2xl leading-none">&times;</button>
 
-      <!-- Handwritten Cursive Script -->
       <h2 class="font-script text-6xl sm:text-7xl text-[#181715] font-normal mb-3 leading-none select-none">
         thank you
       </h2>
@@ -111,7 +110,6 @@
         </div>
       </div>
 
-      <!-- Policy Guarantee Note -->
       <div class="bg-[#F0ECE1] p-3 rounded-lg text-[10px] uppercase tracking-wider font-semibold text-neutral-700 mb-6">
         No Returns &bull; Easy Size Exchange Within 7 Days
       </div>
@@ -242,7 +240,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
       <nav class="hidden md:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#334155]">
         <a href="#collection" class="hover:text-[#0B1323] transition">The Drop</a>
-        <a href="#quotes" class="hover:text-[#0B1323] transition">Editorial Quotes</a>
+        <a href="#quote" class="hover:text-[#0B1323] transition">Philosophy</a>
         <a href="#policy" class="hover:text-[#0B1323] transition">Exchange Policy</a>
       </nav>
 
@@ -260,7 +258,7 @@
     </div>
   </header>
 
-  <!-- ================= HERO WITH PUNCHY QUOTE ================= -->
+  <!-- ================= HERO SECTION ================= -->
   <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#070D18] border-b border-[#1E293B]">
     <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=2000&auto=format&fit=crop" 
          alt="ÉPURE Atelier" 
@@ -270,7 +268,7 @@
 
     <div class="relative z-10 text-center px-6 max-w-3xl mx-auto text-[#FAF7F0]">
       <span class="inline-block text-[10px] uppercase tracking-[0.4em] text-[#C89B55] mb-4 font-bold border-b border-[#C89B55]/40 pb-1">
-        Life isn't perfect, but your outfit can be.
+        ARCHIVAL CUTS & HEAVYWEIGHT TEXTURES
       </span>
 
       <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-white">
@@ -279,34 +277,31 @@
       </h1>
 
       <p class="text-[#CBD5E1] text-xs sm:text-sm font-light max-w-lg mx-auto leading-relaxed mb-9 tracking-wider">
-        Pure lines and structured drapes. Designed for those who speak without words.
+        Pure silhouettes and timeless jacquard craft. Designed for an uncompromising aesthetic presence.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a href="#collection" class="bg-[#FAF7F0] text-[#0B1323] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] transition duration-300 min-w-[200px] shadow-lg rounded-sm">
           Shop The 8 Drops
         </a>
-        <button onclick="openCheckout('Private Capsule Order', '₹2,999')" class="border border-[#C89B55] text-[#FAF7F0] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#0B1323] transition duration-300 min-w-[200px] flex items-center justify-center gap-2 rounded-sm">
+        <button onclick="openCheckout('Autumn / Winter Capsule', '₹2,499')" class="border border-[#C89B55] text-[#FAF7F0] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#0B1323] transition duration-300 min-w-[200px] flex items-center justify-center gap-2 rounded-sm">
           <i data-lucide="credit-card" class="w-4 h-4 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Editorial Quotes Strip -->
-  <section id="quotes" class="bg-[#F0EBE1] border-b border-[#E0D5C1] py-8 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-      <div class="p-4 bg-white/70 rounded-xl border border-[#DDD0B8] shadow-sm">
-        <p class="font-heritage text-lg font-semibold text-[#181715]">“Money comes back. Exclusive drops don't.”</p>
-        <span class="text-[9px] uppercase tracking-widest text-[#9A7338] font-bold mt-1 block">&bull; Limited Quantity &bull;</span>
-      </div>
-      <div class="p-4 bg-white/70 rounded-xl border border-[#DDD0B8] shadow-sm">
-        <p class="font-heritage text-lg font-semibold text-[#181715]">“Simplicity is the ultimate sophistication.”</p>
-        <span class="text-[9px] uppercase tracking-widest text-[#9A7338] font-bold mt-1 block">&bull; Clean Tailoring &bull;</span>
-      </div>
-      <div class="p-4 bg-white/70 rounded-xl border border-[#DDD0B8] shadow-sm">
-        <p class="font-heritage text-lg font-semibold text-[#181715]">“Dress like you’re already famous.”</p>
-        <span class="text-[9px] uppercase tracking-widest text-[#9A7338] font-bold mt-1 block">&bull; Stand Apart &bull;</span>
+  <!-- ================= SINGLE LUXURY EDITORIAL QUOTE STRIP ================= -->
+  <section id="quote" class="bg-[#F0EBE1] border-b border-[#E0D5C1] py-10 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-[9px] uppercase tracking-[0.4em] text-[#8C6D46] font-bold block mb-2">The Atelier Philosophy</span>
+      <h3 class="font-heritage text-2xl sm:text-3xl font-normal text-[#181715] tracking-tight leading-relaxed italic">
+        “Curated in silence. Cut for presence.”
+      </h3>
+      <div class="flex items-center justify-center gap-3 mt-3">
+        <span class="h-px w-10 bg-[#B58A4A]/50"></span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-[#6B5A49] font-medium">Bespoke Pan-India Drops &bull; Limited Run</span>
+        <span class="h-px w-10 bg-[#B58A4A]/50"></span>
       </div>
     </div>
   </section>
@@ -315,7 +310,7 @@
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
       <div>
-        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">New Arrivals</span>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Exclusive Drops</span>
         <h2 class="font-heritage text-3xl md:text-4xl text-[#0B1323] font-medium">Autumn / Winter Capsule</h2>
       </div>
       <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; RuPay &bull; UPI &bull; COD</p>
@@ -324,36 +319,42 @@
     <!-- 8 Product Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- ITEM 1: DELICIOUS CARTOON POLO PULLOVER -->
+      <!-- ITEM 1: DELICIOUS MOMENTS POLO SWEATSHIRT -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Deliciuos Cartoon Polo Pullover" 
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-1.jpg')">
+            <img src="images/product-1.jpg" 
+                 alt="Delicious Moments Polo Sweatshirt" 
                  class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#5D4037] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Aesthetic Knit</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#4A3525] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Retro Fleece</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavyweight Combed Cotton</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Delicious" Contrast Collar Pullover</h3>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">380 GSM Heavyweight Cotton Fleece</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Delicious Moments" Polo Sweatshirt</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
             <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,499</span>
             <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,999</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Chocolate polo collar with cartoon chef illustration.</p>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Super soft brushed interior, lint-free.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Deep espresso-brown ribbed collar, vintage typography & bakers graphic.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Relaxed boxy streetwear fit.</p>
+          </div>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Delicious Contrast Collar Pullover', '₹2,499')" 
+          <button onclick="openCheckout('Delicious Moments Polo Sweatshirt', '₹2,499')" 
                   class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Polo%20Pullover%20(₹2,499)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Moments%20Polo%20Sweatshirt%20(₹2,499)." 
              target="_blank" 
              class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -364,33 +365,39 @@
       <!-- ITEM 2: PASADENA RESORT POLO -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Pasadena Summer Resort Polo" 
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-2.jpg')">
+            <img src="images/product-2.jpg" 
+                 alt="Pasadena 1996 Retro Knit Polo" 
                  class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Resort Cut</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Summer Knit</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavy 240 GSM Piqué Cotton</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Pasadena 1996 Resort Polo</h3>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Combed Premium Cotton Pique</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Pasadena 1996" Retro Knit Polo</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,999</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,999</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(33% Off)</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,899</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,899</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(34% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Ecru knit with brown spread collar & palm graphic.</p>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Highly breathable, sweat-resistant, shrink-proof.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Classic Cuban spread collar, 3-button placket, retro Californian artwork.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Oversized drape fit with dropped shoulders.</p>
+          </div>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Pasadena 1996 Resort Polo', '₹1,999')" 
+          <button onclick="openCheckout('Pasadena 1996 Retro Knit Polo', '₹1,899')" 
                   class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Resort%20Polo%20(₹1,999)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Retro%20Knit%20Polo%20(₹1,899)." 
              target="_blank" 
              class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -398,36 +405,42 @@
         </div>
       </div>
 
-      <!-- ITEM 3: ETHNIC AZTEC TAPESTRY WHITE TROUSERS -->
+      <!-- ITEM 3: ETHNIC JACQUARD TRIM SWEATPANTS -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Aztec Tapestry Relaxed Trousers" 
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-3.jpg')">
+            <img src="images/product-3.jpg" 
+                 alt="Ethnic Jacquard Trim Sweatpants" 
                  class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Tapestry Detail</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Tapestry Trim</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavyweight Drape Fabric</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Aztec Tapestry Trim White Trousers</h3>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">340 GSM Heavy French Terry Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Ethnic Jacquard Trim Sweatpants</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,899</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹4,200</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(31% Off)</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,199</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,499</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Wide-leg drape pants with woven jacquard side panel.</p>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavyweight, durable all-day structured drape.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Woven geometric Kilim stripes, custom handcrafted tassel cords.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Relaxed wide-leg straight cut.</p>
+          </div>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Aztec Tapestry Trim White Trousers', '₹2,899')" 
+          <button onclick="openCheckout('Ethnic Jacquard Trim Sweatpants', '₹2,199')" 
                   class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Aztec%20Tapestry%20Trousers%20(₹2,899)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Ethnic%20Jacquard%20Trim%20Sweatpants%20(₹2,199)." 
              target="_blank" 
              class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -435,184 +448,214 @@
         </div>
       </div>
 
-      <!-- ITEM 4: RETRO RACING CREW BURGUNDY POLO -->
+      <!-- ITEM 4: RACING CREW PIPING POLO -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Racing Crew Burgundy Long Sleeve Polo" 
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-4.jpg')">
+            <img src="images/product-4.jpg" 
+                 alt="Racing Crew Piping Long-Sleeve" 
                  class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Motor Racing</span>
+            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Minimalist</span>
             <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
               <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Structured French Terry</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Racing Crew Burgundy Polo</h3>
-          
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,699</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,800</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(29% Off)</span>
-          </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Deep wine body with contrast shoulder piping details.</p>
-        </div>
-
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Racing Crew Burgundy Polo', '₹2,699')" 
-                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Polo%20(₹2,699)." 
-             target="_blank" 
-             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- ITEM 5: UNDER ACHIEVER BURGUNDY RUGBY SWEATSHIRT -->
-      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Colorblock Rugby Polo Sweatshirt" 
-                 class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Varsity Club</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
-            </span>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">320 GSM Heavy Fleece</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Under Achiever Rugby Sweatshirt</h3>
-          
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,799</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹4,200</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(33% Off)</span>
-          </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Burgundy colorblocked with ivory sleeves & polo placket.</p>
-        </div>
-
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Under Achiever Rugby Sweatshirt', '₹2,799')" 
-                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Under%20Achiever%20Rugby%20Sweatshirt%20(₹2,799)." 
-             target="_blank" 
-             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- ITEM 6: FUZZY STAR RINGER DROP-SHOULDER TEE -->
-      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Fuzzy Star Ringer Graphic Tee" 
-                 class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#4E3629] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Distressed</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
-            </span>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">260 GSM Heavy Pure Cotton</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Distressed Star Chocolate Ringer Tee</h3>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">280 GSM Premium Interlock Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Racing Crew" Contrast Piping Long-Sleeve</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
             <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,799</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,699</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(33% Off)</span>
-          </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Chocolate brown ringer neck with raw edge chenille star.</p>
-        </div>
-
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Distressed Star Chocolate Ringer Tee', '₹1,799')" 
-                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Distressed%20Star%20Ringer%20Tee%20(₹1,799)." 
-             target="_blank" 
-             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- ITEM 7: LAST SUPPER TAPESTRY EMBROIDERED BOMBER JACKET -->
-      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Last Supper Tapestry Bomber Jacket" 
-                 class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-neutral-950 text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Masterpiece</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
-            </span>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavy Canvas & Tapestry</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Last Supper" Tapestry Black Jacket</h3>
-          
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹5,499</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹8,900</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(38% Off)</span>
-          </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Multi-thread woven Renaissance back panel with custom hardware.</p>
-        </div>
-
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Last Supper Tapestry Black Jacket', '₹5,499')" 
-                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Last%20Supper%20Tapestry%20Jacket%20(₹5,499)." 
-             target="_blank" 
-             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- ITEM 8: CATHEDRAL ARCHANGEL RENAISSANCE WORKWEAR JACKET -->
-      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1200&auto=format&fit=crop')">
-            <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Cathedral Archangel Workwear Jacket" 
-                 class="img-expand w-full h-full object-cover object-center" />
-            <span class="absolute top-2.5 left-2.5 bg-[#374151] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Gothic Art</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
-            </span>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavy Twill Canvas</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Gothic Cathedral Archangel Jacket</h3>
-          
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹5,199</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹7,999</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,799</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(35% Off)</span>
           </div>
-          <p class="text-[10px] text-neutral-500 mt-1">Ice-grey structured work jacket with full gothic engraving illustration.</p>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Silky smooth surface with high stretch-recovery.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Rich burgundy body, crisp off-white raglan shoulder piping, micro-branding.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Semi-relaxed clean silhouette.</p>
+          </div>
         </div>
 
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Gothic Cathedral Archangel Jacket', '₹5,199')" 
+          <button onclick="openCheckout('Racing Crew Contrast Piping Long-Sleeve', '₹1,799')" 
                   class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Gothic%20Cathedral%20Jacket%20(₹5,199)." 
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Long-Sleeve%20(₹1,799)." 
+             target="_blank" 
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 5: UNDER ACHIEVER RUGBY SWEATSHIRT -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-5.jpg')">
+            <img src="images/product-5.jpg" 
+                 alt="Under Achiever Block Rugby Sweatshirt" 
+                 class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Collegiate</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">360 GSM Cotton-Poly Blend Fleece</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Under Achiever" Block Rugby Sweatshirt</h3>
+          
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,399</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,799</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(36% Off)</span>
+          </div>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavy thermal fleece, pill-resistant finish.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Paneled maroon & cream sleeves, pointed white placket, retro chest embroidery.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Vintage athletic oversized fit.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Under Achiever Block Rugby Sweatshirt', '₹2,399')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Under%20Achiever%20Rugby%20Sweatshirt%20(₹2,399)." 
+             target="_blank" 
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 6: STARGAZER DISTRESSED CHENILLE TEE -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-6.jpg')">
+            <img src="images/product-6.jpg" 
+                 alt="Stargazer Frayed Graphic T-Shirt" 
+                 class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#4E3629] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Heavyweight</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">240 GSM 100% Bio-Washed Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Stargazer" Frayed Graphic T-Shirt</h3>
+          
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,399</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Pre-shrunk, soft luxury hand feel.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Chocolate body with ringer ribs, tactile raw-edge distressed stars with quote.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Oversized boxy streetwear drape.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Stargazer Frayed Graphic T-Shirt', '₹1,499')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Stargazer%20Frayed%20Tee%20(₹1,499)." 
+             target="_blank" 
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 7: LAST SUPPER TAPESTRY JACKET -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-7.jpg')">
+            <img src="images/product-7.jpg" 
+                 alt="Descartes Renaissance Woven Jacket" 
+                 class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-neutral-950 text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Limited Edition</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">Heavy Canvas & Jacquard Tapestry</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Descartes" Renaissance Woven Jacket</h3>
+          
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹4,999</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹7,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> High-density jacquard tapestry, thick & wind-resistant.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Custom woven "The Last Supper" back art, metallic zipper, silver snap cuffs.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Boxy cropped workwear/trucker jacket silhouette.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Descartes Renaissance Woven Jacket', '₹4,999')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Descartes%20Renaissance%20Jacket%20(₹4,999)." 
+             target="_blank" 
+             class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 8: CATHEDRAL ARCHANGEL WORKWEAR JACKET -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('images/product-8.jpg')">
+            <img src="images/product-8.jpg" 
+                 alt="Guardian Angel Cathedral Etching Jacket" 
+                 class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#374151] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Archive Workwear</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">400 GSM Structured Cotton Twill</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Guardian Angel" Cathedral Etching Jacket</h3>
+          
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹4,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹6,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(35% Off)</span>
+          </div>
+
+          <!-- Specific Quality Details -->
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavy matte twill, long-lasting structural drape.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> All-over monochrome Gothic cathedral & equestrian archangel engraving print.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Tailored modern workwear fit.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Guardian Angel Cathedral Etching Jacket', '₹4,499')" 
+                  class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm rounded-lg">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Guardian%20Angel%20Cathedral%20Jacket%20(₹4,499)." 
              target="_blank" 
              class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
