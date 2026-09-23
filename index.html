@@ -15,6 +15,9 @@
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Razorpay Checkout Script (Test Mode) -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
     body {
@@ -104,11 +107,18 @@
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Tag / Badge Name</label>
             <input type="text" id="newTag" placeholder="e.g. New Drop / Limited Edition" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
           </div>
+          
           <div>
-            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Image URLs (Comma separated or ImgBB links)</label>
-            <textarea required rows="3" id="newImages" placeholder="https://i.ibb.co/..., https://i.ibb.co/..." class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900"></textarea>
-            <span class="text-[9px] text-neutral-500 mt-0.5 block">Paste direct image links separated by commas if multiple photos.</span>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Select Photos from Gallery (Multiple)</label>
+            <input type="file" id="galleryInput" multiple accept="image/*" onchange="handleGalleryImages(event)" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded text-[10px] file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-[#111827] file:text-white hover:file:bg-black cursor-pointer" />
+            <span id="galleryStatus" class="text-[9px] text-emerald-700 font-semibold mt-1 block"></span>
           </div>
+
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Or Paste Image URLs (Comma separated)</label>
+            <textarea rows="2" id="newImages" placeholder="https://i.ibb.co/..., https://i.ibb.co/..." class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900"></textarea>
+          </div>
+
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Quality Spec</label>
@@ -127,6 +137,23 @@
           <span class="text-neutral-500">Want to reset custom added products?</span>
           <button onclick="clearCustomProducts()" class="text-rose-600 font-bold hover:underline">Clear Custom Items</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MY BOOKINGS / ORDER HISTORY MODAL ================= -->
+  <div id="bookingsModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#E3DAC8] rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-6">
+      <button onclick="closeBookingsModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Customer Dashboard</span>
+      <h3 class="font-heritage text-2xl text-neutral-900 font-semibold mb-4">My Bookings & Orders</h3>
+      
+      <div id="bookingsListContainer" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1 text-xs">
+        <!-- Rendered via JS -->
+      </div>
+      
+      <div class="mt-6 pt-3 border-t border-[#EFE8DD] text-center">
+        <button onclick="closeBookingsModal()" class="bg-[#111827] text-white px-6 py-2.5 rounded text-[10px] uppercase tracking-widest font-bold">Close</button>
       </div>
     </div>
   </div>
@@ -194,17 +221,10 @@
           <div class="space-y-2">
             <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6]">
               <div class="flex items-center gap-2.5">
-                <input type="radio" name="paymentOption" value="cards" checked class="accent-neutral-900" />
-                <span class="font-bold text-neutral-900 text-[11px]">RuPay / Visa / MasterCard</span>
+                <input type="radio" name="paymentOption" value="razorpay" checked class="accent-neutral-900" />
+                <span class="font-bold text-neutral-900 text-[11px]">Razorpay Test Gateway (UPI / Cards / NetBanking)</span>
               </div>
-              <span class="text-[9px] bg-neutral-900 text-white font-bold px-2 py-0.5 rounded">Fast</span>
-            </label>
-            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6]">
-              <div class="flex items-center gap-2.5">
-                <input type="radio" name="paymentOption" value="upi" class="accent-neutral-900" />
-                <span class="font-bold text-neutral-900 text-[11px]">Instant UPI QR (PhonePe / GPay)</span>
-              </div>
-              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">0% Fee</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Instant</span>
             </label>
             <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6]">
               <div class="flex items-center gap-2.5">
@@ -216,7 +236,7 @@
           </div>
         </div>
         <button type="submit" id="orderSubmitBtn" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow-lg flex items-center justify-center gap-2 mt-4">
-          <i data-lucide="shield-check" class="w-4 h-4 text-[#C89B55]"></i> Place Order
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#C89B55]"></i> Proceed to Pay & Order
         </button>
       </form>
     </div>
@@ -243,7 +263,7 @@
     <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">NO RETURNS &bull; EASY SIZE EXCHANGE ONLY</span>
     <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C89B55]">
       <span class="text-neutral-400">GATEWAY:</span>
-      <span class="font-bold text-white">RuPay &bull; UPI &bull; COD</span>
+      <span class="font-bold text-white">Razorpay &bull; UPI &bull; COD</span>
     </div>
   </div>
 
@@ -258,14 +278,13 @@
       <div class="text-center py-1">
         <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0B1323] block uppercase">ÉPURE ATELIER</a>
       </div>
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="openBookingsModal()" class="bg-[#111827] text-white px-3 py-2 rounded text-[10px] tracking-[0.12em] uppercase font-bold flex items-center gap-1 shadow-sm">
+          <i data-lucide="package" class="w-3 h-3 text-[#C89B55]"></i> My Bookings
+        </button>
         <button onclick="openAdminModal()" class="bg-[#8C6D46] hover:bg-[#6D5335] text-white px-3 py-2 rounded text-[10px] tracking-[0.15em] uppercase font-bold flex items-center gap-1 shadow-sm">
           <i data-lucide="lock" class="w-3 h-3"></i> Admin
         </button>
-        <a href="https://wa.me/918271988708" target="_blank" class="hidden sm:flex bg-[#0B1323] text-white px-4 py-2 rounded text-[10px] tracking-[0.18em] uppercase font-bold items-center gap-1.5 hover:bg-[#1C263B]">
-          <i data-lucide="message-circle" class="w-3 h-3 text-[#C89B55]"></i>
-          <span>WhatsApp Help</span>
-        </a>
       </div>
     </div>
   </header>
@@ -304,35 +323,29 @@
         <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Exclusive Drops</span>
         <h2 class="font-heritage text-3xl md:text-4xl text-[#0B1323] font-medium">Autumn / Winter Capsule</h2>
       </div>
-      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; RuPay &bull; UPI &bull; COD</p>
+      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; Razorpay &bull; COD</p>
     </div>
 
     <!-- Product Grid Container -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (EXACT SEQUENCE: 1.IMG-0623, 2.IMG-0624, 3.IMG-0625, 4.IMG-0627, 5.IMG-0626 LAST) -->
+      <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (EXACT SEQUENCE) -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
-          <!-- Slider Container -->
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
             <div id="hmSlider" class="flex transition-transform duration-300 ease-out h-full">
-              <!-- Slide 1: Front Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/84K4pQKd/IMG-0623.jpg')">
                 <img src="https://i.ibb.co/84K4pQKd/IMG-0623.jpg" alt="Front View" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 2: Full Body Front Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/3PcgHDT/IMG-0624.jpg')">
                 <img src="https://i.ibb.co/3PcgHDT/IMG-0624.jpg" alt="Full Body Front" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 3: Full Body Back Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/7d2P3st7/IMG-0625.jpg')">
                 <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="Full Body Back" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 4: Flat Lay Product Studio View (IMG-0627) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg')">
                 <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="Flat Lay" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 5 (LAST): Highlights & Care Info Card (IMG-0626) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/C5wDhjrF/IMG-0626.jpg')">
                 <img src="https://i.ibb.co/C5wDhjrF/IMG-0626.jpg" alt="Highlights" class="w-full h-full object-cover object-center" />
               </div>
@@ -360,7 +373,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('H&M Burgundy Oversized T-Shirt', '₹1,349')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20H%26M%20Burgundy%20Oversized%20T-Shirt%20(₹1,349)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -393,7 +406,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Delicious Moments Polo Sweatshirt', '₹2,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Moments%20Polo%20Sweatshirt%20(₹2,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -426,7 +439,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Pasadena 1996 Retro Knit Polo', '₹1,899')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Retro%20Knit%20Polo%20(₹1,899)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -459,7 +472,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Ethnic Jacquard Trim Sweatpants', '₹2,199')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Ethnic%20Jacquard%20Trim%20Sweatpants%20(₹2,199)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -492,7 +505,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Racing Crew Contrast Piping Long-Sleeve', '₹1,799')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Long-Sleeve%20(₹1,799)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -525,7 +538,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Under Achiever Block Rugby Sweatshirt', '₹2,399')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Under%20Achiever%20Rugby%20Sweatshirt%20(₹2,399)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -558,7 +571,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Stargazer Frayed Graphic T-Shirt', '₹1,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Stargazer%20Frayed%20Tee%20(₹1,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -591,7 +604,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Descartes Renaissance Woven Jacket', '₹4,999')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Descartes%20Renaissance%20Jacket%20(₹4,999)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -624,7 +637,7 @@
         </div>
         <div class="mt-4 space-y-2">
           <button onclick="openCheckout('Guardian Angel Cathedral Etching Jacket', '₹4,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
           <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Guardian%20Angel%20Cathedral%20Jacket%20(₹4,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -695,6 +708,7 @@
 
     // Dynamic Multi-Slider Index Trackers
     const slideIndices = { 'hmSlider': 0 };
+    let tempGalleryImages = [];
 
     function slideNext(e, sliderId, total) {
       e.stopPropagation();
@@ -747,6 +761,65 @@
       document.getElementById('adminPassInput').value = '';
     }
 
+    // My Bookings Drawer / Modal
+    function openBookingsModal() {
+      const container = document.getElementById('bookingsListContainer');
+      const orders = JSON.parse(localStorage.getItem('epure_user_orders') || '[]');
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-neutral-500">
+            <p class="font-semibold">No bookings or orders found yet.</p>
+            <p class="text-[10px] mt-1">Your placed orders will appear here automatically.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = orders.map((o, idx) => `
+          <div class="bg-[#FAF9F6] border border-[#DDD3C2] p-3 rounded-lg shadow-sm">
+            <div class="flex justify-between items-center pb-1.5 border-b border-neutral-200">
+              <span class="font-bold text-neutral-900">#${orders.length - idx} &bull; ${o.product}</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Confirmed</span>
+            </div>
+            <div class="pt-2 text-[11px] text-neutral-700 space-y-0.5">
+              <p><strong>Price:</strong> ${o.price} (${o.paymentMethod})</p>
+              <p><strong>Customer:</strong> ${o.name} (${o.phone})</p>
+              <p><strong>Address:</strong> ${o.city}, ${o.address}</p>
+              <p class="text-[9px] text-neutral-400 mt-1">Ordered on: ${o.date}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('bookingsModal').classList.remove('hidden');
+      document.getElementById('bookingsModal').classList.add('flex');
+    }
+
+    function closeBookingsModal() {
+      document.getElementById('bookingsModal').classList.remove('flex');
+      document.getElementById('bookingsModal').classList.add('hidden');
+    }
+
+    // Convert gallery files to Base64 URLs
+    function handleGalleryImages(event) {
+      const files = event.target.files;
+      if (!files || files.length === 0) return;
+
+      tempGalleryImages = [];
+      let loadedCount = 0;
+
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          tempGalleryImages.push(e.target.result);
+          loadedCount++;
+          if (loadedCount === files.length) {
+            document.getElementById('galleryStatus').innerText = `${loadedCount} photos loaded successfully from gallery!`;
+          }
+        };
+        reader.readAsDataURL(files[i]);
+      }
+    }
+
     function handleAddNewProduct(e) {
       e.preventDefault();
       const title = document.getElementById('newTitle').value;
@@ -757,7 +830,17 @@
       const quality = document.getElementById('newQuality').value || "Premium Combed Cotton";
       const fit = document.getElementById('newFit').value || "Oversized Streetwear Fit";
 
-      const images = rawImages.split(',').map(s => s.trim()).filter(Boolean);
+      let images = [];
+      if (tempGalleryImages.length > 0) {
+        images = [...tempGalleryImages];
+      } else if (rawImages.trim() !== "") {
+        images = rawImages.split(',').map(s => s.trim()).filter(Boolean);
+      }
+
+      if (images.length === 0) {
+        alert("Please select photos from gallery or paste image URLs!");
+        return;
+      }
 
       const newProd = { id: 'custom_' + Date.now(), title, price, oldPrice, tag, images, quality, fit };
 
@@ -767,6 +850,8 @@
 
       alert("Product published successfully!");
       e.target.reset();
+      tempGalleryImages = [];
+      document.getElementById('galleryStatus').innerText = '';
       closeAdminModal();
       loadCustomProducts();
     }
@@ -819,7 +904,7 @@
             </div>
             <div class="mt-4 space-y-2">
               <button onclick="openCheckout('${prod.title}', '${prod.price}')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
               </button>
               <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20${encodeURIComponent(prod.title)}%20(${prod.price})." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
                 <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
@@ -866,49 +951,84 @@
       modal.classList.add('hidden');
     }
 
-    async function handleDirectPayment(e) {
+    // Razorpay Integration & Order Completion Handler
+    function handleDirectPayment(e) {
       e.preventDefault();
-      const submitBtn = document.getElementById('orderSubmitBtn');
-      const originalHtml = submitBtn.innerHTML;
-      submitBtn.innerHTML = "Processing Order...";
-      submitBtn.disabled = true;
 
       const fullName = document.getElementById('custName').value;
       const phone = document.getElementById('custPhone').value;
       const city = document.getElementById('custCity').value;
       const address = document.getElementById('custAddress').value;
-      const paymentMethod = document.querySelector('input[name="paymentOption"]:checked').value.toUpperCase();
+      const paymentOption = document.querySelector('input[name="paymentOption"]:checked').value;
+      
       const productTitle = document.getElementById('modalProductTitle').innerText;
       const productPrice = document.getElementById('modalProductPrice').innerText;
+      
+      closeCheckout();
 
+      if (paymentOption === 'razorpay') {
+        // Parse numeric price for Razorpay amount (e.g. ₹1,349 -> 134900 paise)
+        const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, '')) * 100 || 1000;
+
+        const options = {
+          "key": "rzp_test_1DP5mmOlF5G5ag", // Test Key
+          "amount": numericPrice, 
+          "currency": "INR",
+          "name": "ÉPURE ATELIER",
+          "description": `Purchase of ${productTitle}`,
+          "image": "https://i.ibb.co/84K4pQKd/IMG-0623.jpg",
+          "handler": function (response){
+            finalizeOrder(productTitle, productPrice, fullName, phone, city, address, "RAZORPAY TEST (" + response.razorpay_payment_id + ")");
+          },
+          "prefill": {
+            "name": fullName,
+            "contact": phone
+          },
+          "theme": {
+            "color": "#0B1323"
+          }
+        };
+        const rzp1 = new Razorpay(options);
+        rzp1.open();
+      } else {
+        finalizeOrder(productTitle, productPrice, fullName, phone, city, address, "CASH ON DELIVERY");
+      }
+    }
+
+    async function finalizeOrder(product, price, name, phone, city, address, paymentMethod) {
+      // 1. Save to LocalStorage for "My Bookings"
+      const newOrder = {
+        product, price, name, phone, city, address, paymentMethod,
+        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+      };
+      let userOrders = JSON.parse(localStorage.getItem('epure_user_orders') || '[]');
+      userOrders.unshift(newOrder);
+      localStorage.setItem('epure_user_orders', JSON.stringify(userOrders));
+
+      // 2. Send email alert via Web3Forms
       try {
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
             access_key: "c6ab2781-bf27-4a83-b69c-46f9ba588dcc",
-            subject: `NEW ORDER: ${productTitle} - ${fullName}`,
-            Product_Ordered: productTitle,
-            Price: productPrice,
-            Customer_Name: fullName,
+            subject: `NEW PAID ORDER: ${product} - ${name}`,
+            Product_Ordered: product,
+            Price: price,
+            Customer_Name: name,
             Mobile_Number: phone,
             City_Pincode: city,
             Delivery_Address: address,
             Payment_Chosen: paymentMethod
           })
         });
-        closeCheckout();
-        e.target.reset();
-        document.getElementById('thankYouModal').classList.remove('hidden');
-        document.getElementById('thankYouModal').classList.add('flex');
       } catch (err) {
-        closeCheckout();
-        document.getElementById('thankYouModal').classList.remove('hidden');
-        document.getElementById('thankYouModal').classList.add('flex');
-      } finally {
-        submitBtn.innerHTML = originalHtml;
-        submitBtn.disabled = false;
+        console.error("Email notification error", err);
       }
+
+      // 3. Open Thank You Modal
+      document.getElementById('thankYouModal').classList.remove('hidden');
+      document.getElementById('thankYouModal').classList.add('flex');
     }
 
     function closeThankYou() {
