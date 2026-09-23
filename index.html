@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ÉPURE ATELIER | Maison de Prêt-à-Porter &bull; Paris &bull; Roma</title>
+  <title>ÉPURE ATELIER | Ralph Lauren & Brioni Heritage Menswear</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Editorial Luxury Fonts: Bodoni Moda + Cormorant Garamond + Plus Jakarta Sans -->
+  <!-- Premium Fonts: Bodoni Moda (Italian/Brioni Heritage) + Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,800;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -20,11 +20,8 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .font-bodoni {
-      font-family: 'Bodoni Moda', serif;
-    }
-    .font-garamond {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    .font-heritage {
+      font-family: 'Bodoni Moda', Georgia, serif;
     }
     .no-scrollbar::-webkit-scrollbar {
       display: none;
@@ -34,13 +31,13 @@
       scrollbar-width: none;
     }
 
-    /* Subtle pulse animation for preloader */
+    /* Preloader Animation */
     @keyframes royalCrest {
       0%, 100% { transform: scale(1); opacity: 0.95; }
-      50% { transform: scale(1.06); opacity: 0.5; }
+      50% { transform: scale(1.05); opacity: 0.4; }
     }
     .animate-royal {
-      animation: royalCrest 1.9s ease-in-out infinite;
+      animation: royalCrest 1.8s ease-in-out infinite;
     }
 
     #preloader {
@@ -53,362 +50,471 @@
     }
   </style>
 </head>
-<body class="bg-[#F8F6F0] text-[#1A1815] antialiased selection:bg-[#2C241D] selection:text-[#F8F6F0]">
+<body class="bg-[#F9F7F2] text-[#1D1B18] antialiased selection:bg-[#1E293B] selection:text-white">
 
-  <!-- ================= ÉPURE ATELIER LUXURY PRELOADER ================= -->
-  <div id="preloader" class="fixed inset-0 z-[100] bg-[#F7F4EC] flex flex-col items-center justify-center border-8 border-[#ECE5D8]">
+  <!-- ================= RALPH LAUREN / BRIONI PRELOADER ================= -->
+  <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF8F5] flex flex-col items-center justify-center border-8 border-[#ECE5D8]">
     <div class="animate-royal flex flex-col items-center">
-      <div class="w-16 h-16 border-[1.5px] border-[#2A231C] rounded-none flex items-center justify-center mb-3 bg-[#FAF8F3] shadow-md relative">
-        <div class="w-13 h-13 border border-[#8C6D46]/40 flex items-center justify-center p-2">
-          <span class="font-bodoni text-2xl font-bold tracking-widest text-[#2A231C]">É</span>
+      <div class="w-16 h-16 border-[1.5px] border-[#1C2434] rounded-none flex items-center justify-center mb-3 bg-white shadow-md relative">
+        <div class="w-13 h-13 border border-[#B58A4A]/50 flex items-center justify-center p-2">
+          <span class="font-heritage text-2xl font-bold tracking-widest text-[#1C2434]">É</span>
         </div>
       </div>
     </div>
-    <p class="font-bodoni text-[11px] uppercase tracking-[0.45em] text-[#2A231C] font-semibold mt-2">ÉPURE ATELIER</p>
+    <p class="font-heritage text-[11px] uppercase tracking-[0.45em] text-[#1C2434] font-semibold mt-2">ÉPURE ATELIER</p>
     <div class="flex items-center gap-2 mt-1">
-      <span class="h-px w-6 bg-[#8C6D46]/40"></span>
-      <span class="text-[8px] uppercase tracking-[0.35em] text-[#8C6D46] font-medium">Paris &bull; Roma &bull; Limited Drop</span>
-      <span class="h-px w-6 bg-[#8C6D46]/40"></span>
+      <span class="h-px w-6 bg-[#B58A4A]/40"></span>
+      <span class="text-[8px] uppercase tracking-[0.35em] text-[#B58A4A] font-semibold">BESPOKE MENSWEAR</span>
+      <span class="h-px w-6 bg-[#B58A4A]/40"></span>
+    </div>
+  </div>
+
+  <!-- ================= DIRECT ONLINE CHECKOUT & PAYMENT MODAL ================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#FCFAF7] border border-[#E3DAC8] rounded-xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8">
+      
+      <!-- Close Button -->
+      <button onclick="closeCheckout()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 transition text-2xl leading-none">&times;</button>
+
+      <div class="border-b border-[#EADFCF] pb-4 mb-5 text-center">
+        <span class="text-[9px] uppercase tracking-[0.3em] text-[#B58A4A] font-bold block mb-1">Encrypted Payment Gateway</span>
+        <h3 class="font-heritage text-2xl text-neutral-900 font-medium" id="modalProductTitle">Selected Bespoke Garment</h3>
+        <p class="text-sm font-bold text-neutral-800 mt-1" id="modalProductPrice">$0.00 USD</p>
+      </div>
+
+      <!-- Shipping & Customer Form -->
+      <form onsubmit="handleDirectPayment(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Full Name</label>
+          <input required type="text" placeholder="Lord / Mr. Jonathan Vance" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Email Address</label>
+            <input required type="email" placeholder="client@privatemail.com" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+          </div>
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Phone (with Country Code)</label>
+            <input required type="tel" placeholder="+1 (555) 019-2834 / +91" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-1 text-[10px]">Shipping Destination Address</label>
+          <textarea required rows="2" placeholder="Street Address, City, State, Postal Code, Country" class="w-full bg-white border border-[#DDD4C4] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900 transition"></textarea>
+        </div>
+
+        <!-- Payment Method Selector -->
+        <div class="pt-2">
+          <label class="block uppercase tracking-wider font-semibold text-neutral-600 mb-2 text-[10px]">Select Payment Gateway</label>
+          
+          <div class="space-y-2">
+            <!-- RuPay / UPI / India -->
+            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="paymentOption" value="rupay_upi" checked class="accent-neutral-900" />
+                <div>
+                  <span class="font-bold text-neutral-900 block text-[11px]">RuPay Cards, UPI & Net Banking</span>
+                  <span class="text-neutral-500 text-[10px]">GPay, PhonePe, Paytm, All Indian Bank RuPay Cards</span>
+                </div>
+              </div>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Zero Fee</span>
+            </label>
+
+            <!-- International Credit Cards / Amex -->
+            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="paymentOption" value="international_cards" class="accent-neutral-900" />
+                <div>
+                  <span class="font-bold text-neutral-900 block text-[11px]">International Credit & Debit Cards</span>
+                  <span class="text-neutral-500 text-[10px]">Visa, Mastercard, American Express, Apple Pay</span>
+                </div>
+              </div>
+              <span class="text-[9px] bg-neutral-100 text-neutral-700 font-bold px-2 py-0.5 rounded">Global</span>
+            </label>
+
+            <!-- PayPal International -->
+            <label class="flex items-center justify-between border border-[#DCD3C3] p-3 rounded cursor-pointer hover:border-neutral-900 bg-white transition">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="paymentOption" value="paypal" class="accent-neutral-900" />
+                <div>
+                  <span class="font-bold text-neutral-900 block text-[11px]">PayPal & International Wire</span>
+                  <span class="text-neutral-500 text-[10px]">Instant checkout in USD, EUR, GBP, CAD</span>
+                </div>
+              </div>
+              <span class="text-[9px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">PayPal</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-[#18212F] hover:bg-[#0F1622] text-[#FAF7F2] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold transition duration-300 shadow-md flex items-center justify-center gap-2 mt-4">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-[#C89B55]"></i> Secure Checkout & Pay
+        </button>
+      </form>
     </div>
   </div>
 
   <!-- Fullscreen HD Image Modal (Tap to Zoom) -->
-  <div id="imageModal" class="fixed inset-0 z-50 bg-[#141210]/95 hidden items-center justify-center p-4 cursor-pointer" onclick="closeModal()">
+  <div id="imageModal" class="fixed inset-0 z-50 bg-[#120F0D]/95 hidden items-center justify-center p-4 cursor-pointer" onclick="closeModal()">
     <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-3xl font-light hover:opacity-70">&times;</button>
     <img id="modalImg" src="" alt="Full view" class="max-h-[92vh] max-w-[95vw] object-contain rounded shadow-2xl cursor-default border border-[#3E342B]" onclick="event.stopPropagation()" />
   </div>
 
-  <!-- Floating Concierge WhatsApp Button -->
-  <a href="https://wa.me/918271988708?text=Salutations%20ÉPURE%20ATELIER,%20I%20wish%20to%20place%20an%20order%20from%20the%20Maison%20Collection." 
+  <!-- Floating Concierge WhatsApp -->
+  <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20would%20like%20to%20place%20a%20bespoke%20order." 
      target="_blank" 
-     class="fixed bottom-6 right-6 z-40 bg-[#241F1A] hover:bg-[#1A1612] text-[#F7F4EC] px-4 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#8C6D46]/40 transition transform hover:scale-105 duration-300">
-    <i data-lucide="message-circle" class="w-4 h-4 text-[#D89B56]"></i>
-    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold pr-1">Maison Concierge</span>
+     class="fixed bottom-6 right-6 z-40 bg-[#161D2B] hover:bg-black text-[#F7F4EC] px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#B58A4A]/50 transition transform hover:scale-105 duration-300">
+    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold pr-1">Private WhatsApp</span>
   </a>
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-[#221B15] text-[#EFE7D8] text-[10px] uppercase tracking-[0.26em] py-2 px-4 border-b border-[#382D23] flex justify-between items-center sm:px-10">
-    <div class="hidden md:flex items-center gap-2 text-[#C9A979]">
-      <i data-lucide="crown" class="w-3 h-3"></i>
-      <span>Sartorial Distinction &bull; Roman Tailoring Heritage</span>
+  <!-- Top Announcement Bar (Ralph Lauren Classic Navy) -->
+  <div class="bg-[#0F172A] text-[#E2E8F0] text-[10px] uppercase tracking-[0.24em] py-2.5 px-4 border-b border-neutral-800 flex justify-between items-center sm:px-10">
+    <div class="hidden md:flex items-center gap-2 text-[#C89B55]">
+      <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+      <span>Secured Payments: RuPay, UPI, Visa, Amex & PayPal</span>
     </div>
-    <span class="mx-auto md:mx-0 font-medium tracking-[0.28em]">ÉDITION LIMITÉE &bull; ESTABLISHED 2026</span>
-    <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C9A979]">
-      <span>VALUTA:</span>
-      <span class="font-bold text-[#FAF6ED]">USD ($) / INR (₹)</span>
+    <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">COMPLIMENTARY AIR DISPATCH WORLDWIDE</span>
+    <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C89B55]">
+      <span>CURRENCY:</span>
+      <span class="font-bold text-white">USD ($) &bull; INR (₹)</span>
     </div>
   </div>
 
-  <!-- Navigation Header -->
-  <header class="sticky top-0 z-30 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-[#E7DECE] transition-all">
+  <!-- Navigation Header (Polo Ralph Lauren & Brioni Elegance) -->
+  <header class="sticky top-0 z-30 bg-[#F9F7F2]/95 backdrop-blur-md border-b border-[#E7DECE] transition-all">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-22 flex items-center justify-between">
       
-      <nav class="hidden md:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#44382D]">
-        <a href="#collection" class="hover:text-[#B45309] transition">The Collection</a>
-        <a href="#tailoring" class="hover:text-[#B45309] transition">Tailoring Code</a>
-        <a href="#atelier" class="hover:text-[#B45309] transition">The Maison</a>
+      <nav class="hidden md:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#334155]">
+        <a href="#collection" class="hover:text-[#0F172A] transition">The Collection</a>
+        <a href="#brioni" class="hover:text-[#0F172A] transition">Brioni Suiting</a>
+        <a href="#polo" class="hover:text-[#0F172A] transition">Polo Heritage</a>
+        <a href="#checkout-strip" class="hover:text-[#0F172A] transition">Online Payment</a>
       </nav>
 
       <!-- Center Logo -->
       <div class="text-center py-2">
-        <a href="#" class="font-bodoni text-2xl md:text-3xl tracking-[0.35em] font-medium text-[#1E1914] block uppercase">ÉPURE ATELIER</a>
+        <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0F172A] block uppercase">ÉPURE ATELIER</a>
         <div class="flex items-center justify-center gap-2 mt-0.5">
-          <span class="h-px w-4 bg-[#8C6D46]/50"></span>
-          <span class="text-[8px] uppercase tracking-[0.5em] text-[#8C6D46] font-semibold">PARIS &bull; ROMA &bull; WORLDWIDE</span>
-          <span class="h-px w-4 bg-[#8C6D46]/50"></span>
+          <span class="h-px w-4 bg-[#B58A4A]/60"></span>
+          <span class="text-[8px] uppercase tracking-[0.45em] text-[#8C6D46] font-bold">BRIONI &bull; RALPH LAUREN &bull; HERMÈS EDITS</span>
+          <span class="h-px w-4 bg-[#B58A4A]/60"></span>
         </div>
       </div>
 
-      <div class="flex items-center space-x-4">
-        <a href="https://wa.me/918271988708" target="_blank" class="border border-[#8C6D46]/50 hover:bg-[#2A231C] hover:text-white transition text-[#2A231C] px-3.5 py-1.5 rounded-none text-[10px] tracking-[0.18em] uppercase font-semibold flex items-center gap-1.5">
-          <i data-lucide="phone" class="w-3 h-3 text-[#B45309]"></i>
-          <span>+91 8271988708</span>
+      <!-- Right Client Support -->
+      <div class="flex items-center space-x-3">
+        <a href="https://wa.me/918271988708" target="_blank" class="bg-[#0F172A] text-white px-4 py-2 rounded-none text-[10px] tracking-[0.18em] uppercase font-bold flex items-center gap-1.5 hover:bg-[#1E293B] transition">
+          <i data-lucide="message-circle" class="w-3 h-3 text-[#C89B55]"></i>
+          <span>WhatsApp Help</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#1E1813] border-b border-[#362A1F]">
-    <img src="https://i.postimg.cc/56qZtM3z/IMG-0588.jpg" 
-         alt="ÉPURE ATELIER Lookbook" 
-         class="absolute inset-0 w-full h-full object-cover object-top opacity-55 filter contrast-[112%] saturate-[78%] sepia-[15%]" />
+  <!-- ================= RALPH LAUREN CINEMATIC HERO BANNER ================= -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A101D] border-b border-[#1E293B]">
+    <!-- Editorial Ralph Lauren Styled Shot -->
+    <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=2000&auto=format&fit=crop" 
+         alt="Bespoke Luxury Menswear" 
+         class="absolute inset-0 w-full h-full object-cover object-top opacity-50 filter contrast-[110%] saturate-[90%]" />
     
-    <div class="absolute inset-0 bg-gradient-to-t from-[#15100B] via-[#211912]/70 to-[#17110C]/90"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_20%,_#120D08_95%)]"></div>
+    <!-- Old-Money Dark Navy & Rich Espresso Vignette -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0A101D] via-[#0D1527]/60 to-[#0A101D]/80"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_#050810_90%)]"></div>
 
     <div class="relative z-10 text-center px-6 max-w-3xl mx-auto text-[#FAF7F0]">
-      <div class="inline-flex items-center gap-2 border border-[#C9A979]/40 bg-[#1F1710]/80 backdrop-blur-sm px-4 py-1 mb-5">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#D97706]"></span>
-        <span class="text-[9px] uppercase tracking-[0.38em] text-[#E0CEB3] font-semibold">Haute Sartoriale &bull; Édition 2026</span>
+      <div class="inline-flex items-center gap-2 border border-[#C89B55]/50 bg-[#0F172A]/80 backdrop-blur-md px-4 py-1 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C89B55]"></span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-[#E2D4BF] font-semibold">Old-Money Sartorial Edit &bull; Autumn 2026</span>
       </div>
 
-      <h1 class="font-bodoni text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-[#FAF7F2]">
+      <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-[#FFFFFF]">
         The Roman Precision, <br/>
-        <span class="font-garamond italic font-light text-[#E8D4B8]">The Parisian Drape.</span>
+        <span class="italic font-light text-[#EADFCB]">The Country Club Drape.</span>
       </h1>
 
-      <p class="text-[#D3C4B0] text-xs sm:text-sm font-light max-w-lg mx-auto leading-relaxed mb-9 tracking-wider">
-        Pure lines, relaxed architectural drape, and bespoke 260 GSM combed cotton. Understated elegance with uncompromising distinction.
+      <p class="text-[#CBD5E1] text-xs sm:text-sm font-light max-w-xl mx-auto leading-relaxed mb-9 tracking-wider">
+        Inspired by the master bespoke tailoring of Brioni and the enduring sporting grace of Ralph Lauren. Every piece is cut from virgin combed wool, heavy silk, and 260 GSM textured cottons.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#collection" class="bg-[#FAF6ED] text-[#1B1611] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#EAE1CF] transition duration-300 min-w-[200px] border border-[#FAF6ED]">
-          Examine Capsule
+        <a href="#collection" class="bg-[#FAF7F0] text-[#0F172A] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] transition duration-300 min-w-[210px] shadow-lg">
+          View Collections
         </a>
-        <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20wish%20to%20order%20from%20the%20Capsule%20Collection." 
-           target="_blank" 
-           class="border border-[#C9A979]/70 text-[#FAF6ED] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-semibold hover:bg-[#2A2016] transition duration-300 min-w-[200px] flex items-center justify-center gap-2">
-          <i data-lucide="message-circle" class="w-4 h-4 text-[#D97706]"></i> Order Via WhatsApp
-        </a>
+        <button onclick="openCheckout('Private Capsule Order', '$185.00 USD')" class="border border-[#C89B55] text-[#FAF7F0] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#0F172A] transition duration-300 min-w-[210px] flex items-center justify-center gap-2">
+          <i data-lucide="credit-card" class="w-4 h-4 text-[#C89B55]"></i> Online Checkout
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Heritage Strip -->
-  <section class="border-b border-[#E5DBCA] bg-[#F1ECE1] py-8 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="flex flex-col items-center">
-        <span class="font-bodoni text-xl font-semibold text-[#2C241D] mb-1">I. BESPOKE</span>
-        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#42362A]">Italian Boxy Proportions</h4>
-        <p class="text-[10px] text-[#7A6A59] mt-0.5">Engineered broad-shoulder drape</p>
+  <!-- Accepted Payment Gateways Banner (RuPay, Visa, UPI, Amex) -->
+  <section id="checkout-strip" class="border-b border-[#E2D7C5] bg-[#F1ECE1] py-5 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-3">
+        <i data-lucide="lock" class="w-4 h-4 text-emerald-700"></i>
+        <span class="uppercase tracking-widest text-[11px] font-bold text-neutral-800">Direct Online Payments Supported:</span>
       </div>
-      <div class="flex flex-col items-center">
-        <span class="font-bodoni text-xl font-semibold text-[#2C241D] mb-1">II. MATIÈRE</span>
-        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#42362A]">260 GSM Pure Combed Cotton</h4>
-        <p class="text-[10px] text-[#7A6A59] mt-0.5">Heavy gauge luxury hand-feel</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <span class="font-bodoni text-xl font-semibold text-[#2C241D] mb-1">III. DISPATCH</span>
-        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#42362A]">Express Private Courier</h4>
-        <p class="text-[10px] text-[#7A6A59] mt-0.5">Tracked transit pan-India & global</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <span class="font-bodoni text-xl font-semibold text-[#2C241D] mb-1">IV. CONCIERGE</span>
-        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#42362A]">Direct WhatsApp Order</h4>
-        <p class="text-[10px] text-[#7A6A59] mt-0.5">Personalized client care</p>
+      
+      <!-- Payment Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 text-[10px] uppercase tracking-wider font-bold">
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-neutral-800">RuPay Debit & Credit</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-emerald-700">Instant UPI (GPay / PhonePe)</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-blue-800">Visa & Mastercard</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-neutral-900">American Express</span>
+        <span class="bg-white border border-[#DDD3C2] px-3 py-1.5 rounded shadow-sm text-blue-600">PayPal Global (USD / EUR)</span>
       </div>
     </div>
   </section>
 
-  <!-- Product Collection -->
+  <!-- ================= RALPH LAUREN, BRIONI & HERMÈS CURATED WARDROBE ================= -->
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
-    <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E5DBCA] pb-5">
+    <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
       <div>
-        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Sartoria Archive</span>
-        <h2 class="font-bodoni text-3xl md:text-4xl text-[#1E1914] font-normal">Capsule 01 &bull; Ready-to-Wear</h2>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Maison Catalog 2026</span>
+        <h2 class="font-heritage text-3xl md:text-4xl text-[#0F172A] font-medium">Curated Ready-to-Wear</h2>
       </div>
-      <p class="text-[11px] text-[#6E5D4E] uppercase tracking-widest mt-2 md:mt-0 font-medium">Select angle thumbnail &bull; Tap photo to inspect</p>
+      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Choose Direct Online Checkout or WhatsApp Concierge</p>
     </div>
 
+    <!-- Product Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- Product 1: BULL OVERSIZED TEE -->
-      <div class="bg-[#FAF8F3] p-4 border border-[#E3D8C6] shadow-sm flex flex-col justify-between">
+      <!-- PRODUCT 1: POLO RALPH LAUREN CABLE-KNIT CASHMERE -->
+      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE5D8] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DDD1BE]" onclick="zoomCurrent()">
-            <img id="mainProductImg" 
-                 src="https://i.postimg.cc/56qZtM3z/IMG-0588.jpg" 
-                 alt="BULL Graphic Drop-Shoulder Tee" 
-                 class="w-full h-full object-cover object-top transition duration-300" />
-            
-            <span class="absolute top-2.5 left-2.5 bg-[#C25E00] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 shadow-sm">53% PRIVILEGE</span>
-            <span class="absolute bottom-2.5 right-2.5 bg-[#1C1610]/85 backdrop-blur-sm text-[#F7F4EC] text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
-              <i data-lucide="zoom-in" class="w-3 h-3 text-[#D89B56]"></i> Inspect
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Polo Ralph Lauren Cable Knit" 
+                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
+            <span class="absolute top-2.5 left-2.5 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Polo Heritage</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
             </span>
           </div>
 
-          <!-- 3 Angle Thumbnails Row -->
-          <div class="flex items-center justify-between gap-1 mb-3">
-            <button onclick="prevImage()" class="p-1 text-[#665444] hover:text-black transition">
-              <i data-lucide="chevron-left" class="w-4 h-4"></i>
-            </button>
-
-            <div class="grid grid-cols-3 gap-1.5 w-full">
-              <button onclick="setMainImage(0)" id="thumb-0" class="aspect-[3/4] border-2 border-[#1E1914] overflow-hidden p-0.5 transition">
-                <img src="https://i.postimg.cc/56qZtM3z/IMG-0588.jpg" alt="Front" class="w-full h-full object-cover object-top" />
-              </button>
-
-              <button onclick="setMainImage(1)" id="thumb-1" class="aspect-[3/4] border border-[#D5C7B2] overflow-hidden p-0.5 opacity-60 hover:opacity-100 transition">
-                <img src="https://i.postimg.cc/ppYgdtZn/IMG-0587.jpg" alt="Back" class="w-full h-full object-cover object-top" />
-              </button>
-
-              <button onclick="setMainImage(2)" id="thumb-2" class="aspect-[3/4] border border-[#D5C7B2] overflow-hidden p-0.5 opacity-60 hover:opacity-100 transition">
-                <img src="https://i.postimg.cc/56qZtM3z/IMG-0588.jpg" alt="Fit" class="w-full h-full object-cover object-center" />
-              </button>
-            </div>
-
-            <button onclick="nextImage()" class="p-1 text-[#665444] hover:text-black transition">
-              <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </button>
-          </div>
-
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Sartorial Streetwear</p>
-          <h3 class="font-bodoni text-lg text-[#1E1914] font-medium leading-snug">BULL Boxy Heavyweight Tee</h3>
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Scottish Spun Cashmere</p>
+          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Classic Polo Cable-Knit Sweater</h3>
           
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#1E1914] tracking-wider">$7.83 USD</span>
-            <span class="text-xs text-[#8A7A6C] line-through tracking-wider">$16.69 USD</span>
-            <span class="text-[10px] text-[#C25E00] font-bold uppercase tracking-wider">(53% Drop)</span>
+            <span class="text-base font-bold text-[#0F172A] tracking-wider">$145.00 USD</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">$220.00</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹11,999 INR)</span>
           </div>
-          <p class="text-[10px] text-[#7A6B5C] mt-0.5">Equivalent to ₹649 INR &bull; Complimentary Transit</p>
+          <p class="text-[10px] text-neutral-500 mt-1">Full-gauge natural yarn with ribbed cuffs.</p>
         </div>
 
-        <a href="https://wa.me/918271988708?text=Hi%20ÉPURE%20ATELIER,%20I%20wish%20to%20order%20the%20BULL%20Boxy%20Tee%20at%20offer%20price%20$7.83%20USD." 
-           target="_blank" 
-           class="mt-4 w-full bg-[#201A15] hover:bg-[#120E0A] text-[#FAF6EE] text-[10px] uppercase tracking-[0.22em] font-semibold py-3 text-center transition flex items-center justify-center gap-2 border border-[#3E3227]">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#D89B56]"></i> Order On WhatsApp
-        </a>
+        <!-- Action Buttons: Direct Online Checkout vs WhatsApp -->
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('The Classic Polo Cable-Knit Sweater', '$145.00 USD')" 
+                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Classic%20Polo%20Cable-Knit%20Sweater%20($145.00%20USD)." 
+             target="_blank" 
+             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
       </div>
 
-      <!-- Product 2 -->
-      <div class="bg-[#FAF8F3] p-4 border border-[#E3D8C6] shadow-sm flex flex-col justify-between">
+      <!-- PRODUCT 2: BRIONI ROMAN DOUBLE-BREASTED SUIT -->
+      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE5D8] aspect-[3/4] mb-3 border border-[#DDD1BE]">
-            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000&auto=format&fit=crop" alt="Cuban Shirt" class="w-full h-full object-cover" />
-            <span class="absolute top-2.5 left-2.5 bg-[#FAF6EE] text-[#1F1913] text-[9px] uppercase tracking-[0.2em] font-bold px-2.5 py-0.5 border border-[#C9A979]">Linen Blend</span>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Brioni Bespoke Tailoring" 
+                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
+            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Sartoria Brioni</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
           </div>
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Resort Silhouette</p>
-          <h3 class="font-bodoni text-lg text-[#1E1914] font-medium leading-snug">Textured Cuban Linen Shirt</h3>
+
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Super 150s Virgin Wool</p>
+          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Roman Cut Double-Breasted Suit</h3>
+          
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#1E1914] tracking-wider">$26.00 USD</span>
-            <span class="text-xs text-[#8A7A6C] line-through">$36.00</span>
+            <span class="text-base font-bold text-[#0F172A] tracking-wider">$285.00 USD</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">$390.00</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹23,499 INR)</span>
           </div>
-          <p class="text-[10px] text-[#7A6B5C] mt-0.5">Approx. ₹2,199 INR</p>
+          <p class="text-[10px] text-neutral-500 mt-1">Full canvas chest piece with horn buttons.</p>
         </div>
-        <a href="https://wa.me/918271988708?text=Hi%20ÉPURE%20ATELIER,%20I%20wish%20to%20order%20the%20Textured%20Cuban%20Linen%20Shirt." 
-           target="_blank" 
-           class="mt-4 w-full bg-[#201A15] hover:bg-[#120E0A] text-[#FAF6EE] text-[10px] uppercase tracking-[0.22em] font-semibold py-3 text-center transition flex items-center justify-center gap-2 border border-[#3E3227]">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#D89B56]"></i> Order On WhatsApp
-        </a>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('The Roman Cut Double-Breasted Suit', '$285.00 USD')" 
+                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Roman%20Cut%20Double-Breasted%20Suit%20($285.00%20USD)." 
+             target="_blank" 
+             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
       </div>
 
-      <!-- Product 3 -->
-      <div class="bg-[#FAF8F3] p-4 border border-[#E3D8C6] shadow-sm flex flex-col justify-between">
+      <!-- PRODUCT 3: HERMÈS BESPOKE TWILL OVERSHIRT -->
+      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE5D8] aspect-[3/4] mb-3 border border-[#DDD1BE]">
-            <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1000&auto=format&fit=crop" alt="Pleated Trousers" class="w-full h-full object-cover" />
-            <span class="absolute top-2.5 left-2.5 bg-[#201A15] text-white text-[9px] uppercase tracking-[0.2em] font-bold px-2.5 py-0.5">Sartoria</span>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Hermès Style Twill Overshirt" 
+                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
+            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Hermès Drape</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
           </div>
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Roman Drape</p>
-          <h3 class="font-bodoni text-lg text-[#1E1914] font-medium leading-snug">Double-Pleated Wide Trousers</h3>
+
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Saddle Twill & French Linen</p>
+          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Saddle-Stitched Resort Overshirt</h3>
+          
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#1E1914] tracking-wider">$34.50 USD</span>
-            <span class="text-xs text-[#8A7A6C] line-through">$48.00</span>
+            <span class="text-base font-bold text-[#0F172A] tracking-wider">$95.00 USD</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">$140.00</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹7,899 INR)</span>
           </div>
-          <p class="text-[10px] text-[#7A6B5C] mt-0.5">Approx. ₹2,899 INR</p>
+          <p class="text-[10px] text-neutral-500 mt-1">Pre-washed Normandy flax with mother-of-pearl fastenings.</p>
         </div>
-        <a href="https://wa.me/918271988708?text=Hi%20ÉPURE%20ATELIER,%20I%20wish%20to%20order%20the%20Double-Pleated%20Wide%20Trousers." 
-           target="_blank" 
-           class="mt-4 w-full bg-[#201A15] hover:bg-[#120E0A] text-[#FAF6EE] text-[10px] uppercase tracking-[0.22em] font-semibold py-3 text-center transition flex items-center justify-center gap-2 border border-[#3E3227]">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#D89B56]"></i> Order On WhatsApp
-        </a>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('The Saddle-Stitched Resort Overshirt', '$95.00 USD')" 
+                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Saddle-Stitched%20Resort%20Overshirt%20($95.00%20USD)." 
+             target="_blank" 
+             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
       </div>
 
-      <!-- Product 4 -->
-      <div class="bg-[#FAF8F3] p-4 border border-[#E3D8C6] shadow-sm flex flex-col justify-between">
+      <!-- PRODUCT 4: RALPH LAUREN PLEATED CHINO TROUSERS -->
+      <div class="bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-sm">
         <div>
-          <div class="relative overflow-hidden bg-[#ECE5D8] aspect-[3/4] mb-3 border border-[#DDD1BE]">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1000&auto=format&fit=crop" alt="Overshirt" class="w-full h-full object-cover" />
-            <span class="absolute top-2.5 left-2.5 bg-[#FAF6EE] text-[#1F1913] text-[9px] uppercase tracking-[0.2em] font-bold px-2.5 py-0.5 border border-[#C9A979]">Outerwear</span>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC]" onclick="openModal('https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1200&auto=format&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Tailored Pleated Trousers" 
+                 class="w-full h-full object-cover object-center transition duration-500 hover:scale-105" />
+            <span class="absolute top-2.5 left-2.5 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5">Classic Cut</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
           </div>
-          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Artisanal Twill</p>
-          <h3 class="font-bodoni text-lg text-[#1E1914] font-medium leading-snug">Heavy Twill Field Overshirt</h3>
+
+          <p class="text-[9px] uppercase tracking-[0.25em] text-[#8C6D46] font-bold mb-0.5">Heavy British Gabardine</p>
+          <h3 class="font-heritage text-lg text-[#0F172A] font-semibold leading-snug">The Double-Pleated Country Club Trousers</h3>
+          
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#1E1914] tracking-wider">$42.00 USD</span>
-            <span class="text-xs text-[#8A7A6C] line-through">$58.00</span>
+            <span class="text-base font-bold text-[#0F172A] tracking-wider">$85.00 USD</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">$125.00</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(₹6,999 INR)</span>
           </div>
-          <p class="text-[10px] text-[#7A6B5C] mt-0.5">Approx. ₹3,499 INR</p>
+          <p class="text-[10px] text-neutral-500 mt-1">High-rise waistband with side brass adjusters.</p>
         </div>
-        <a href="https://wa.me/918271988708?text=Hi%20ÉPURE%20ATELIER,%20I%20wish%20to%20order%20the%20Heavy%20Twill%20Field%20Overshirt." 
-           target="_blank" 
-           class="mt-4 w-full bg-[#201A15] hover:bg-[#120E0A] text-[#FAF6EE] text-[10px] uppercase tracking-[0.22em] font-semibold py-3 text-center transition flex items-center justify-center gap-2 border border-[#3E3227]">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#D89B56]"></i> Order On WhatsApp
-        </a>
+
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('The Double-Pleated Country Club Trousers', '$85.00 USD')" 
+                  class="w-full bg-[#0F172A] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 transition flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/Cards)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20The%20Double-Pleated%20Country%20Club%20Trousers%20($85.00%20USD)." 
+             target="_blank" 
+             class="w-full border border-[#0F172A] text-[#0F172A] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 transition flex items-center justify-center gap-2 text-center">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Editorial Brand Story -->
-  <section id="tailoring" class="bg-[#201A15] text-[#FAF6ED] py-16 px-6 lg:px-12 border-t border-b border-[#3E3227]">
+  <!-- ================= EDITORIAL STORY (ENGLISH DOMINANT) ================= -->
+  <section id="brioni" class="bg-[#0F172A] text-[#F8FAFC] py-20 px-6 lg:px-12 border-t border-b border-neutral-800">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div>
-        <div class="inline-block border-b border-[#C9A979]/40 pb-1 mb-3">
-          <span class="text-[9px] uppercase tracking-[0.4em] text-[#C9A979] font-semibold">Artisanat &bull; Sartoria Roma</span>
+        <div class="inline-block border-b border-[#C89B55]/40 pb-1 mb-3">
+          <span class="text-[9px] uppercase tracking-[0.4em] text-[#C89B55] font-bold">THE SARTORIAL CODE</span>
         </div>
-        <h2 class="font-bodoni text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-[#FAF6EE] mb-6">
-          Cut with Quiet Dignity, <br/>
-          <span class="font-garamond italic text-[#D8B98C]">Finished by Hand.</span>
+        <h2 class="font-heritage text-3xl sm:text-4xl md:text-5xl font-normal leading-tight text-white mb-6">
+          Uncompromised Craft, <br/>
+          <span class="italic font-light text-[#E2D4BF]">Understated Elegance.</span>
         </h2>
-        <p class="text-[#D3C5B2] text-xs sm:text-sm font-light leading-relaxed mb-6">
-          ÉPURE ATELIER was founded on one singular premise: unadorned purity. Every silhouette is cut with architectural precision, rejecting mass commercial clutter for timeless sartorial composure.
+        <p class="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed mb-6">
+          At ÉPURE ATELIER, luxury is not loud logos. It is the weight of pure combed fiber in the hand, the balance of a broad-shouldered drape, and the quiet dignity of timeless styling found in the grand tailoring houses of Rome and the private clubs of New England.
         </p>
-        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-[#3B3024]">
+        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-neutral-800">
           <div>
-            <span class="font-bodoni text-2xl font-bold text-[#FAF6EE]">260 GSM</span>
-            <p class="text-[9px] uppercase tracking-[0.2em] text-[#B09E8B] mt-0.5">Heavy Gauge Knitting</p>
+            <span class="font-heritage text-2xl font-bold text-white">100% PURE</span>
+            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Virgin Wool & Flax</p>
           </div>
           <div>
-            <span class="font-bodoni text-2xl font-bold text-[#FAF6EE]">LIMITED</span>
-            <p class="text-[9px] uppercase tracking-[0.2em] text-[#B09E8B] mt-0.5">50 Exemplars Per Drop</p>
+            <span class="font-heritage text-2xl font-bold text-white">WORLDWIDE</span>
+            <p class="text-[9px] uppercase tracking-[0.2em] text-[#94A3B8] mt-0.5">Complimentary Transit</p>
           </div>
         </div>
       </div>
-      <div class="border border-[#4A3B2E] p-2 bg-[#17130F]">
-        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=1000&auto=format&fit=crop" 
-             alt="ÉPURE Atelier Tailor Craft" 
-             class="w-full h-full object-cover filter contrast-[110%] sepia-[10%]" />
+      <div class="border border-[#334155] p-2 bg-[#020617]">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" 
+             alt="Master Tailor" 
+             class="w-full h-full object-cover filter contrast-[105%]" />
       </div>
     </div>
   </section>
 
-  <!-- Luxury Maison Footer -->
-  <footer id="atelier" class="bg-[#15110E] text-[#9E8E7D] pt-14 pb-10 px-6 lg:px-12 border-t border-[#2A221A] text-xs">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+  <!-- ================= EXPENSIVE LUXURY FOOTER ================= -->
+  <footer class="bg-[#090D16] text-[#94A3B8] pt-16 pb-12 px-6 lg:px-12 border-t border-neutral-900 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
       <div>
-        <h4 class="font-bodoni text-2xl text-[#FAF6ED] tracking-[0.3em] mb-3">ÉPURE ATELIER</h4>
-        <p class="text-[#8F8071] font-light leading-relaxed mb-3">
-          Maison de prêt-à-porter masculin. Roman cut, Parisian heritage, crafted for the international collector.
+        <h4 class="font-heritage text-2xl text-white tracking-[0.3em] mb-4">ÉPURE ATELIER</h4>
+        <p class="text-neutral-400 font-light leading-relaxed mb-4">
+          A modern institution of bespoke menswear. Inspired by the heritage of Ralph Lauren, Brioni, and Hermès.
         </p>
-        <span class="text-[10px] text-[#6E6153]">&copy; 2026 ÉPURE ATELIER. All Rights Reserved.</span>
+        <span class="text-[10px] text-neutral-500">&copy; 2026 ÉPURE ATELIER. All Rights Reserved.</span>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-[#FAF6ED] font-semibold mb-3">Maison Concierge</h5>
-        <ul class="space-y-2 font-light">
-          <li><a href="https://wa.me/918271988708" class="hover:text-[#D89B56] transition">WhatsApp Direct Order (+91 8271988708)</a></li>
-          <li><a href="mailto:concierge@epureatelier.com" class="hover:text-[#D89B56] transition">concierge@epureatelier.com</a></li>
-          <li><span class="text-[#7A6B5C]">Private Fittings on Appointment</span></li>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Private Concierge</h5>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="https://wa.me/918271988708" class="hover:text-white transition">Direct WhatsApp: +91 8271988708</a></li>
+          <li><a href="mailto:concierge@epureatelier.com" class="hover:text-white transition">concierge@epureatelier.com</a></li>
+          <li><span class="text-neutral-500">Hours: 9:00 AM – 8:00 PM IST</span></li>
         </ul>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-[#FAF6ED] font-semibold mb-3">Expedition & Sizing</h5>
-        <ul class="space-y-2 font-light">
-          <li>Complimentary Express Dispatch (India)</li>
-          <li>International Air Transit</li>
-          <li>Custom Fit Guidance on WhatsApp</li>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Supported Payments</h5>
+        <ul class="space-y-2 font-light text-neutral-400">
+          <li>&bull; RuPay Debit & Credit Cards</li>
+          <li>&bull; Instant UPI (Google Pay, PhonePe, Paytm)</li>
+          <li>&bull; Visa, MasterCard & American Express</li>
+          <li>&bull; PayPal Global USD/EUR Transfers</li>
         </ul>
       </div>
 
       <div>
-        <h5 class="text-[10px] uppercase tracking-[0.25em] text-[#FAF6ED] font-semibold mb-3">Currencies Handled</h5>
-        <p class="text-[#8F8071] font-light mb-2">Accepting USD ($) and INR (₹) via WhatsApp UPI, Cards & Bank Transfers.</p>
-        <div class="inline-block border border-[#443629] px-2.5 py-1 text-[9px] uppercase tracking-widest text-[#C9A979]">Verified Atelier</div>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">Global Fulfillment</h5>
+        <p class="text-neutral-400 font-light mb-3">All bespoke drops are dispatched directly via insured air courier.</p>
+        <span class="inline-block border border-[#C89B55]/50 px-3 py-1 text-[9px] uppercase tracking-widest text-[#C89B55] font-semibold">100% Verified Sartorial House</span>
       </div>
     </div>
 
-    <div class="max-w-7xl mx-auto pt-6 border-t border-[#261E17] flex flex-col sm:flex-row justify-between items-center text-[9px] tracking-[0.2em] text-[#6B5D4F]">
-      <p>PURE SILHOUETTES &bull; 260 GSM PURE ORGANIC COTTON &bull; ZERO COMPROMISE</p>
-      <div class="flex space-x-4 mt-2 sm:mt-0 uppercase">
-        <span>Mentions Légales</span>
-        <span>Confidentialité</span>
+    <div class="max-w-7xl mx-auto pt-6 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center text-[9px] tracking-[0.2em] text-neutral-500">
+      <p>OLD-MONEY SARTORIAL CODES &bull; ZERO INDUSTRIAL COMPROMISE</p>
+      <div class="flex space-x-5 mt-3 sm:mt-0 uppercase font-semibold">
+        <span>Terms of Sale</span>
+        <span>Client Privacy</span>
+        <span>Authentication Guarantee</span>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts: Modal, Preloader, Zoom, Checkout Handlers -->
   <script>
     lucide.createIcons();
 
@@ -419,46 +525,14 @@
         if (preloader) {
           preloader.classList.add('fade-out');
         }
-      }, 700);
+      }, 600);
     });
 
-    const productImages = [
-      "https://i.postimg.cc/56qZtM3z/IMG-0588.jpg",
-      "https://i.postimg.cc/ppYgdtZn/IMG-0587.jpg",
-      "https://i.postimg.cc/56qZtM3z/IMG-0588.jpg"
-    ];
-
-    let currentIndex = 0;
-
-    function setMainImage(index) {
-      currentIndex = index;
-      const mainImg = document.getElementById('mainProductImg');
-      mainImg.src = productImages[currentIndex];
-
-      for (let i = 0; i < 3; i++) {
-        const thumb = document.getElementById('thumb-' + i);
-        if (i === currentIndex) {
-          thumb.className = "aspect-[3/4] border-2 border-[#1E1914] overflow-hidden p-0.5 transition opacity-100";
-        } else {
-          thumb.className = "aspect-[3/4] border border-[#D5C7B2] overflow-hidden p-0.5 opacity-60 hover:opacity-100 transition";
-        }
-      }
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex === 0) ? productImages.length - 1 : currentIndex - 1;
-      setMainImage(currentIndex);
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex === productImages.length - 1) ? 0 : currentIndex + 1;
-      setMainImage(currentIndex);
-    }
-
-    function zoomCurrent() {
+    // Image Zoom Modal
+    function openModal(src) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImg');
-      modalImg.src = productImages[currentIndex];
+      modalImg.src = src;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
     }
@@ -467,6 +541,32 @@
       const modal = document.getElementById('imageModal');
       modal.classList.remove('flex');
       modal.classList.add('hidden');
+    }
+
+    // Direct Online Checkout Modal
+    function openCheckout(itemTitle, itemPrice) {
+      document.getElementById('modalProductTitle').innerText = itemTitle;
+      document.getElementById('modalProductPrice').innerText = itemPrice;
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckout() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    // Mock direct payment checkout trigger
+    function handleDirectPayment(e) {
+      e.preventDefault();
+      const product = document.getElementById('modalProductTitle').innerText;
+      const price = document.getElementById('modalProductPrice').innerText;
+      const paymentMethod = document.querySelector('input[name="paymentOption"]:checked').value;
+      
+      alert(`[Payment Gateway Redirect]\n\nProcessing order for: ${product} (${price})\nPayment Channel: ${paymentMethod.toUpperCase()}\n\nConnecting to RuPay/UPI/Card Payment Gateway...`);
+      closeCheckout();
     }
   </script>
 </body>
