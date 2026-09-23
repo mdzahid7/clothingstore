@@ -55,6 +55,82 @@
     <span class="text-[8px] uppercase tracking-[0.35em] text-[#B58A4A] font-semibold mt-1">PAN-INDIA BESPOKE</span>
   </div>
 
+  <!-- ================= ADMIN LOGIN & DASHBOARD MODAL ================= -->
+  <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#E3DAC8] rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative my-6">
+      <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      
+      <!-- Password Screen -->
+      <div id="adminLoginView">
+        <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Restricted Access</span>
+        <h3 class="font-heritage text-2xl text-neutral-900 font-semibold mb-4">Admin Dashboard Login</h3>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-xs">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Admin Password</label>
+            <input required type="password" id="adminPassInput" placeholder="Enter password (epure2026)" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow">
+            Access Dashboard
+          </button>
+        </form>
+      </div>
+
+      <!-- Product Adder Dashboard View -->
+      <div id="adminDashboardView" class="hidden">
+        <div class="flex justify-between items-center border-b border-[#EFE8DD] pb-3 mb-4">
+          <div>
+            <span class="text-[9px] uppercase tracking-[0.3em] text-emerald-700 font-bold block">Authorized</span>
+            <h3 class="font-heritage text-xl text-neutral-900 font-semibold">Add New Product Drop</h3>
+          </div>
+          <button onclick="logoutAdmin()" class="text-[10px] uppercase tracking-wider text-rose-600 font-bold hover:underline">Logout</button>
+        </div>
+
+        <form onsubmit="handleAddNewProduct(event)" class="space-y-3 text-xs max-h-[65vh] overflow-y-auto pr-1">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Product Title / Name</label>
+            <input required type="text" id="newTitle" placeholder="e.g. H&M Burgundy Oversized Tee" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Selling Price (₹)</label>
+              <input required type="text" id="newPrice" placeholder="e.g. ₹1,349" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Original Price (₹)</label>
+              <input type="text" id="newOldPrice" placeholder="e.g. ₹1,499" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+          </div>
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Tag / Badge Name</label>
+            <input type="text" id="newTag" placeholder="e.g. New Drop / Limited Edition" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Image URLs (Comma separated or ImgBB links)</label>
+            <textarea required rows="3" id="newImages" placeholder="https://i.ibb.co/..., https://i.ibb.co/..." class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900"></textarea>
+            <span class="text-[9px] text-neutral-500 mt-0.5 block">Paste direct image links separated by commas if multiple photos.</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Quality Spec</label>
+              <input type="text" id="newQuality" placeholder="e.g. 240 GSM 100% Cotton" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Fit Spec</label>
+              <input type="text" id="newFit" placeholder="e.g. Oversized Streetwear Fit" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow mt-2">
+            Publish New Product To Store
+          </button>
+        </form>
+        <div class="mt-4 pt-3 border-t border-[#EFE8DD] flex justify-between items-center text-[11px]">
+          <span class="text-neutral-500">Want to reset custom added products?</span>
+          <button onclick="clearCustomProducts()" class="text-rose-600 font-bold hover:underline">Clear Custom Items</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ================= THANK YOU MODAL ================= -->
   <div id="thankYouModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
     <div class="bg-[#FAF8F3] border border-[#E3DAC8] rounded-2xl max-w-md w-full p-8 shadow-2xl relative text-center my-6">
@@ -74,9 +150,6 @@
           <span>Delivery Mode:</span>
           <span class="font-semibold text-neutral-900">Express Air Courier (Pan-India)</span>
         </div>
-      </div>
-      <div class="bg-[#F0ECE1] p-3 rounded-lg text-[10px] uppercase tracking-wider font-semibold text-neutral-700 mb-6">
-        No Returns &bull; Easy Size Exchange Within 7 Days
       </div>
       <div class="flex flex-col gap-2.5">
         <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20have%20placed%20an%20order%20online%20and%20need%20the%20tracking%20update." target="_blank" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded-xl text-xs uppercase tracking-widest font-semibold transition flex items-center justify-center gap-2">
@@ -186,7 +259,10 @@
         <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0B1323] block uppercase">ÉPURE ATELIER</a>
       </div>
       <div class="flex items-center space-x-3">
-        <a href="https://wa.me/918271988708" target="_blank" class="bg-[#0B1323] text-white px-4 py-2 rounded text-[10px] tracking-[0.18em] uppercase font-bold flex items-center gap-1.5 hover:bg-[#1C263B]">
+        <button onclick="openAdminModal()" class="bg-[#8C6D46] hover:bg-[#6D5335] text-white px-3 py-2 rounded text-[10px] tracking-[0.15em] uppercase font-bold flex items-center gap-1 shadow-sm">
+          <i data-lucide="lock" class="w-3 h-3"></i> Admin
+        </button>
+        <a href="https://wa.me/918271988708" target="_blank" class="hidden sm:flex bg-[#0B1323] text-white px-4 py-2 rounded text-[10px] tracking-[0.18em] uppercase font-bold items-center gap-1.5 hover:bg-[#1C263B]">
           <i data-lucide="message-circle" class="w-3 h-3 text-[#C89B55]"></i>
           <span>WhatsApp Help</span>
         </a>
@@ -221,7 +297,7 @@
     </div>
   </section>
 
-  <!-- ================= COLLECTION GRID WITH H&M SLIDER PRODUCT ================= -->
+  <!-- ================= COLLECTION GRID (DYNAMIC & STATIC) ================= -->
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
       <div>
@@ -231,48 +307,44 @@
       <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; RuPay &bull; UPI &bull; COD</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Product Grid Container -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
       <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (EXACT SEQUENCE: 1.IMG-0623, 2.IMG-0624, 3.IMG-0625, 4.IMG-0627, 5.IMG-0626 LAST) -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
           <!-- Slider Container -->
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
-            <!-- Slides wrapper -->
             <div id="hmSlider" class="flex transition-transform duration-300 ease-out h-full">
-              <!-- Slide 1: Front Model View (IMG-0623) -->
+              <!-- Slide 1: Front Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/84K4pQKd/IMG-0623.jpg')">
-                <img src="https://i.ibb.co/84K4pQKd/IMG-0623.jpg" alt="H&M Burgundy Front View" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/84K4pQKd/IMG-0623.jpg" alt="Front View" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 2: Full Body Front Model View (IMG-0624) -->
+              <!-- Slide 2: Full Body Front Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/3PcgHDT/IMG-0624.jpg')">
-                <img src="https://i.ibb.co/3PcgHDT/IMG-0624.jpg" alt="H&M Burgundy Full Body Front" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/3PcgHDT/IMG-0624.jpg" alt="Full Body Front" class="w-full h-full object-cover object-center" />
               </div>
-              <!-- Slide 3: Full Body Back Model View (IMG-0625) -->
+              <!-- Slide 3: Full Body Back Model View -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/7d2P3st7/IMG-0625.jpg')">
-                <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="H&M Burgundy Full Body Back" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="Full Body Back" class="w-full h-full object-cover object-center" />
               </div>
               <!-- Slide 4: Flat Lay Product Studio View (IMG-0627) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg')">
-                <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="H&M Burgundy Flat Lay" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="Flat Lay" class="w-full h-full object-cover object-center" />
               </div>
               <!-- Slide 5 (LAST): Highlights & Care Info Card (IMG-0626) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/C5wDhjrF/IMG-0626.jpg')">
-                <img src="https://i.ibb.co/C5wDhjrF/IMG-0626.jpg" alt="H&M Burgundy Product Highlights" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/C5wDhjrF/IMG-0626.jpg" alt="Highlights" class="w-full h-full object-cover object-center" />
               </div>
             </div>
-
             <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded z-10">New Drop</span>
-
-            <!-- Slider Navigation Buttons -->
-            <button onclick="slidePrev(event)" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+            <button onclick="slidePrev(event, 'hmSlider', 5)" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
-            <button onclick="slideNext(event)" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+            <button onclick="slideNext(event, 'hmSlider', 5)" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </div>
-
           <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Cotton &bull; Oversized Fit</p>
           <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">H&M Burgundy / East District Oversized Fit Printed T-shirt</h3>
           <div class="flex items-baseline gap-2 mt-1.5">
@@ -621,26 +693,149 @@
     window.addEventListener('load', () => setTimeout(hidePreloader, 200));
     setTimeout(hidePreloader, 1200);
 
-    // Image Slider logic for H&M product (5 slides total)
-    let currentSlide = 0;
-    const totalSlides = 5;
+    // Dynamic Multi-Slider Index Trackers
+    const slideIndices = { 'hmSlider': 0 };
 
-    function slideNext(e) {
+    function slideNext(e, sliderId, total) {
       e.stopPropagation();
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSlider();
+      slideIndices[sliderId] = (slideIndices[sliderId] + 1) % total;
+      updateSliderPos(sliderId);
     }
 
-    function slidePrev(e) {
+    function slidePrev(e, sliderId, total) {
       e.stopPropagation();
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSlider();
+      slideIndices[sliderId] = (slideIndices[sliderId] - 1 + total) % total;
+      updateSliderPos(sliderId);
     }
 
-    function updateSlider() {
-      const slider = document.getElementById('hmSlider');
+    function updateSliderPos(sliderId) {
+      const slider = document.getElementById(sliderId);
       if(slider) {
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        slider.style.transform = `translateX(-${slideIndices[sliderId] * 100}%)`;
+      }
+    }
+
+    // Load Custom Admin Products from LocalStorage on Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCustomProducts();
+    });
+
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.remove('hidden');
+      document.getElementById('adminModal').classList.add('flex');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('flex');
+      document.getElementById('adminModal').classList.add('hidden');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('adminPassInput').value;
+      if (pass === "epure2026") {
+        document.getElementById('adminLoginView').classList.add('hidden');
+        document.getElementById('adminDashboardView').classList.remove('hidden');
+      } else {
+        alert("Incorrect Admin Password! (Hint: epure2026)");
+      }
+    }
+
+    function logoutAdmin() {
+      document.getElementById('adminDashboardView').classList.add('hidden');
+      document.getElementById('adminLoginView').classList.remove('hidden');
+      document.getElementById('adminPassInput').value = '';
+    }
+
+    function handleAddNewProduct(e) {
+      e.preventDefault();
+      const title = document.getElementById('newTitle').value;
+      const price = document.getElementById('newPrice').value;
+      const oldPrice = document.getElementById('newOldPrice').value;
+      const tag = document.getElementById('newTag').value || "New Drop";
+      const rawImages = document.getElementById('newImages').value;
+      const quality = document.getElementById('newQuality').value || "Premium Combed Cotton";
+      const fit = document.getElementById('newFit').value || "Oversized Streetwear Fit";
+
+      const images = rawImages.split(',').map(s => s.trim()).filter(Boolean);
+
+      const newProd = { id: 'custom_' + Date.now(), title, price, oldPrice, tag, images, quality, fit };
+
+      let customList = JSON.parse(localStorage.getItem('epure_custom_products') || '[]');
+      customList.unshift(newProd);
+      localStorage.setItem('epure_custom_products', JSON.stringify(customList));
+
+      alert("Product published successfully!");
+      e.target.reset();
+      closeAdminModal();
+      loadCustomProducts();
+    }
+
+    function loadCustomProducts() {
+      const customList = JSON.parse(localStorage.getItem('epure_custom_products') || '[]');
+      if (customList.length === 0) return;
+
+      const grid = document.getElementById('productGrid');
+      
+      customList.forEach((prod, idx) => {
+        const sliderId = 'customSlider_' + idx;
+        slideIndices[sliderId] = 0;
+
+        const imgsHtml = prod.images.map(img => `
+          <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('${img}')">
+            <img src="${img}" alt="${prod.title}" class="w-full h-full object-cover object-center" />
+          </div>
+        `).join('');
+
+        const totalImgs = prod.images.length;
+
+        const cardHtml = `
+          <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl relative">
+            <div>
+              <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
+                <div id="${sliderId}" class="flex transition-transform duration-300 ease-out h-full">
+                  ${imgsHtml}
+                </div>
+                <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded z-10">${prod.tag}</span>
+                ${totalImgs > 1 ? `
+                  <button onclick="slidePrev(event, '${sliderId}',${totalImgs})" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <button onclick="slideNext(event, '${sliderId}',${totalImgs})" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                ` : ''}
+              </div>
+              <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">${prod.quality}</p>
+              <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">${prod.title}</h3>
+              <div class="flex items-baseline gap-2 mt-1.5">
+                <span class="text-base font-bold text-[#0B1323] tracking-wider">${prod.price}</span>
+                ${prod.oldPrice ? `<span class="text-xs text-neutral-400 line-through tracking-wider">${prod.oldPrice}</span>` : ''}
+              </div>
+              <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+                <p><strong class="text-neutral-900 font-semibold">Quality:</strong> ${prod.quality}</p>
+                <p><strong class="text-neutral-900 font-semibold">Fit:</strong> ${prod.fit}</p>
+              </div>
+            </div>
+            <div class="mt-4 space-y-2">
+              <button onclick="openCheckout('${prod.title}', '${prod.price}')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+              </button>
+              <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20${encodeURIComponent(prod.title)}%20(${prod.price})." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+        grid.insertAdjacentHTML('afterbegin', cardHtml);
+      });
+      lucide.createIcons();
+    }
+
+    function clearCustomProducts() {
+      if(confirm("Are you sure you want to delete all custom added products?")) {
+        localStorage.removeItem('epure_custom_products');
+        location.reload();
       }
     }
 
@@ -673,7 +868,6 @@
 
     async function handleDirectPayment(e) {
       e.preventDefault();
-      
       const submitBtn = document.getElementById('orderSubmitBtn');
       const originalHtml = submitBtn.innerHTML;
       submitBtn.innerHTML = "Processing Order...";
@@ -684,17 +878,13 @@
       const city = document.getElementById('custCity').value;
       const address = document.getElementById('custAddress').value;
       const paymentMethod = document.querySelector('input[name="paymentOption"]:checked').value.toUpperCase();
-      
       const productTitle = document.getElementById('modalProductTitle').innerText;
       const productPrice = document.getElementById('modalProductPrice').innerText;
 
       try {
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          },
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
             access_key: "c6ab2781-bf27-4a83-b69c-46f9ba588dcc",
             subject: `NEW ORDER: ${productTitle} - ${fullName}`,
@@ -707,19 +897,14 @@
             Payment_Chosen: paymentMethod
           })
         });
-
         closeCheckout();
         e.target.reset();
-
-        const thankYouModal = document.getElementById('thankYouModal');
-        thankYouModal.classList.remove('hidden');
-        thankYouModal.classList.add('flex');
-
+        document.getElementById('thankYouModal').classList.remove('hidden');
+        document.getElementById('thankYouModal').classList.add('flex');
       } catch (err) {
         closeCheckout();
-        const thankYouModal = document.getElementById('thankYouModal');
-        thankYouModal.classList.remove('hidden');
-        thankYouModal.classList.add('flex');
+        document.getElementById('thankYouModal').classList.remove('hidden');
+        document.getElementById('thankYouModal').classList.add('flex');
       } finally {
         submitBtn.innerHTML = originalHtml;
         submitBtn.disabled = false;
