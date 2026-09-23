@@ -203,7 +203,7 @@
       <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-white">Precision in Cut, <br/><span class="italic font-light text-[#EADFCB]">Dignity in Form.</span></h1>
       <p class="text-[#CBD5E1] text-xs sm:text-sm font-light max-w-lg mx-auto leading-relaxed mb-9 tracking-wider">Pure silhouettes and timeless jacquard craft. Designed for an uncompromising aesthetic presence.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#collection" class="bg-[#FAF7F0] text-[#0B1323] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] shadow-lg rounded-sm">Shop The 8 Drops</a>
+        <a href="#collection" class="bg-[#FAF7F0] text-[#0B1323] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] shadow-lg rounded-sm">Shop The Collection</a>
       </div>
     </div>
   </section>
@@ -221,7 +221,7 @@
     </div>
   </section>
 
-  <!-- ================= 8-PIECE COLLECTION GRID ================= -->
+  <!-- ================= COLLECTION GRID WITH H&M SLIDER PRODUCT ================= -->
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
       <div>
@@ -233,6 +233,58 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
+      <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (WITH SLIDER) -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <!-- Slider Container -->
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
+            <!-- Slides wrapper -->
+            <div id="hmSlider" class="flex transition-transform duration-300 ease-out h-full">
+              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/3yw2c8jM/image-3.png')">
+                <img src="https://i.ibb.co/3yw2c8jM/image-3.png" alt="H&M Burgundy T-Shirt 1" class="w-full h-full object-cover object-center" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/674d8z7F/image-4.png')">
+                <img src="https://i.ibb.co/674d8z7F/image-4.png" alt="H&M Burgundy T-Shirt 2" class="w-full h-full object-cover object-center" />
+              </div>
+              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Kz26f9Wv/image-5.png')">
+                <img src="https://i.ibb.co/Kz26f9Wv/image-5.png" alt="H&M Burgundy T-Shirt 3" class="w-full h-full object-cover object-center" />
+              </div>
+            </div>
+
+            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded z-10">New Drop</span>
+
+            <!-- Slider Navigation Buttons -->
+            <button onclick="slidePrev(event)" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <button onclick="slideNext(event)" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Cotton &bull; Oversized Fit</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">H&M Burgundy / East District Oversized Fit Printed T-shirt</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,349</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹1,499</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(10% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Premium soft cotton, breathable casual wear[span_0](start_span)[span_0](end_span).</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Round neckline, half sleeves, East District Athletics chest & back print.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Modern oversized streetwear drape[span_1](start_span)[span_1](end_span).</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('H&M Burgundy Oversized T-Shirt', '₹1,349')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (RuPay/UPI)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20H%26M%20Burgundy%20Oversized%20T-Shirt%20(₹1,349)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
       <!-- ITEM 1 -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
@@ -558,6 +610,29 @@
     window.addEventListener('load', () => setTimeout(hidePreloader, 200));
     setTimeout(hidePreloader, 1200);
 
+    // Image Slider logic for H&M product
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function slideNext(e) {
+      e.stopPropagation();
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    }
+
+    function slidePrev(e) {
+      e.stopPropagation();
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    function updateSlider() {
+      const slider = document.getElementById('hmSlider');
+      if(slider) {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+    }
+
     function openModal(src) {
       document.getElementById('modalImg').src = src;
       const modal = document.getElementById('imageModal');
@@ -585,7 +660,6 @@
       modal.classList.add('hidden');
     }
 
-    // ================= DIRECT ONLINE ORDER SUBMISSION WITH YOUR ACCESS KEY =================
     async function handleDirectPayment(e) {
       e.preventDefault();
       
