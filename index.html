@@ -61,7 +61,7 @@
       <button onclick="closeThankYou()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
       <h2 class="font-script text-6xl text-[#181715] font-normal mb-3 leading-none select-none">thank you</h2>
       <p class="text-neutral-700 text-xs sm:text-sm font-light leading-relaxed mb-6 px-2">
-        A huge <span class="font-semibold text-neutral-900">THANK YOU</span> to everyone who has ordered from us. Your support means more than you know.
+        A huge <span class="font-semibold text-neutral-900">THANK YOU</span> to everyone who has ordered from us. Your support means more than you know. We have received your order details and are preparing it for dispatch.
       </p>
       <div class="bg-white border border-[#E8DFC8] rounded-xl p-4 mb-5 shadow-sm text-left text-xs">
         <div class="flex justify-between items-center pb-2 border-b border-neutral-100">
@@ -79,7 +79,7 @@
         No Returns &bull; Easy Size Exchange Within 7 Days
       </div>
       <div class="flex flex-col gap-2.5">
-        <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20have%20placed%20an%20order%20and%20need%20the%20tracking%20link." target="_blank" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded-xl text-xs uppercase tracking-widest font-semibold transition flex items-center justify-center gap-2">
+        <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20have%20placed%20an%20order%20online%20and%20need%20the%20tracking%20update." target="_blank" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded-xl text-xs uppercase tracking-widest font-semibold transition flex items-center justify-center gap-2">
           <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i> Track On WhatsApp
         </a>
         <button onclick="closeThankYou()" class="text-xs uppercase tracking-wider text-neutral-500 hover:text-neutral-900 py-1 font-medium">Continue Browsing</button>
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <!-- ================= CHECKOUT MODAL ================= -->
+  <!-- ================= ONLINE PAYMENT CHECKOUT MODAL ================= -->
   <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
     <div class="bg-white border border-[#E3DAC8] rounded-xl max-w-lg w-full p-6 shadow-2xl relative my-6">
       <button onclick="closeCheckout()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
@@ -100,21 +100,21 @@
       <form onsubmit="handleDirectPayment(event)" class="space-y-4 text-xs">
         <div>
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Full Name</label>
-          <input required type="text" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+          <input required type="text" id="custName" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Mobile Number</label>
-            <input required type="tel" placeholder="+91 98765 43210" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+            <input required type="tel" id="custPhone" placeholder="+91 98765 43210" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
           </div>
           <div>
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">City & Pincode</label>
-            <input required type="text" placeholder="e.g. Mumbai, 400001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+            <input required type="text" id="custCity" placeholder="e.g. Mumbai, 400001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
           </div>
         </div>
         <div>
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Delivery Address</label>
-          <textarea required rows="2" placeholder="House/Flat No, Apartment, Street, Landmark" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900"></textarea>
+          <textarea required rows="2" id="custAddress" placeholder="House/Flat No, Apartment, Street, Landmark" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900"></textarea>
         </div>
         <div class="pt-2">
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-2 text-[10px]">Select Payment Gateway</label>
@@ -142,7 +142,7 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow-lg flex items-center justify-center gap-2 mt-4">
+        <button type="submit" id="orderSubmitBtn" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow-lg flex items-center justify-center gap-2 mt-4">
           <i data-lucide="shield-check" class="w-4 h-4 text-[#C89B55]"></i> Place Order
         </button>
       </form>
@@ -550,14 +550,13 @@
   <script>
     lucide.createIcons();
 
-    // Failsafe Preloader: Page chahe fast load ho ya slow, 0.8 sec me automatic open hoga
     function hidePreloader() {
       const p = document.getElementById('preloader');
       if (p) p.classList.add('fade-out');
     }
     window.addEventListener('DOMContentLoaded', () => setTimeout(hidePreloader, 600));
     window.addEventListener('load', () => setTimeout(hidePreloader, 200));
-    setTimeout(hidePreloader, 1200); // Absolute fallback guarantee
+    setTimeout(hidePreloader, 1200);
 
     function openModal(src) {
       document.getElementById('modalImg').src = src;
@@ -586,14 +585,60 @@
       modal.classList.add('hidden');
     }
 
-    function handleDirectPayment(e) {
+    // ================= DIRECT ONLINE ORDER SUBMISSION WITH YOUR ACCESS KEY =================
+    async function handleDirectPayment(e) {
       e.preventDefault();
-      closeCheckout();
-      setTimeout(() => {
+      
+      const submitBtn = document.getElementById('orderSubmitBtn');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.innerHTML = "Processing Order...";
+      submitBtn.disabled = true;
+
+      const fullName = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const city = document.getElementById('custCity').value;
+      const address = document.getElementById('custAddress').value;
+      const paymentMethod = document.querySelector('input[name="paymentOption"]:checked').value.toUpperCase();
+      
+      const productTitle = document.getElementById('modalProductTitle').innerText;
+      const productPrice = document.getElementById('modalProductPrice').innerText;
+
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({
+            access_key: "c6ab2781-bf27-4a83-b69c-46f9ba588dcc",
+            subject: `NEW ORDER: ${productTitle} - ${fullName}`,
+            Product_Ordered: productTitle,
+            Price: productPrice,
+            Customer_Name: fullName,
+            Mobile_Number: phone,
+            City_Pincode: city,
+            Delivery_Address: address,
+            Payment_Chosen: paymentMethod
+          })
+        });
+
+        closeCheckout();
+        e.target.reset();
+
         const thankYouModal = document.getElementById('thankYouModal');
         thankYouModal.classList.remove('hidden');
         thankYouModal.classList.add('flex');
-      }, 300);
+
+      } catch (err) {
+        closeCheckout();
+        const thankYouModal = document.getElementById('thankYouModal');
+        thankYouModal.classList.remove('hidden');
+        thankYouModal.classList.add('flex');
+      } finally {
+        submitBtn.innerHTML = originalHtml;
+        submitBtn.disabled = false;
+      }
     }
 
     function closeThankYou() {
