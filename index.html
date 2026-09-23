@@ -233,24 +233,32 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (WITH 4-PHOTO SLIDER) -->
+      <!-- NEW PRODUCT: H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (WITH 5-PHOTO SLIDER IN EXACT SEQUENCE) -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
           <!-- Slider Container -->
           <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
             <!-- Slides wrapper -->
             <div id="hmSlider" class="flex transition-transform duration-300 ease-out h-full">
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg')">
-                <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="H&M Burgundy T-Shirt 1" class="w-full h-full object-cover object-center" />
-              </div>
+              <!-- Slide 1: Front Model View (IMG-0623) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/84K4pQKd/IMG-0623.jpg')">
-                <img src="https://i.ibb.co/84K4pQKd/IMG-0623.jpg" alt="H&M Burgundy T-Shirt 2" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/84K4pQKd/IMG-0623.jpg" alt="H&M Burgundy Front View" class="w-full h-full object-cover object-center" />
               </div>
+              <!-- Slide 2: Full Body Front Model View (IMG-0624) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/3PcgHDT/IMG-0624.jpg')">
-                <img src="https://i.ibb.co/3PcgHDT/IMG-0624.jpg" alt="H&M Burgundy T-Shirt 3" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/3PcgHDT/IMG-0624.jpg" alt="H&M Burgundy Full Body Front" class="w-full h-full object-cover object-center" />
               </div>
+              <!-- Slide 3: Full Body Back Model View (IMG-0625) -->
               <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/7d2P3st7/IMG-0625.jpg')">
-                <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="H&M Burgundy T-Shirt 4" class="w-full h-full object-cover object-center" />
+                <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="H&M Burgundy Full Body Back" class="w-full h-full object-cover object-center" />
+              </div>
+              <!-- Slide 4: Flat Lay Product Studio View (IMG-0627) -->
+              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg')">
+                <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="H&M Burgundy Flat Lay" class="w-full h-full object-cover object-center" />
+              </div>
+              <!-- Slide 5: Highlights & Care Info Card (IMG-0626) -->
+              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/C5wDhjrF/IMG-0626.jpg')">
+                <img src="https://i.ibb.co/C5wDhjrF/IMG-0626.jpg" alt="H&M Burgundy Product Highlights" class="w-full h-full object-cover object-center" />
               </div>
             </div>
 
@@ -613,9 +621,9 @@
     window.addEventListener('load', () => setTimeout(hidePreloader, 200));
     setTimeout(hidePreloader, 1200);
 
-    // Image Slider logic for H&M product (4 slides total)
+    // Image Slider logic for H&M product (5 slides total)
     let currentSlide = 0;
-    const totalSlides = 4;
+    const totalSlides = 5;
 
     function slideNext(e) {
       e.stopPropagation();
