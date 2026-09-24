@@ -1,662 +1,980 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alixon | Luxury Apparel & Connoisseur Wear</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Razorpay Checkout Script -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#0A0A0A',
-                            gold: '#C5A059',
-                            goldLight: '#DFC184',
-                            surface: '#F4F4F5',
-                            muted: '#71717A'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ÉPURE ATELIER | High-End Aesthetic Streetwear & Tailoring</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Razorpay Checkout Script (Test Mode) -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-heritage {
+      font-family: 'Bodoni Moda', Georgia, serif;
+    }
+    .font-script {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    #preloader {
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #preloader.fade-out {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .img-expand {
+      transition: transform 0.4s ease;
+    }
+    .img-card:hover .img-expand {
+      transform: scale(1.03);
+    }
+  </style>
 </head>
-<body class="bg-brand-surface text-brand-dark font-sans antialiased selection:bg-brand-dark selection:text-white">
+<body class="bg-[#F8F6F0] text-[#191715] antialiased">
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-brand-dark text-white text-[11px] uppercase tracking-[0.25em] py-2 text-center font-medium">
-        Complimentary Express Worldwide Shipping & Luxury Packaging on Orders Above ₹4,999
+  <!-- ================= PRELOADER ================= -->
+  <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF8F4] flex flex-col items-center justify-center border-8 border-[#ECE5D8]">
+    <div class="w-14 h-14 border-[1.5px] border-[#1C2434] flex items-center justify-center mb-3 bg-white shadow-sm">
+      <span class="font-heritage text-2xl font-bold tracking-widest text-[#1C2434]">É</span>
+    </div>
+    <p class="font-heritage text-[11px] uppercase tracking-[0.45em] text-[#1C2434] font-bold mt-1">ÉPURE ATELIER</p>
+    <span class="text-[8px] uppercase tracking-[0.35em] text-[#B58A4A] font-semibold mt-1">PAN-INDIA BESPOKE</span>
+  </div>
+
+  <!-- ================= ADMIN LOGIN & DASHBOARD MODAL ================= -->
+  <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#E3DAC8] rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative my-6">
+      <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      
+      <!-- Password Screen -->
+      <div id="adminLoginView">
+        <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Restricted Access</span>
+        <h3 class="font-heritage text-2xl text-neutral-900 font-semibold mb-4">Admin Dashboard Login</h3>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-xs">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Admin Password</label>
+            <input required type="password" id="adminPassInput" placeholder="Enter password" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow">
+            Access Dashboard
+          </button>
+        </form>
+      </div>
+
+      <!-- Product Adder Dashboard View -->
+      <div id="adminDashboardView" class="hidden">
+        <div class="flex justify-between items-center border-b border-[#EFE8DD] pb-3 mb-4">
+          <div>
+            <span class="text-[9px] uppercase tracking-[0.3em] text-emerald-700 font-bold block">Authorized</span>
+            <h3 class="font-heritage text-xl text-neutral-900 font-semibold">Add New Product Drop</h3>
+          </div>
+          <button onclick="logoutAdmin()" class="text-[10px] uppercase tracking-wider text-rose-600 font-bold hover:underline">Logout</button>
+        </div>
+
+        <form onsubmit="handleAddNewProduct(event)" class="space-y-3 text-xs max-h-[65vh] overflow-y-auto pr-1">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Product Title / Name</label>
+            <input required type="text" id="newTitle" placeholder="e.g. Oversized Hoodie" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Selling Price (₹)</label>
+              <input required type="text" id="newPrice" placeholder="e.g. ₹1,999" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Original Price (₹)</label>
+              <input type="text" id="newOldPrice" placeholder="e.g. ₹2,999" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+          </div>
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Tag / Badge Name</label>
+            <input type="text" id="newTag" placeholder="e.g. New Drop / Limited Edition" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Select Photos from Gallery (Multiple)</label>
+            <input type="file" id="galleryInput" multiple accept="image/*" onchange="handleGalleryImages(event)" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded text-[10px] file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-[#111827] file:text-white hover:file:bg-black cursor-pointer" />
+            <span id="galleryStatus" class="text-[9px] text-emerald-700 font-semibold mt-1 block"></span>
+          </div>
+
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Or Paste Image URLs (Comma separated)</label>
+            <textarea rows="2" id="newImages" placeholder="https://i.ibb.co/..., https://i.ibb.co/..." class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900"></textarea>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Quality Spec</label>
+              <input type="text" id="newQuality" placeholder="e.g. 380 GSM 100% Cotton" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+            <div>
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Fit Spec</label>
+              <input type="text" id="newFit" placeholder="e.g. Oversized Streetwear Fit" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow mt-2">
+            Publish New Product To Store
+          </button>
+        </form>
+        <div class="mt-4 pt-3 border-t border-[#EFE8DD] flex justify-between items-center text-[11px]">
+          <span class="text-neutral-500">Want to reset custom added products?</span>
+          <button onclick="clearCustomProducts()" class="text-rose-600 font-bold hover:underline">Clear Custom Items</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MY BOOKINGS / ORDER HISTORY MODAL ================= -->
+  <div id="bookingsModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#E3DAC8] rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-6">
+      <button onclick="closeBookingsModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Customer Dashboard</span>
+      <h3 class="font-heritage text-2xl text-neutral-900 font-semibold mb-4">My Bookings & Orders</h3>
+      
+      <div id="bookingsListContainer" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1 text-xs">
+        <!-- Rendered via JS -->
+      </div>
+      
+      <div class="mt-6 pt-3 border-t border-[#EFE8DD] text-center">
+        <button onclick="closeBookingsModal()" class="bg-[#111827] text-white px-6 py-2.5 rounded text-[10px] uppercase tracking-widest font-bold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= THANK YOU MODAL ================= -->
+  <div id="thankYouModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#FAF8F3] border border-[#E3DAC8] rounded-2xl max-w-md w-full p-8 shadow-2xl relative text-center my-6">
+      <button onclick="closeThankYou()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      <h2 class="font-script text-6xl text-[#181715] font-normal mb-3 leading-none select-none">thank you</h2>
+      <p class="text-neutral-700 text-xs sm:text-sm font-light leading-relaxed mb-6 px-2">
+        A huge <span class="font-semibold text-neutral-900">THANK YOU</span> to everyone who has ordered from us. Your support means more than you know. We have received your order details and are preparing it for dispatch.
+      </p>
+      <div class="bg-white border border-[#E8DFC8] rounded-xl p-4 mb-5 shadow-sm text-left text-xs">
+        <div class="flex justify-between items-center pb-2 border-b border-neutral-100">
+          <span class="text-[10px] uppercase font-bold text-neutral-400">Order Confirmation</span>
+          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+            <i data-lucide="check-circle" class="w-3 h-3"></i> Queued for Dispatch
+          </span>
+        </div>
+        <div class="pt-2 text-[11px] text-neutral-600 flex justify-between">
+          <span>Delivery Mode:</span>
+          <span class="font-semibold text-neutral-900">Express Air Courier (Pan-India)</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20have%20placed%20an%20order%20online%20and%20need%20the%20tracking%20update." target="_blank" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded-xl text-xs uppercase tracking-widest font-semibold transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i> Track On WhatsApp
+        </a>
+        <button onclick="closeThankYou()" class="text-xs uppercase tracking-wider text-neutral-500 hover:text-neutral-900 py-1 font-medium">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ONLINE PAYMENT CHECKOUT MODAL ================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-[#E3DAC8] rounded-xl max-w-lg w-full p-6 shadow-2xl relative my-6">
+      <button onclick="closeCheckout()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-900 text-2xl leading-none">&times;</button>
+      <div class="border-b border-[#EFE8DD] pb-4 mb-5 text-center">
+        <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Instant Checkout</span>
+        <h3 class="font-heritage text-2xl text-neutral-900 font-semibold" id="modalProductTitle">Selected Garment</h3>
+        <p class="text-base font-bold text-neutral-900 mt-1" id="modalProductPrice">₹0</p>
+        <span class="inline-block text-[9px] text-emerald-700 bg-emerald-50 font-bold px-2.5 py-0.5 rounded mt-1">Free Express Pan-India Delivery</span>
+      </div>
+      <form onsubmit="handleDirectPayment(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Full Name</label>
+          <input required type="text" id="custName" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Mobile Number</label>
+            <input required type="tel" id="custPhone" placeholder="+91 98765 43210" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+          <div>
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">City & Pincode</label>
+            <input required type="text" id="custCity" placeholder="e.g. Mumbai, 400001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+          </div>
+        </div>
+        <div>
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Delivery Address</label>
+          <textarea required rows="2" id="custAddress" placeholder="House/Flat No, Apartment, Street, Landmark" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900"></textarea>
+        </div>
+        <div class="pt-2">
+          <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-2 text-[10px]">Select Payment Gateway</label>
+          <div class="space-y-2">
+            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6]">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="paymentOption" value="razorpay" checked class="accent-neutral-900" />
+                <span class="font-bold text-neutral-900 text-[11px]">Razorpay Test Gateway (UPI / Cards / NetBanking)</span>
+              </div>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Instant</span>
+            </label>
+            <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6]">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="paymentOption" value="cod" class="accent-neutral-900" />
+                <span class="font-bold text-neutral-900 text-[11px]">Cash on Delivery (COD)</span>
+              </div>
+              <span class="text-[9px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">Available</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" id="orderSubmitBtn" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3.5 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow-lg flex items-center justify-center gap-2 mt-4">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#C89B55]"></i> Proceed to Pay & Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Zoom Modal -->
+  <div id="imageModal" class="fixed inset-0 z-50 bg-[#120F0D]/95 hidden items-center justify-center p-4 cursor-pointer" onclick="closeModal()">
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-3xl font-light hover:opacity-70">&times;</button>
+    <img id="modalImg" src="" alt="Full view" class="max-h-[90vh] max-w-[95vw] object-contain rounded shadow-2xl border border-[#3E342B]" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20wish%20to%20place%20an%20order." target="_blank" class="fixed bottom-6 right-6 z-40 bg-[#161D2B] hover:bg-black text-[#F7F4EC] px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#B58A4A]/50 transition transform hover:scale-105">
+    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span class="text-[10px] uppercase tracking-[0.2em] font-semibold pr-1">WhatsApp Concierge</span>
+  </a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#0B1323] text-[#E2E8F0] text-[10px] uppercase tracking-[0.24em] py-2 px-4 border-b border-neutral-800 flex justify-between items-center sm:px-10">
+    <div class="hidden md:flex items-center gap-2 text-[#C89B55]">
+      <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+      <span>Express Air Shipping Across All Indian Pin Codes</span>
+    </div>
+    <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">NO RETURNS &bull; EASY SIZE EXCHANGE ONLY</span>
+    <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C89B55]">
+      <span class="text-neutral-400">GATEWAY:</span>
+      <span class="font-bold text-white">Razorpay &bull; UPI &bull; COD</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-[#E7DECE]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      <nav class="hidden md:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#334155]">
+        <a href="#collection" class="hover:text-[#0B1323]">The Drop</a>
+        <a href="#quote" class="hover:text-[#0B1323]">Philosophy</a>
+        <a href="#policy" class="hover:text-[#0B1323]">Exchange Policy</a>
+      </nav>
+      <div class="text-center py-1">
+        <a href="#" class="font-heritage text-2xl md:text-3xl tracking-[0.35em] font-bold text-[#0B1323] block uppercase">ÉPURE ATELIER</a>
+      </div>
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="openBookingsModal()" class="bg-[#111827] text-white px-3 py-2 rounded text-[10px] tracking-[0.12em] uppercase font-bold flex items-center gap-1 shadow-sm">
+          <i data-lucide="package" class="w-3 h-3 text-[#C89B55]"></i> My Bookings
+        </button>
+        <button onclick="openAdminModal()" class="bg-[#8C6D46] hover:bg-[#6D5335] text-white px-3 py-2 rounded text-[10px] tracking-[0.15em] uppercase font-bold flex items-center gap-1 shadow-sm">
+          <i data-lucide="lock" class="w-3 h-3"></i> Admin
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#070D18] border-b border-[#1E293B]">
+    <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=2000&auto=format&fit=crop" alt="ÉPURE Atelier" class="absolute inset-0 w-full h-full object-cover object-top opacity-40 filter contrast-[110%]" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#070D18] via-[#0A1222]/60 to-[#070D18]/80"></div>
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto text-[#FAF7F0]">
+      <span class="inline-block text-[10px] uppercase tracking-[0.4em] text-[#C89B55] mb-4 font-bold border-b border-[#C89B55]/40 pb-1">ARCHIVAL CUTS & HEAVYWEIGHT TEXTURES</span>
+      <h1 class="font-heritage text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight leading-[1.08] mb-5 text-white">Precision in Cut, <br/><span class="italic font-light text-[#EADFCB]">Dignity in Form.</span></h1>
+      <p class="text-[#CBD5E1] text-xs sm:text-sm font-light max-w-lg mx-auto leading-relaxed mb-9 tracking-wider">Pure silhouettes and timeless jacquard craft. Designed for an uncompromising aesthetic presence.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#collection" class="bg-[#FAF7F0] text-[#0B1323] px-9 py-3.5 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-[#E2E8F0] shadow-lg rounded-sm">Shop The Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Quote Strip -->
+  <section id="quote" class="bg-[#F0EBE1] border-b border-[#E0D5C1] py-8 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-[9px] uppercase tracking-[0.4em] text-[#8C6D46] font-bold block mb-1">The Atelier Philosophy</span>
+      <h3 class="font-heritage text-2xl sm:text-3xl font-normal text-[#181715] tracking-tight leading-relaxed italic">“Curated in silence. Cut for presence.”</h3>
+      <div class="flex items-center justify-center gap-3 mt-2">
+        <span class="h-px w-10 bg-[#B58A4A]/50"></span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-[#6B5A49] font-medium">Bespoke Pan-India Drops &bull; Limited Run</span>
+        <span class="h-px w-10 bg-[#B58A4A]/50"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLLECTION GRID (DYNAMIC & STATIC) ================= -->
+  <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
+    <div class="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-[#E2D7C5] pb-5">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Exclusive Drops</span>
+        <h2 class="font-heritage text-3xl md:text-4xl text-[#0B1323] font-medium">Autumn / Winter Capsule</h2>
+      </div>
+      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; Razorpay &bull; COD</p>
     </div>
 
-    <!-- MAIN NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
-            
-            <!-- Mobile Menu Trigger -->
-            <button onclick="toggleMobileMenu()" class="md:hidden text-xl text-brand-dark focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <!-- Brand Logo -->
-            <a href="#" onclick="switchView('home')" class="font-serif text-3xl sm:text-4xl font-bold tracking-widest uppercase text-brand-dark">
-                Alixon<span class="text-brand-gold">.</span>
-            </a>
-
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-10 text-xs font-semibold uppercase tracking-[0.2em]">
-                <button onclick="switchView('home')" class="nav-link hover:text-brand-gold transition-colors py-2 border-b-2 border-transparent">Home</button>
-                <button onclick="switchView('shop')" class="nav-link hover:text-brand-gold transition-colors py-2 border-b-2 border-transparent">Collection</button>
-                <button onclick="switchView('orders')" class="nav-link hover:text-brand-gold transition-colors py-2 border-b-2 border-transparent">My Orders</button>
-                <button onclick="switchView('admin')" class="nav-link text-brand-gold hover:opacity-80 transition-colors py-2 border-b-2 border-transparent flex items-center gap-1.5">
-                    <i class="fa-solid fa-shield-halved text-[11px]"></i> Admin Portal
-                </button>
-            </nav>
-
-            <!-- Action Icons -->
-            <div class="flex items-center space-x-6">
-                <button onclick="toggleCartDrawer()" class="relative p-2 text-lg hover:text-brand-gold transition-colors">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span id="cart-badge" class="absolute top-0 right-0 bg-brand-dark text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-                </button>
-                <button onclick="switchView('auth')" class="hidden sm:flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider border border-brand-dark px-5 py-2.5 hover:bg-brand-dark hover:text-white transition-all duration-300">
-                    <i class="fa-regular fa-user"></i>
-                    <span id="nav-username">Account</span>
-                </button>
-            </div>
+    <!-- Product Grid Container -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- ITEM 1 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/twD1Dm2k/IMG-0610.jpg')">
+            <img src="https://i.ibb.co/twD1Dm2k/IMG-0610.jpg" alt="Delicious Moments Polo Sweatshirt" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#4A3525] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Retro Fleece</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">380 GSM Heavyweight Cotton Fleece</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Delicious Moments" Polo Sweatshirt</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Super soft brushed interior, lint-free.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Deep espresso-brown ribbed collar, vintage typography & bakers graphic.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Relaxed boxy streetwear fit.</p>
+          </div>
         </div>
-    </header>
-
-    <!-- MOBILE MENU DRAWER -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden md:hidden transition-opacity">
-        <div class="absolute left-0 top-0 bottom-0 w-4/5 max-w-sm bg-white p-6 shadow-2xl flex flex-col justify-between">
-            <div class="space-y-6">
-                <div class="flex justify-between items-center border-b pb-4">
-                    <span class="font-serif text-2xl font-bold tracking-widest uppercase">Alixon.</span>
-                    <button onclick="toggleMobileMenu()" class="text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <nav class="flex flex-col space-y-4 text-sm font-semibold uppercase tracking-widest">
-                    <button onclick="switchView('home'); toggleMobileMenu();" class="text-left py-2 hover:text-brand-gold">Home</button>
-                    <button onclick="switchView('shop'); toggleMobileMenu();" class="text-left py-2 hover:text-brand-gold">Collection</button>
-                    <button onclick="switchView('orders'); toggleMobileMenu();" class="text-left py-2 hover:text-brand-gold">My Orders</button>
-                    <button onclick="switchView('admin'); toggleMobileMenu();" class="text-left py-2 text-brand-gold">Admin Portal</button>
-                </nav>
-            </div>
-            <div class="border-t pt-4 text-xs text-brand-muted uppercase tracking-wider">
-                © 2026 Alixon Luxury Apparel
-            </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Delicious Moments Polo Sweatshirt', '₹2,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Moments%20Polo%20Sweatshirt%20(₹2,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
         </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/q33hZMT0/IMG-0611.jpg')">
+            <img src="https://i.ibb.co/q33hZMT0/IMG-0611.jpg" alt="Pasadena 1996 Retro Knit Polo" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#8C6D46] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Summer Knit</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Combed Premium Cotton Pique</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Pasadena 1996" Retro Knit Polo</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,899</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,899</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(34% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Highly breathable, sweat-resistant, shrink-proof.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Classic Cuban spread collar, 3-button placket, retro Californian artwork.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Oversized drape fit with dropped shoulders.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Pasadena 1996 Retro Knit Polo', '₹1,899')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Retro%20Knit%20Polo%20(₹1,899)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/S4xmVnW3/IMG-0612.jpg')">
+            <img src="https://i.ibb.co/S4xmVnW3/IMG-0612.jpg" alt="Ethnic Jacquard Trim Sweatpants" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#B45309] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Tapestry Trim</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">340 GSM Heavy French Terry Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Ethnic Jacquard Trim Sweatpants</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,199</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,499</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavyweight, durable all-day structured drape.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Woven geometric Kilim stripes, custom handcrafted tassel cords.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Relaxed wide-leg straight cut.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Ethnic Jacquard Trim Sweatpants', '₹2,199')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Ethnic%20Jacquard%20Trim%20Sweatpants%20(₹2,199)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/3msK6yJL/IMG-0613.jpg')">
+            <img src="https://i.ibb.co/3msK6yJL/IMG-0613.jpg" alt="Racing Crew Contrast Piping Long-Sleeve" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Minimalist</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">280 GSM Premium Interlock Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Racing Crew" Contrast Piping Long-Sleeve</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,799</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,799</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(35% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Silky smooth surface with high stretch-recovery.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Rich burgundy body, crisp off-white raglan shoulder piping, micro-branding.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Semi-relaxed clean silhouette.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Racing Crew Contrast Piping Long-Sleeve', '₹1,799')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Long-Sleeve%20(₹1,799)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/CsSkXrKX/IMG-0614.jpg')">
+            <img src="https://i.ibb.co/CsSkXrKX/IMG-0614.jpg" alt="Under Achiever Block Rugby Sweatshirt" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Collegiate</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">360 GSM Cotton-Poly Blend Fleece</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Under Achiever" Block Rugby Sweatshirt</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,399</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,799</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(36% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavy thermal fleece, pill-resistant finish.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Paneled maroon & cream sleeves, pointed white placket, retro chest embroidery.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Vintage athletic oversized fit.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Under Achiever Block Rugby Sweatshirt', '₹2,399')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Under%20Achiever%20Rugby%20Sweatshirt%20(₹2,399)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/rKhh3r7H/IMG-0615.jpg')">
+            <img src="https://i.ibb.co/rKhh3r7H/IMG-0615.jpg" alt="Stargazer Frayed Graphic T-Shirt" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#4E3629] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Heavyweight</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">240 GSM 100% Bio-Washed Cotton</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Stargazer" Frayed Graphic T-Shirt</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,399</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Pre-shrunk, soft luxury hand feel.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Chocolate body with ringer ribs, tactile raw-edge distressed stars with quote.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Oversized boxy streetwear drape.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Stargazer Frayed Graphic T-Shirt', '₹1,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Stargazer%20Frayed%20Tee%20(₹1,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/rRtT336X/IMG-0616.jpg')">
+            <img src="https://i.ibb.co/rRtT336X/IMG-0616.jpg" alt="Descartes Renaissance Woven Jacket" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-neutral-950 text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Limited Edition</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">Heavy Canvas & Jacquard Tapestry</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Descartes" Renaissance Woven Jacket</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹4,999</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹7,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> High-density jacquard tapestry, thick & wind-resistant.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Custom woven "The Last Supper" back art, metallic zipper, silver snap cuffs.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Boxy cropped workwear/trucker jacket silhouette.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Descartes Renaissance Woven Jacket', '₹4,999')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Descartes%20Renaissance%20Jacket%20(₹4,999)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
+        <div>
+          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 cursor-zoom-in border border-[#DCD0BC] rounded-lg" onclick="openModal('https://i.ibb.co/Z6SfNgMN/IMG-0617.jpg')">
+            <img src="https://i.ibb.co/Z6SfNgMN/IMG-0617.jpg" alt="Guardian Angel Cathedral Etching Jacket" class="img-expand w-full h-full object-cover object-center" />
+            <span class="absolute top-2.5 left-2.5 bg-[#374151] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded">Archive Workwear</span>
+            <span class="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-sm text-white text-[8px] tracking-widest px-2 py-0.5 flex items-center gap-1 rounded">
+              <i data-lucide="zoom-in" class="w-3 h-3 text-[#C89B55]"></i> Zoom
+            </span>
+          </div>
+          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">400 GSM Structured Cotton Twill</p>
+          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Guardian Angel" Cathedral Etching Jacket</h3>
+          <div class="flex items-baseline gap-2 mt-1.5">
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹4,499</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">₹6,999</span>
+            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(35% Off)</span>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Heavy matte twill, long-lasting structural drape.</p>
+            <p><strong class="text-neutral-900 font-semibold">Details:</strong> All-over monochrome Gothic cathedral & equestrian archangel engraving print.</p>
+            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Tailored modern workwear fit.</p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <button onclick="openCheckout('Guardian Angel Cathedral Etching Jacket', '₹4,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+          </button>
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Guardian%20Angel%20Cathedral%20Jacket%20(₹4,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+          </a>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <!-- MAIN DYNAMIC CONTAINER -->
-    <main id="main-container">
-
-        <!-- 1. HOME VIEW -->
-        <section id="view-home" class="view-section">
-            <!-- Hero Section -->
-            <div class="relative h-[85vh] bg-brand-dark text-white flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 opacity-45">
-                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1920" alt="Luxury Fashion" class="w-full h-full object-cover scale-105 animate-pulse duration-1000">
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
-                <div class="relative z-10 max-w-4xl mx-auto text-center px-4 space-y-6">
-                    <span class="text-brand-gold uppercase tracking-[0.4em] text-xs font-semibold block">Autumn / Winter Masterpiece 2026</span>
-                    <h1 class="font-serif text-5xl sm:text-7xl font-bold tracking-tight">The Art of Quiet Luxury</h1>
-                    <p class="max-w-xl mx-auto text-zinc-300 text-sm sm:text-base font-light leading-relaxed">
-                        Impeccably structured silhouettes, ultra-soft combed cottons, and elite tailoring crafted exclusively for discerning modern wardrobes.
-                    </p>
-                    <div class="pt-6">
-                        <button onclick="switchView('shop')" class="bg-white text-brand-dark px-10 py-4 text-xs font-semibold uppercase tracking-[0.25em] hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-2xl">
-                            Explore Collection
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brand Manifesto -->
-            <div class="max-w-5xl mx-auto px-4 py-28 text-center space-y-6">
-                <span class="text-brand-gold text-xs uppercase tracking-[0.3em] font-semibold">House of Alixon</span>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-dark">Uncompromised Craftsmanship</h2>
-                <div class="w-12 h-[2px] bg-brand-gold mx-auto"></div>
-                <p class="text-brand-muted text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto">
-                    Every garment bearing the Alixon hallmark undergoes rigorous structural evaluation. From breathable luxury T-shirts to structured formal trousers, we merge timeless tailoring with modern minimalism to deliver an unmatched tactile experience.
-                </p>
-            </div>
-        </section>
-
-        <!-- 2. SHOP / COLLECTION VIEW -->
-        <section id="view-shop" class="view-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-zinc-200 pb-6 gap-4">
-                <div>
-                    <span class="text-brand-gold uppercase tracking-[0.25em] text-xs font-semibold">Curated Catalog</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">The Signature Lineup</h2>
-                </div>
-                <div class="flex items-center space-x-4 text-xs uppercase tracking-widest font-semibold">
-                    <button onclick="filterProducts('All')" class="filter-btn text-brand-dark border-b-2 border-brand-dark pb-1">All</button>
-                    <button onclick="filterProducts('T-Shirt')" class="filter-btn text-brand-muted hover:text-brand-dark pb-1">T-Shirts</button>
-                    <button onclick="filterProducts('Pant')" class="filter-btn text-brand-muted hover:text-brand-dark pb-1">Pants</button>
-                    <button onclick="filterProducts('Outerwear')" class="filter-btn text-brand-muted hover:text-brand-dark pb-1">Outerwear</button>
-                </div>
-            </div>
-
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Populated Dynamically via JS -->
-            </div>
-        </section>
-
-        <!-- 3. AUTH VIEW (LOGIN / SIGNUP) -->
-        <section id="view-auth" class="view-section hidden max-w-md mx-auto px-4 py-24">
-            <div class="bg-white p-10 border border-zinc-200 shadow-xl space-y-8">
-                <div class="text-center space-y-2">
-                    <h2 class="font-serif text-3xl font-bold">Client Portal</h2>
-                    <p class="text-xs text-brand-muted uppercase tracking-wider">Access your orders & exclusive drops</p>
-                </div>
-                <div class="flex border-b border-zinc-200">
-                    <button onclick="switchAuthTab('login')" id="tab-login" class="flex-1 pb-3 text-xs font-bold uppercase tracking-widest border-b-2 border-brand-dark">Sign In</button>
-                    <button onclick="switchAuthTab('signup')" id="tab-signup" class="flex-1 pb-3 text-xs font-bold uppercase tracking-widest text-brand-muted">Register</button>
-                </div>
-                <form onsubmit="handleAuthSubmit(event)" class="space-y-5">
-                    <div id="field-name" class="hidden">
-                        <label class="block text-[11px] uppercase tracking-widest font-semibold mb-1.5 text-zinc-600">Full Name</label>
-                        <input type="text" id="auth-name-input" class="w-full border border-zinc-300 p-3.5 text-sm focus:outline-none focus:border-brand-dark bg-zinc-50" placeholder="Alexander Wright">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-widest font-semibold mb-1.5 text-zinc-600">Email Address</label>
-                        <input type="email" id="auth-email-input" required class="w-full border border-zinc-300 p-3.5 text-sm focus:outline-none focus:border-brand-dark bg-zinc-50" placeholder="name@domain.com">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-widest font-semibold mb-1.5 text-zinc-600">Secure Password</label>
-                        <input type="password" id="auth-pass-input" required class="w-full border border-zinc-300 p-3.5 text-sm focus:outline-none focus:border-brand-dark bg-zinc-50" placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-brand-gold transition-all duration-300 shadow-md">Authenticate</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 4. DEDICATED CHECKOUT VIEW -->
-        <section id="view-checkout" class="view-section hidden max-w-5xl mx-auto px-4 py-20">
-            <div class="mb-10 border-b pb-4">
-                <span class="text-brand-gold uppercase tracking-[0.2em] text-xs font-semibold">Secure Transaction Gateway</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Checkout & Booking</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Shipping Form -->
-                <form onsubmit="triggerPaymentProcess(event)" class="lg:col-span-7 space-y-6 bg-white p-8 border border-zinc-200 shadow-sm">
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-900 border-b pb-3">1. Shipping Destination</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1 text-zinc-600">Full Name</label>
-                            <input type="text" id="ship-name" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="Julian Sterling">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1 text-zinc-600">Phone Number</label>
-                            <input type="tel" id="ship-phone" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="+91 98765 43210">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1 text-zinc-600">Email Address (for Receipt)</label>
-                        <input type="email" id="ship-email" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="julian@luxury.com">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1 text-zinc-600">Delivery Address</label>
-                        <textarea id="ship-address" required rows="3" class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="Apartment, Street, Landmark, City, Pincode"></textarea>
-                    </div>
-
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-900 border-b pb-3 pt-4">2. Select Payment Method</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center space-x-4 border p-4 cursor-pointer hover:border-brand-dark transition-all">
-                            <input type="radio" name="payment_mode" value="Razorpay" checked class="accent-brand-dark w-4 h-4">
-                            <div>
-                                <p class="text-sm font-semibold">Razorpay Secure Gateway <span class="text-xs text-brand-gold ml-2 font-medium">(Cards / UPI / NetBanking / Wallet)</span></p>
-                                <p class="text-xs text-brand-muted">Instant processing with test checkout sandbox.</p>
-                            </div>
-                        </label>
-                        <label class="flex items-center space-x-4 border p-4 cursor-pointer hover:border-brand-dark transition-all">
-                            <input type="radio" name="payment_mode" value="COD" class="accent-brand-dark w-4 h-4">
-                            <div>
-                                <p class="text-sm font-semibold">Cash on Delivery (COD)</p>
-                                <p class="text-xs text-brand-muted">Pay with cash upon physical package receipt.</p>
-                            </div>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-brand-gold transition-all duration-300 shadow-xl">
-                        Proceed to Payment & Place Booking
-                    </button>
-                </form>
-
-                <!-- Order Cart Summary Column -->
-                <div class="lg:col-span-5 bg-white p-8 border border-zinc-200 h-fit space-y-6 shadow-sm">
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-900 border-b pb-3">Order Summary</h3>
-                    <div id="checkout-summary-items" class="space-y-4 max-h-72 overflow-y-auto pr-1">
-                        <!-- Populated by JS -->
-                    </div>
-                    <div class="border-t pt-4 space-y-2 text-sm">
-                        <div class="flex justify-between text-brand-muted"><span>Subtotal</span><span id="chk-subtotal">₹0</span></div>
-                        <div class="flex justify-between text-brand-muted"><span>Concierge Shipping</span><span class="text-emerald-600 font-semibold uppercase text-xs">Complimentary</span></div>
-                        <div class="flex justify-between font-bold text-base text-zinc-900 border-t pt-3"><span>Total Amount</span><span id="chk-total">₹0</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. DEDICATED ORDERS / TRACKING VIEW -->
-        <section id="view-orders" class="view-section hidden max-w-4xl mx-auto px-4 py-20">
-            <div class="mb-10 border-b pb-4">
-                <span class="text-brand-gold uppercase tracking-[0.2em] text-xs font-semibold">Client Archives</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">My Bookings & Orders</h2>
-            </div>
-            <div id="orders-container" class="space-y-6">
-                <!-- Populated via JS -->
-            </div>
-        </section>
-
-        <!-- 6. ADMIN PORTAL VIEW -->
-        <section id="view-admin" class="view-section hidden max-w-6xl mx-auto px-4 py-20">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 border-b pb-4 gap-4">
-                <div>
-                    <span class="text-brand-gold uppercase tracking-[0.2em] text-xs font-semibold">Executive Dashboard</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Admin Management Portal</h2>
-                </div>
-                <div class="bg-brand-dark text-white px-4 py-2 text-xs uppercase tracking-widest font-semibold flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Authorized Access
-                </div>
-            </div>
-
-            <!-- Add Product Form Box -->
-            <div class="bg-white p-8 sm:p-10 border border-zinc-200 shadow-sm mb-14">
-                <h3 class="font-serif text-xl font-bold mb-6 text-zinc-900">Add New Luxury Apparel Item</h3>
-                <form onsubmit="handleAddNewProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1.5 text-zinc-600">Product Title</label>
-                        <input type="text" id="adm-title" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="e.g., Cashmere Turtleneck">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1.5 text-zinc-600">Category</label>
-                        <select id="adm-cat" class="w-full border border-zinc-300 p-3 text-sm bg-white focus:outline-none focus:border-brand-dark">
-                            <option value="T-Shirt">T-Shirt</option>
-                            <option value="Pant">Pant</option>
-                            <option value="Outerwear">Outerwear</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1.5 text-zinc-600">Price (INR ₹)</label>
-                        <input type="number" id="adm-price" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="4500">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] uppercase tracking-wider font-semibold mb-1.5 text-zinc-600">High-Res Image URL</label>
-                        <input type="url" id="adm-img" required class="w-full border border-zinc-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="https://images.unsplash.com/...">
-                    </div>
-                    <div class="sm:col-span-2 lg:col-span-4 pt-2">
-                        <button type="submit" class="bg-brand-dark text-white px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-brand-gold transition-all duration-300 shadow-md">
-                            Publish to Catalog
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Existing Products Inventory Table -->
-            <h3 class="font-serif text-xl font-bold mb-6 text-zinc-900">Catalog Inventory Management</h3>
-            <div class="bg-white border border-zinc-200 overflow-x-auto shadow-sm">
-                <table class="w-full text-left border-collapse text-sm">
-                    <thead>
-                        <tr class="bg-zinc-50 border-b text-[11px] uppercase tracking-widest text-zinc-500">
-                            <th class="p-4.5 font-semibold">Apparel Item</th>
-                            <th class="p-4.5 font-semibold">Category</th>
-                            <th class="p-4.5 font-semibold">Price</th>
-                            <th class="p-4.5 font-semibold text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-inventory-table">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- SLIDE-OVER CART DRAWER -->
-    <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden transition-opacity" onclick="toggleCartDrawer()"></div>
-    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-screen max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
-        <div class="flex items-center justify-between p-6 border-b">
-            <h2 class="font-serif text-xl font-bold">Shopping Bag</h2>
-            <button onclick="toggleCartDrawer()" class="text-xl p-2 hover:text-brand-gold"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <!-- Items rendered dynamically -->
-        </div>
-        <div class="border-t p-6 space-y-4 bg-zinc-50">
-            <div class="flex justify-between text-sm font-medium">
-                <span class="text-brand-muted">Bag Subtotal</span>
-                <span id="cart-drawer-subtotal" class="font-bold text-base">₹0</span>
-            </div>
-            <button onclick="proceedToCheckoutView()" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-brand-gold transition-all duration-300 text-center block shadow-lg">
-                Proceed to Secure Checkout
-            </button>
-        </div>
+  <!-- Policy Section -->
+  <section id="policy" class="bg-[#111827] text-white py-14 px-6 lg:px-12 border-t border-neutral-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-[10px] uppercase tracking-[0.35em] text-[#C89B55] font-bold block mb-2">Our Official Policy</span>
+      <h2 class="font-heritage text-3xl sm:text-4xl font-normal mb-4 text-white">No Returns &bull; Easy Size Exchange Only</h2>
+      <p class="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed max-w-2xl mx-auto mb-6">
+        To maintain artisanal hygiene and exclusive small-batch quality, we do not provide cash returns. However, we guarantee a hassle-free <span class="font-semibold text-white">Size Exchange within 7 days</span> of delivery if the fit needs adjustment.
+      </p>
+      <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20need%20assistance%20regarding%20size%20exchange." target="_blank" class="inline-flex items-center gap-2 border border-[#C89B55] text-[#C89B55] hover:bg-[#C89B55] hover:text-[#111827] px-6 py-2.5 rounded-lg text-[11px] uppercase tracking-widest font-bold transition">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Exchange Desk
+      </a>
     </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white py-16 mt-28 border-t border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="space-y-2 text-center md:text-left">
-                <h3 class="font-serif text-3xl font-bold tracking-widest uppercase">Alixon<span class="text-brand-gold">.</span></h3>
-                <p class="text-xs text-zinc-400 tracking-wider">Defining excellence through sophisticated apparel design.</p>
+  <!-- Footer -->
+  <footer class="bg-[#070D18] text-[#94A3B8] pt-14 pb-10 px-6 lg:px-12 border-t border-neutral-900 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <div>
+        <h4 class="font-heritage text-2xl text-white tracking-[0.3em] mb-3">ÉPURE ATELIER</h4>
+        <p class="text-neutral-400 font-light leading-relaxed mb-3">Independent aesthetic streetwear and bespoke menswear. Dispatched across all cities and pin codes in India.</p>
+        <span class="text-[10px] text-neutral-500">&copy; 2026 ÉPURE ATELIER.</span>
+      </div>
+      <div>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-3">Customer Desk</h5>
+        <ul class="space-y-2 font-light">
+          <li>WhatsApp: +91 8271988708</li>
+          <li>care@epureatelier.com</li>
+          <li>Pan-India Express Air Courier</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-3">Accepted Payments</h5>
+        <ul class="space-y-1.5 font-light text-neutral-400">
+          <li>&bull; RuPay Debit & Credit Cards</li>
+          <li>&bull; Google Pay, PhonePe, Paytm (UPI)</li>
+          <li>&bull; Cash on Delivery (COD)</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-3">Exchange Guarantee</h5>
+        <p class="text-neutral-400 font-light mb-2">No returns allowed. Hassle-free size exchange within 7 days of delivery.</p>
+        <span class="text-[9px] uppercase tracking-widest text-[#C89B55] font-semibold">100% Genuine Handcrafted Fabrics</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    function hidePreloader() {
+      const p = document.getElementById('preloader');
+      if (p) p.classList.add('fade-out');
+    }
+    window.addEventListener('DOMContentLoaded', () => setTimeout(hidePreloader, 600));
+    window.addEventListener('load', () => setTimeout(hidePreloader, 200));
+    setTimeout(hidePreloader, 1200);
+
+    const slideIndices = {};
+    let tempGalleryImages = [];
+
+    function slideNext(e, sliderId, total) {
+      e.stopPropagation();
+      slideIndices[sliderId] = (slideIndices[sliderId] + 1) % total;
+      updateSliderPos(sliderId);
+    }
+
+    function slidePrev(e, sliderId, total) {
+      e.stopPropagation();
+      slideIndices[sliderId] = (slideIndices[sliderId] - 1 + total) % total;
+      updateSliderPos(sliderId);
+    }
+
+    function updateSliderPos(sliderId) {
+      const slider = document.getElementById(sliderId);
+      if(slider) {
+        slider.style.transform = `translateX(-${slideIndices[sliderId] * 100}%)`;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCustomProducts();
+    });
+
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.remove('hidden');
+      document.getElementById('adminModal').classList.add('flex');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('flex');
+      document.getElementById('adminModal').classList.add('hidden');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('adminPassInput').value.trim();
+      if (pass === "reshmiparween2006") {
+        document.getElementById('adminLoginView').classList.add('hidden');
+        document.getElementById('adminDashboardView').classList.remove('hidden');
+      } else {
+        alert("Incorrect Admin Password!");
+      }
+    }
+
+    function logoutAdmin() {
+      document.getElementById('adminDashboardView').classList.add('hidden');
+      document.getElementById('adminLoginView').classList.remove('hidden');
+      document.getElementById('adminPassInput').value = '';
+    }
+
+    function openBookingsModal() {
+      const container = document.getElementById('bookingsListContainer');
+      const orders = JSON.parse(localStorage.getItem('epure_user_orders') || '[]');
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-neutral-500">
+            <p class="font-semibold">No bookings or orders found yet.</p>
+            <p class="text-[10px] mt-1">Your placed orders will appear here automatically.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = orders.map((o, idx) => `
+          <div class="bg-[#FAF9F6] border border-[#DDD3C2] p-3 rounded-lg shadow-sm">
+            <div class="flex justify-between items-center pb-1.5 border-b border-neutral-200">
+              <span class="font-bold text-neutral-900">#${orders.length - idx} &bull; ${o.product}</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Confirmed</span>
             </div>
-            <div class="text-xs text-zinc-500 uppercase tracking-widest text-center">
-                © 2026 Alixon Corporation. All Rights Reserved.
+            <div class="pt-2 text-[11px] text-neutral-700 space-y-0.5">
+              <p><strong>Price:</strong> ${o.price} (${o.paymentMethod})</p>
+              <p><strong>Customer:</strong> ${o.name} (${o.phone})</p>
+              <p><strong>Address:</strong> ${o.city}, ${o.address}</p>
+              <p class="text-[9px] text-neutral-400 mt-1">Ordered on: ${o.date}</p>
             </div>
-        </div>
-    </footer>
+          </div>
+        `).join('');
+      }
 
-    <!-- JAVASCRIPT LOGIC ENGINE -->
-    <script>
-        // Default Catalog Data
-        let products = [
-            { id: 1, title: 'Signature Combed Cotton Tee', category: 'T-Shirt', price: 1899, image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800' },
-            { id: 2, title: 'Tailored Luxury Chino Trouser', category: 'Pant', price: 3499, image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=800' },
-            { id: 3, title: 'Heavyweight Minimalist Oversized Tee', category: 'T-Shirt', price: 2299, image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800' },
-            { id: 4, title: 'Structured Wool Blend Outerwear', category: 'Outerwear', price: 6999, image: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=800' }
-        ];
+      document.getElementById('bookingsModal').classList.remove('hidden');
+      document.getElementById('bookingsModal').classList.add('flex');
+    }
 
-        let cart = [];
-        let orders = [];
-        let currentFilter = 'All';
+    function closeBookingsModal() {
+      document.getElementById('bookingsModal').classList.remove('flex');
+      document.getElementById('bookingsModal').classList.add('hidden');
+    }
 
-        // View Router
-        function switchView(viewId) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById(`view-${viewId}`);
-            if(target) target.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    function handleGalleryImages(event) {
+      const files = event.target.files;
+      if (!files || files.length === 0) return;
 
-            if(viewId === 'shop') renderShopProducts(currentFilter);
-            if(viewId === 'admin') renderAdminInventory();
-            if(viewId === 'orders') renderOrdersArchive();
-        }
+      tempGalleryImages = [];
+      let loadedCount = 0;
 
-        // Mobile Menu Drawer Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          tempGalleryImages.push(e.target.result);
+          loadedCount++;
+          if (loadedCount === files.length) {
+            document.getElementById('galleryStatus').innerText = `${loadedCount} photos loaded successfully from gallery!`;
+          }
+        };
+        reader.readAsDataURL(files[i]);
+      }
+    }
 
-        // Filter Shop Collection
-        function filterProducts(category) {
-            currentFilter = category;
-            renderShopProducts(category);
-        }
+    function handleAddNewProduct(e) {
+      e.preventDefault();
+      const title = document.getElementById('newTitle').value;
+      const price = document.getElementById('newPrice').value;
+      const oldPrice = document.getElementById('newOldPrice').value;
+      const tag = document.getElementById('newTag').value || "New Drop";
+      const rawImages = document.getElementById('newImages').value;
+      const quality = document.getElementById('newQuality').value || "Premium Combed Cotton";
+      const fit = document.getElementById('newFit').value || "Oversized Streetwear Fit";
 
-        function renderShopProducts(category) {
-            const grid = document.getElementById('product-grid');
-            const filtered = category === 'All' ? products : products.filter(p => p.category === category);
-            
-            grid.innerHTML = filtered.map(p => `
-                <div class="group bg-white border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
-                    <div class="relative overflow-hidden aspect-[3/4] bg-zinc-100">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest px-3 py-1 shadow-sm">${p.category}</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                        <div>
-                            <h3 class="font-serif text-lg font-bold text-zinc-900">${p.title}</h3>
-                            <p class="text-brand-gold font-semibold mt-1">₹${p.price.toLocaleString()}</p>
-                        </div>
-                        <button onclick="addToCart(${p.id})" class="w-full bg-brand-dark text-white py-3.5 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-brand-gold transition-all duration-300">
-                            Add to Bag
-                        </button>
-                    </div>
+      let images = [];
+      if (tempGalleryImages.length > 0) {
+        images = [...tempGalleryImages];
+      } else if (rawImages.trim() !== "") {
+        images = rawImages.split(',').map(s => s.trim()).filter(Boolean);
+      }
+
+      if (images.length === 0) {
+        alert("Please select photos from gallery or paste image URLs!");
+        return;
+      }
+
+      const newProd = { id: 'custom_' + Date.now(), title, price, oldPrice, tag, images, quality, fit };
+
+      let customList = JSON.parse(localStorage.getItem('epure_custom_products') || '[]');
+      customList.unshift(newProd);
+      localStorage.setItem('epure_custom_products', JSON.stringify(customList));
+
+      alert("Product published successfully!");
+      e.target.reset();
+      tempGalleryImages = [];
+      document.getElementById('galleryStatus').innerText = '';
+      closeAdminModal();
+      loadCustomProducts();
+    }
+
+    function loadCustomProducts() {
+      const customList = JSON.parse(localStorage.getItem('epure_custom_products') || '[]');
+      if (customList.length === 0) return;
+
+      const grid = document.getElementById('productGrid');
+      
+      customList.forEach((prod, idx) => {
+        const sliderId = 'customSlider_' + idx;
+        slideIndices[sliderId] = 0;
+
+        const imgsHtml = prod.images.map(img => `
+          <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('${img}')">
+            <img src="${img}" alt="${prod.title}" class="w-full h-full object-cover object-center" />
+          </div>
+        `).join('');
+
+        const totalImgs = prod.images.length;
+
+        const cardHtml = `
+          <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl relative">
+            <div>
+              <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
+                <div id="${sliderId}" class="flex transition-transform duration-300 ease-out h-full">
+                  ${imgsHtml}
                 </div>
-            `).join('');
-        }
+                <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded z-10">${prod.tag}</span>
+                ${totalImgs > 1 ? `
+                  <button onclick="slidePrev(event, '${sliderId}',${totalImgs})" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <button onclick="slideNext(event, '${sliderId}',${totalImgs})" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                ` : ''}
+              </div>
+              <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">${prod.quality}</p>
+              <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">${prod.title}</h3>
+              <div class="flex items-baseline gap-2 mt-1.5">
+                <span class="text-base font-bold text-[#0B1323] tracking-wider">${prod.price}</span>
+                ${prod.oldPrice ? `<span class="text-xs text-neutral-400 line-through tracking-wider">${prod.oldPrice}</span>` : ''}
+              </div>
+              <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
+                <p><strong class="text-neutral-900 font-semibold">Quality:</strong> ${prod.quality}</p>
+                <p><strong class="text-neutral-900 font-semibold">Fit:</strong> ${prod.fit}</p>
+              </div>
+            </div>
+            <div class="mt-4 space-y-2">
+              <button onclick="openCheckout('${prod.title}', '${prod.price}')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
+              </button>
+              <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20${encodeURIComponent(prod.title)}%20(${prod.price})." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+        grid.insertAdjacentHTML('afterbegin', cardHtml);
+      });
+      lucide.createIcons();
+    }
 
-        // Cart Drawer Operations
-        function toggleCartDrawer() {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-drawer-overlay');
-            const isClosed = drawer.classList.contains('translate-x-full');
-            if(isClosed) {
-                overlay.classList.remove('hidden');
-                drawer.classList.remove('translate-x-full');
-                renderCartItems();
-            } else {
-                drawer.classList.add('translate-x-full');
-                overlay.classList.add('hidden');
-            }
-        }
+    function clearCustomProducts() {
+      if(confirm("Are you sure you want to delete all custom added products?")) {
+        localStorage.removeItem('epure_custom_products');
+        location.reload();
+      }
+    }
 
-        function addToCart(id) {
-            const prod = products.find(p => p.id === id);
-            const found = cart.find(item => item.id === id);
-            if(found) {
-                found.qty++;
-            } else {
-                cart.push({ ...prod, qty: 1 });
-            }
-            updateCartBadge();
-            toggleCartDrawer();
-        }
+    function openModal(src) {
+      document.getElementById('modalImg').src = src;
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
 
-        function updateCartBadge() {
-            const count = cart.reduce((acc, item) => acc + item.qty, 0);
-            document.getElementById('cart-badge').innerText = count;
-        }
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
 
-        function renderCartItems() {
-            const container = document.getElementById('cart-drawer-items');
-            let subtotal = 0;
-            if(cart.length === 0) {
-                container.innerHTML = `<p class="text-center text-brand-muted py-12 text-sm tracking-wide">Your shopping bag is currently empty.</p>`;
-            } else {
-                container.innerHTML = cart.map(item => {
-                    subtotal += item.price * item.qty;
-                    return `
-                        <div class="flex items-center space-x-4 border-b pb-4">
-                            <img src="${item.image}" class="w-16 h-20 object-cover bg-zinc-100">
-                            <div class="flex-1">
-                                <h4 class="font-serif text-sm font-bold">${item.title}</h4>
-                                <p class="text-xs text-brand-muted mt-0.5">Quantity: ${item.qty}</p>
-                                <p class="text-xs font-semibold mt-1 text-zinc-900">₹${(item.price * item.qty).toLocaleString()}</p>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-            document.getElementById('cart-drawer-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
-        }
+    function openCheckout(itemTitle, itemPrice) {
+      document.getElementById('modalProductTitle').innerText = itemTitle;
+      document.getElementById('modalProductPrice').innerText = itemPrice;
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
 
-        function proceedToCheckoutView() {
-            if(cart.length === 0) { alert('Your shopping bag is empty.'); return; }
-            toggleCartDrawer();
-            switchView('checkout');
-            renderCheckoutSummaryBox();
-        }
+    function closeCheckout() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
 
-        function renderCheckoutSummaryBox() {
-            const container = document.getElementById('checkout-summary-items');
-            let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            container.innerHTML = cart.map(item => `
-                <div class="flex justify-between text-xs text-zinc-700">
-                    <span>${item.title} (×${item.qty})</span>
-                    <span class="font-semibold">₹${(item.price * item.qty).toLocaleString()}</span>
-                </div>
-            `).join('');
-            document.getElementById('chk-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
-            document.getElementById('chk-total').innerText = `₹${subtotal.toLocaleString()}`;
-        }
+    function handleDirectPayment(e) {
+      e.preventDefault();
 
-        // Razorpay & COD Order Processing Flow
-        function triggerPaymentProcess(e) {
-            e.preventDefault();
-            const mode = document.querySelector('input[name="payment_mode"]:checked').value;
-            const totalAmt = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            
-            const customerName = document.getElementById('ship-name').value;
-            const customerEmail = document.getElementById('ship-email').value;
-            const customerPhone = document.getElementById('ship-phone').value;
+      const fullName = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const city = document.getElementById('custCity').value;
+      const address = document.getElementById('custAddress').value;
+      const paymentOption = document.querySelector('input[name="paymentOption"]:checked').value;
+      
+      const productTitle = document.getElementById('modalProductTitle').innerText;
+      const productPrice = document.getElementById('modalProductPrice').innerText;
+      
+      closeCheckout();
 
-            if(mode === 'Razorpay') {
-                // Razorpay Test Integration
-                var options = {
-                    "key": "rzp_test_mockkey12345", // Test mode API key placeholder
-                    "amount": totalAmt * 100, // in paisa
-                    "currency": "INR",
-                    "name": "Alixon Luxury Apparel",
-                    "description": "Boutique Order Checkout",
-                    "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=200",
-                    "handler": function (response){
-                        finalizeOrderCreation('Razorpay Online (Txn ID: ' + response.razorpay_payment_id.slice(0,10) + '...)');
-                    },
-                    "prefill": {
-                        "name": customerName,
-                        "email": customerEmail,
-                        "contact": customerPhone
-                    },
-                    "theme": {
-                        "color": "#0A0A0A"
-                    }
-                };
-                
-                // Fallback simulation if script test key blocks without dashboard linkage
-                try {
-                    var rzp = new Razorpay(options);
-                    rzp.open();
-                } catch(err) {
-                    // Fallback to direct completion simulation if script network blocks
-                    finalizeOrderCreation('Razorpay Test Mode Verified');
-                }
-            } else {
-                finalizeOrderCreation('Cash on Delivery (COD)');
-            }
-        }
+      if (paymentOption === 'razorpay') {
+        const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, '')) * 100 || 1000;
 
-        function finalizeOrderCreation(paymentMethodLabel) {
-            const newOrder = {
-                id: 'ALX-' + Math.floor(100000 + Math.random() * 900000),
-                items: [...cart],
-                total: cart.reduce((acc, item) => acc + (item.price * item.qty), 0),
-                paymentMethod: paymentMethodLabel,
-                date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
-            };
+        const options = {
+          "key": "rzp_test_1DP5mmOlF5G5ag",
+          "amount": numericPrice, 
+          "currency": "INR",
+          "name": "ÉPURE ATELIER",
+          "description": `Purchase of ${productTitle}`,
+          "image": "https://i.ibb.co/twD1Dm2k/IMG-0610.jpg",
+          "handler": function (response){
+            finalizeOrder(productTitle, productPrice, fullName, phone, city, address, "RAZORPAY TEST (" + response.razorpay_payment_id + ")");
+          },
+          "prefill": {
+            "name": fullName,
+            "contact": phone
+          },
+          "theme": {
+            "color": "#0B1323"
+          }
+        };
+        const rzp1 = new Razorpay(options);
+        rzp1.open();
+      } else {
+        finalizeOrder(productTitle, productPrice, fullName, phone, city, address, "CASH ON DELIVERY");
+      }
+    }
 
-            orders.unshift(newOrder);
-            cart = [];
-            updateCartBadge();
-            alert('Booking Confirmed! Order ID: ' + newOrder.id);
-            switchView('orders');
-        }
+    async function finalizeOrder(product, price, name, phone, city, address, paymentMethod) {
+      const newOrder = {
+        product, price, name, phone, city, address, paymentMethod,
+        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+      };
+      let userOrders = JSON.parse(localStorage.getItem('epure_user_orders') || '[]');
+      userOrders.unshift(newOrder);
+      localStorage.setItem('epure_user_orders', JSON.stringify(userOrders));
 
-        // Render Orders Archive View
-        function renderOrdersArchive() {
-            const container = document.getElementById('orders-container');
-            if(orders.length === 0) {
-                container.innerHTML = `
-                    <div class="bg-white p-12 border text-center text-brand-muted text-sm space-y-3 shadow-sm">
-                        <p>No active booking archives found.</p>
-                        <button onclick="switchView('shop')" class="text-xs uppercase font-bold text-brand-dark underline tracking-wider">Explore Collection</button>
-                    </div>`;
-                return;
-            }
-            container.innerHTML = orders.map(o => `
-                <div class="bg-white border border-zinc-200 p-8 space-y-6 shadow-sm">
-                    <div class="flex flex-col sm:flex-row justify-between border-b pb-4 gap-2">
-                        <div>
-                            <span class="text-[11px] uppercase tracking-widest text-brand-muted block">Booking Reference</span>
-                            <span class="font-serif font-bold text-lg text-zinc-900">${o.id}</span>
-                        </div>
-                        <div class="text-left sm:text-right">
-                            <span class="text-[11px] uppercase tracking-widest text-brand-muted block">Payment Method</span>
-                            <span class="text-xs font-semibold text-brand-gold uppercase">${o.paymentMethod}</span>
-                        </div>
-                    </div>
-                    <div class="space-y-3">
-                        <span class="text-xs uppercase tracking-widest font-semibold text-zinc-500 block">Manifest Items</span>
-                        ${o.items.map(i => `
-                            <div class="flex justify-between items-center text-sm border-b border-zinc-100 pb-2">
-                                <span class="text-zinc-800">${i.title} <span class="text-brand-muted">× ${i.qty}</span></span>
-                                <span class="font-medium text-zinc-900">₹${(i.price * i.qty).toLocaleString()}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="flex justify-between items-center pt-2 font-bold text-base border-t">
-                        <span>Total Tendered Amount</span>
-                        <span class="text-brand-dark">₹${o.total.toLocaleString()}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: "c6ab2781-bf27-4a83-b69c-46f9ba588dcc",
+            subject: `NEW PAID ORDER: ${product} - ${name}`,
+            Product_Ordered: product,
+            Price: price,
+            Customer_Name: name,
+            Mobile_Number: phone,
+            City_Pincode: city,
+            Delivery_Address: address,
+            Payment_Chosen: paymentMethod
+          })
+        });
+      } catch (err) {
+        console.error("Email notification error", err);
+      }
 
-        // Auth Tabs Toggle
-        function switchAuthTab(tab) {
-            if(tab === 'login') {
-                document.getElementById('tab-login').className = "flex-1 pb-3 text-xs font-bold uppercase tracking-widest border-b-2 border-brand-dark text-zinc-900";
-                document.getElementById('tab-signup').className = "flex-1 pb-3 text-xs font-bold uppercase tracking-widest text-brand-muted";
-                document.getElementById('field-name').classList.add('hidden');
-            } else {
-                document.getElementById('tab-signup').className = "flex-1 pb-3 text-xs font-bold uppercase tracking-widest border-b-2 border-brand-dark text-zinc-900";
-                document.getElementById('tab-login').className = "flex-1 pb-3 text-xs font-bold uppercase tracking-widest text-brand-muted";
-                document.getElementById('field-name').classList.remove('hidden');
-            }
-        }
+      document.getElementById('thankYouModal').classList.remove('hidden');
+      document.getElementById('thankYouModal').classList.add('flex');
+    }
 
-        function handleAuthSubmit(e) {
-            e.preventDefault();
-            const email = document.getElementById('auth-email-input').value;
-            const shortName = email.split('@')[0];
-            document.getElementById('nav-username').innerText = shortName.charAt(0).toUpperCase() + shortName.slice(1);
-            alert('Successfully authenticated into Alixon client session.');
-            switchView('home');
-        }
-
-        // Admin Management Actions
-        function handleAddNewProduct(e) {
-            e.preventDefault();
-            const title = document.getElementById('adm-title').value;
-            const category = document.getElementById('adm-cat').value;
-            const price = Number(document.getElementById('adm-price').value);
-            const image = document.getElementById('adm-img').value;
-
-            products.push({ id: Date.now(), title, category, price, image });
-            alert('New luxury clothing item published to catalog.');
-            e.target.reset();
-            renderAdminInventory();
-        }
-
-        function renderAdminInventory() {
-            const tbody = document.getElementById('admin-inventory-table');
-            tbody.innerHTML = products.map(p => `
-                <tr class="border-b hover:bg-zinc-50 transition-colors">
-                    <td class="p-4.5 flex items-center space-x-4">
-                        <img src="${p.image}" class="w-10 h-12 object-cover bg-zinc-100">
-                        <span class="font-semibold text-zinc-900">${p.title}</span>
-                    </td>
-                    <td class="p-4.5 text-zinc-600">${p.category}</td>
-                    <td class="p-4.5 font-semibold text-zinc-900">₹${p.price.toLocaleString()}</td>
-                    <td class="p-4.5 text-right">
-                        <button onclick="removeCatalogProduct(${p.id})" class="text-rose-500 hover:text-rose-700 text-xs uppercase tracking-wider font-semibold">Remove</button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        function removeCatalogProduct(id) {
-            products = products.filter(p => p.id !== id);
-            renderAdminInventory();
-        }
-    </script>
+    function closeThankYou() {
+      const thankYouModal = document.getElementById('thankYouModal');
+      thankYouModal.classList.remove('flex');
+      thankYouModal.classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
