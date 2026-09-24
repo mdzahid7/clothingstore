@@ -70,7 +70,7 @@
         <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-xs">
           <div>
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Admin Password</label>
-            <input required type="password" id="adminPassInput" placeholder="Enter password (reshmiparween2006)" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
+            <input required type="password" id="adminPassInput" placeholder="Enter password" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded focus:outline-none focus:border-neutral-900" />
           </div>
           <button type="submit" class="w-full bg-[#111827] hover:bg-black text-[#FAF7F0] py-3 rounded text-[11px] uppercase tracking-[0.2em] font-bold shadow">
             Access Dashboard
@@ -91,16 +91,16 @@
         <form onsubmit="handleAddNewProduct(event)" class="space-y-3 text-xs max-h-[65vh] overflow-y-auto pr-1">
           <div>
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Product Title / Name</label>
-            <input required type="text" id="newTitle" placeholder="e.g. H&M Burgundy Oversized Tee" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+            <input required type="text" id="newTitle" placeholder="e.g. Oversized Hoodie" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Selling Price (₹)</label>
-              <input required type="text" id="newPrice" placeholder="e.g. ₹1,349" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+              <input required type="text" id="newPrice" placeholder="e.g. ₹1,999" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
             </div>
             <div>
               <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Original Price (₹)</label>
-              <input type="text" id="newOldPrice" placeholder="e.g. ₹1,499" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+              <input type="text" id="newOldPrice" placeholder="e.g. ₹2,999" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
             </div>
           </div>
           <div>
@@ -122,7 +122,7 @@
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Quality Spec</label>
-              <input type="text" id="newQuality" placeholder="e.g. 240 GSM 100% Cotton" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
+              <input type="text" id="newQuality" placeholder="e.g. 380 GSM 100% Cotton" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded focus:outline-none focus:border-neutral-900" />
             </div>
             <div>
               <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Fit Spec</label>
@@ -329,58 +329,6 @@
     <!-- Product Grid Container -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <!-- H&M BURGUNDY EAST DISTRICT OVERSIZED T-SHIRT (EXACT SEQUENCE) -->
-      <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
-        <div>
-          <div class="relative overflow-hidden bg-[#ECE4D6] aspect-[3/4] mb-3 border border-[#DCD0BC] rounded-lg">
-            <div id="hmSlider" class="flex transition-transform duration-300 ease-out h-full">
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/3ykG8v82/IMG-0623.jpg')">
-                <img src="https://i.ibb.co/3ykG8v82/IMG-0623.jpg" alt="Front View" class="w-full h-full object-cover object-center" />
-              </div>
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/9kbT852q/IMG-0624.jpg')">
-                <img src="https://i.ibb.co/9kbT852q/IMG-0624.jpg" alt="Full Body Front" class="w-full h-full object-cover object-center" />
-              </div>
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/7d2P3st7/IMG-0625.jpg')">
-                <img src="https://i.ibb.co/7d2P3st7/IMG-0625.jpg" alt="Full Body Back" class="w-full h-full object-cover object-center" />
-              </div>
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg')">
-                <img src="https://i.ibb.co/Xx4Q3wW6/IMG-0627.jpg" alt="Flat Lay" class="w-full h-full object-cover object-center" />
-              </div>
-              <div class="w-full h-full flex-shrink-0 cursor-zoom-in" onclick="openModal('https://i.ibb.co/C5wDhjrF/IMG-0626.jpg')">
-                <img src="https://i.ibb.co/C5wDhjrF/IMG-0626.jpg" alt="Highlights" class="w-full h-full object-cover object-center" />
-              </div>
-            </div>
-            <span class="absolute top-2.5 left-2.5 bg-[#800020] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 rounded z-10">New Drop</span>
-            <button onclick="slidePrev(event, 'hmSlider', 5)" class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
-              <i data-lucide="chevron-left" class="w-4 h-4"></i>
-            </button>
-            <button onclick="slideNext(event, 'hmSlider', 5)" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-1.5 rounded-full z-10 transition">
-              <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </button>
-          </div>
-          <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Cotton &bull; Oversized Fit</p>
-          <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">H&M Burgundy / East District Oversized Fit Printed T-shirt</h3>
-          <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,349</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹1,499</span>
-            <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(10% Off)</span>
-          </div>
-          <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
-            <p><strong class="text-neutral-900 font-semibold">Quality:</strong> Premium soft cotton, breathable casual wear.</p>
-            <p><strong class="text-neutral-900 font-semibold">Details:</strong> Round neckline, half sleeves, East District Athletics chest & back print.</p>
-            <p><strong class="text-neutral-900 font-semibold">Fit:</strong> Modern oversized streetwear drape.</p>
-          </div>
-        </div>
-        <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('H&M Burgundy Oversized T-Shirt', '₹1,349')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2">
-            <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
-          </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20H%26M%20Burgundy%20Oversized%20T-Shirt%20(₹1,349)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
-          </a>
-        </div>
-      </div>
-
       <!-- ITEM 1 -->
       <div class="img-card bg-[#FCFAF7] p-4 border border-[#E3D9C7] shadow-sm flex flex-col justify-between rounded-xl">
         <div>
@@ -706,7 +654,7 @@
     window.addEventListener('load', () => setTimeout(hidePreloader, 200));
     setTimeout(hidePreloader, 1200);
 
-    const slideIndices = { 'hmSlider': 0 };
+    const slideIndices = {};
     let tempGalleryImages = [];
 
     function slideNext(e, sliderId, total) {
@@ -744,12 +692,12 @@
 
     function handleAdminLogin(e) {
       e.preventDefault();
-      const pass = document.getElementById('adminPassInput').value;
+      const pass = document.getElementById('adminPassInput').value.trim();
       if (pass === "reshmiparween2006") {
         document.getElementById('adminLoginView').classList.add('hidden');
         document.getElementById('adminDashboardView').classList.remove('hidden');
       } else {
-        alert("Incorrect Admin Password! (Hint: reshmiparween2006)");
+        alert("Incorrect Admin Password!");
       }
     }
 
@@ -970,7 +918,7 @@
           "currency": "INR",
           "name": "ÉPURE ATELIER",
           "description": `Purchase of ${productTitle}`,
-          "image": "https://i.ibb.co/3ykG8v82/IMG-0623.jpg",
+          "image": "https://i.ibb.co/twD1Dm2k/IMG-0610.jpg",
           "handler": function (response){
             finalizeOrder(productTitle, productPrice, fullName, phone, city, address, "RAZORPAY TEST (" + response.razorpay_payment_id + ")");
           },
