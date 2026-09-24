@@ -1,1 +1,503 @@
-# clothingstore
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alixon | Luxury Clothing Brand</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#111111',
+                            gold: '#D4AF37',
+                            light: '#F9F9F9',
+                            muted: '#777777'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-light text-brand-dark font-sans antialiased selection:bg-brand-dark selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" onclick="switchView('home')" class="font-serif text-3xl font-bold tracking-wider uppercase text-brand-dark">
+                Alixon<span class="text-brand-gold">.</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-widest">
+                <button onclick="switchView('home')" class="hover:text-brand-gold transition">Home</button>
+                <button onclick="switchView('shop')" class="hover:text-brand-gold transition">Collection</button>
+                <button onclick="switchView('orders')" class="hover:text-brand-gold transition">My Orders</button>
+                <button onclick="switchView('admin')" class="text-brand-gold hover:opacity-80 transition"><i class="fa-solid fa-lock mr-1"></i> Admin Panel</button>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center space-x-5">
+                <button onclick="toggleCart()" class="relative p-2 text-xl hover:text-brand-gold transition">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-brand-dark text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-sans">0</span>
+                </button>
+                <button onclick="switchView('auth')" class="hidden sm:flex items-center space-x-2 border border-brand-dark px-5 py-2 text-xs font-semibold uppercase tracking-wider hover:bg-brand-dark hover:text-white transition">
+                    <i class="fa-regular fa-user"></i> <span id="auth-btn-text">Account</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER (DYNAMIC VIEWS) -->
+    <main id="main-content">
+        
+        <!-- 1. HOME VIEW -->
+        <section id="view-home" class="view-section">
+            <!-- Hero Banner -->
+            <div class="relative bg-brand-dark text-white py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                <div class="absolute inset-0 opacity-40">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1920" alt="Hero Background" class="w-full h-full object-cover">
+                </div>
+                <div class="relative max-w-7xl mx-auto text-center space-y-6">
+                    <span class="text-brand-gold uppercase tracking-[0.3em] text-xs font-semibold">Autumn / Winter Luxury 2026</span>
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight">Redefining Elegance</h1>
+                    <p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base font-light">Experience unmatched craftsmanship, premium fabrics, and timeless silhouettes tailored exclusively for the modern connoisseur.</p>
+                    <div class="pt-4">
+                        <button onclick="switchView('shop')" class="bg-white text-brand-dark px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold hover:text-white transition shadow-lg">Explore Collection</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Intro Section -->
+            <div class="max-w-5xl mx-auto px-4 py-24 text-center space-y-6">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">The Alixon Philosophy</h2>
+                <div class="w-16 h-[2px] bg-brand-gold mx-auto"></div>
+                <p class="text-brand-muted text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto">
+                    At Alixon, we believe clothing is more than fabric—it is an extension of identity. Every T-shirt, pant, and outerwear piece is meticulously structured using sustainable, ultra-soft premium textiles designed to offer absolute comfort without compromising on high-fashion aesthetics.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. SHOP VIEW -->
+        <section id="view-shop" class="view-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex justify-between items-end mb-12 border-b border-gray-200 pb-6">
+                <div>
+                    <span class="text-brand-gold uppercase tracking-widest text-xs font-semibold">Exquisite Tailoring</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">The Collection</h2>
+                </div>
+                <div class="text-sm text-brand-muted"><span id="product-count">3</span> Products Available</div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- 3. AUTH VIEW (LOGIN / SIGNUP) -->
+        <section id="view-auth" class="view-section hidden max-w-md mx-auto px-4 py-20">
+            <div class="bg-white p-8 border border-gray-200 shadow-xl space-y-6">
+                <div class="text-center space-y-2">
+                    <h2 class="font-serif text-3xl font-bold">Welcome to Alixon</h2>
+                    <p class="text-xs text-brand-muted uppercase tracking-wider">Sign in to manage orders & wishlist</p>
+                </div>
+                <div class="flex border-b border-gray-200">
+                    <button onclick="toggleAuthTab('login')" id="tab-login" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-brand-dark uppercase tracking-wider">Login</button>
+                    <button onclick="toggleAuthTab('signup')" id="tab-signup" class="flex-1 pb-3 text-sm font-semibold text-brand-muted uppercase tracking-wider">Sign Up</button>
+                </div>
+                <form id="auth-form" onsubmit="handleAuth(event)" class="space-y-4">
+                    <div id="name-field" class="hidden">
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Full Name</label>
+                        <input type="text" id="auth-name" class="w-full border border-gray-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Email Address</label>
+                        <input type="email" id="auth-email" required class="w-full border border-gray-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="name@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Password</label>
+                        <input type="password" id="auth-pass" required class="w-full border border-gray-300 p-3 text-sm focus:outline-none focus:border-brand-dark" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold transition">Continue</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 4. CHECKOUT VIEW -->
+        <section id="view-checkout" class="view-section hidden max-w-4xl mx-auto px-4 py-16">
+            <h2 class="font-serif text-3xl font-bold mb-8">Secure Checkout</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Shipping Details -->
+                <form onsubmit="processOrder(event)" class="space-y-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider border-b pb-2">1. Shipping Information</h3>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Full Name</label>
+                        <input type="text" required class="w-full border border-gray-300 p-3 text-sm" placeholder="Alexander Wright">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Phone Number</label>
+                        <input type="tel" required class="w-full border border-gray-300 p-3 text-sm" placeholder="+91 98765 43210">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Delivery Address</label>
+                        <textarea required rows="3" class="w-full border border-gray-300 p-3 text-sm" placeholder="House No, Street, City, Pincode"></textarea>
+                    </div>
+
+                    <h3 class="text-sm font-bold uppercase tracking-wider border-b pb-2 pt-4">2. Payment Method</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 border p-4 cursor-pointer hover:border-brand-dark">
+                            <input type="radio" name="payment" value="COD" checked class="accent-brand-dark">
+                            <span class="text-sm font-medium">Cash on Delivery (COD)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 border p-4 cursor-pointer hover:border-brand-dark">
+                            <input type="radio" name="payment" value="Razorpay" class="accent-brand-dark">
+                            <span class="text-sm font-medium">Razorpay Online Payment <span class="text-xs text-brand-gold ml-2 font-semibold">(Test Mode)</span></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold transition">Place Order Now</button>
+                </form>
+
+                <!-- Order Summary Box -->
+                <div class="bg-gray-50 p-6 border border-gray-200 h-fit space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider border-b pb-2">Order Summary</h3>
+                    <div id="checkout-items-list" class="space-y-3 max-h-60 overflow-y-auto">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="border-t pt-4 space-y-2 text-sm">
+                        <div class="flex justify-between"><span>Subtotal</span><span id="checkout-subtotal">₹0</span></div>
+                        <div class="flex justify-between"><span>Shipping</span><span class="text-green-600 font-semibold">FREE</span></div>
+                        <div class="flex justify-between font-bold text-base border-t pt-2"><span>Total Amount</span><span id="checkout-total">₹0</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ORDERS VIEW -->
+        <section id="view-orders" class="view-section hidden max-w-4xl mx-auto px-4 py-16">
+            <h2 class="font-serif text-3xl font-bold mb-8">My Orders</h2>
+            <div id="orders-list" class="space-y-4">
+                <!-- Populated via JS -->
+            </div>
+        </section>
+
+        <!-- 6. ADMIN PANEL VIEW -->
+        <section id="view-admin" class="view-section hidden max-w-5xl mx-auto px-4 py-16">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <div>
+                    <span class="text-brand-gold uppercase tracking-widest text-xs font-semibold">Management Console</span>
+                    <h2 class="font-serif text-3xl font-bold">Admin Panel</h2>
+                </div>
+                <span class="bg-brand-dark text-white px-4 py-1 text-xs uppercase tracking-widest">Authorized</span>
+            </div>
+
+            <!-- Add Product Form -->
+            <div class="bg-white p-8 border border-gray-200 shadow-sm mb-12">
+                <h3 class="font-serif text-xl font-bold mb-6">Add New Clothing Product</h3>
+                <form onsubmit="addNewProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Product Title</label>
+                        <input type="text" id="admin-p-title" required class="w-full border border-gray-300 p-3 text-sm" placeholder="e.g., Silk Blend Oversized Tee">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Category</label>
+                        <select id="admin-p-cat" class="w-full border border-gray-300 p-3 text-sm bg-white">
+                            <option value="T-Shirt">T-Shirt</option>
+                            <option value="Pant">Pant / Trouser</option>
+                            <option value="Outerwear">Outerwear</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Price (₹)</label>
+                        <input type="number" id="admin-p-price" required class="w-full border border-gray-300 p-3 text-sm" placeholder="2499">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-1">Image URL (Unsplash/High-Res)</label>
+                        <input type="url" id="admin-p-img" required class="w-full border border-gray-300 p-3 text-sm" placeholder="https://images.unsplash.com/...">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <button type="submit" class="bg-brand-dark text-white px-8 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold transition">Publish Product</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Manage Products Table -->
+            <h3 class="font-serif text-xl font-bold mb-4">Existing Products Inventory</h3>
+            <div class="bg-white border border-gray-200 overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-gray-50 border-b text-xs uppercase tracking-wider text-brand-muted">
+                            <th class="p-4">Product</th>
+                            <th class="p-4">Category</th>
+                            <th class="p-4">Price</th>
+                            <th class="p-4 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-product-table">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/50 transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="flex items-center justify-between p-6 border-b">
+                    <h2 class="font-serif text-xl font-bold">Your Shopping Bag</h2>
+                    <button onclick="toggleCart()" class="text-xl p-2 hover:text-brand-gold"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Cart items rendered here -->
+                </div>
+                <div class="border-t p-6 space-y-4 bg-gray-50">
+                    <div class="flex justify-between font-medium">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal" class="font-bold">₹0</span>
+                    </div>
+                    <button onclick="proceedToCheckout()" class="w-full bg-brand-dark text-white py-4 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold transition text-center block">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white py-12 mt-20 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <h3 class="font-serif text-2xl font-bold tracking-widest uppercase">Alixon<span class="text-brand-gold">.</span></h3>
+            <p class="text-xs text-gray-400 uppercase tracking-widest">© 2026 Alixon Luxury Apparel. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initial Mock Data
+        let products = [
+            { id: 1, title: 'Signature Silk Blend T-Shirt', category: 'T-Shirt', price: 1899, image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800' },
+            { id: 2, title: 'Tailored Luxury Chino Pant', category: 'Pant', price: 3499, image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=800' },
+            { id: 3, title: 'Heavyweight Minimalist Tee', category: 'T-Shirt', price: 2199, image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800' }
+        ];
+
+        let cart = [];
+        let orders = [];
+        let currentUser = null;
+
+        // View Router
+        function switchView(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if(viewId === 'shop') renderProducts();
+            if(viewId === 'admin') renderAdminTable();
+            if(viewId === 'orders') renderOrders();
+        }
+
+        // Auth Tabs
+        function toggleAuthTab(tab) {
+            if(tab === 'login') {
+                document.getElementById('tab-login').className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-brand-dark uppercase tracking-wider";
+                document.getElementById('tab-signup').className = "flex-1 pb-3 text-sm font-semibold text-brand-muted uppercase tracking-wider";
+                document.getElementById('name-field').classList.add('hidden');
+            } else {
+                document.getElementById('tab-signup').className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-brand-dark uppercase tracking-wider";
+                document.getElementById('tab-login').className = "flex-1 pb-3 text-sm font-semibold text-brand-muted uppercase tracking-wider";
+                document.getElementById('name-field').classList.remove('hidden');
+            }
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            currentUser = email;
+            document.getElementById('auth-btn-text').innerText = email.split('@')[0];
+            alert('Successfully authenticated into Alixon!');
+            switchView('home');
+        }
+
+        // Render Shop Products
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            document.getElementById('product-count').innerText = products.length;
+            grid.innerHTML = products.map(p => `
+                <div class="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col">
+                    <div class="relative overflow-hidden aspect-[3/4] bg-gray-100">
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest px-3 py-1">${p.category}</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
+                        <div>
+                            <h3 class="font-serif text-lg font-bold">${p.title}</h3>
+                            <p class="text-brand-gold font-semibold mt-1">₹${p.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="w-full bg-brand-dark text-white py-3 text-xs font-semibold uppercase tracking-widest hover:bg-brand-gold transition">Add to Bag</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart Actions
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+            renderCartItems();
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            document.getElementById('cart-count').innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+            toggleCart();
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items');
+            let subtotal = 0;
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-brand-muted py-10 text-sm">Your shopping bag is empty.</p>`;
+            } else {
+                container.innerHTML = cart.map(item => {
+                    subtotal += item.price * item.qty;
+                    return `
+                        <div class="flex items-center space-x-4 border-b pb-4">
+                            <img src="${item.image}" class="w-16 h-20 object-cover bg-gray-100">
+                            <div class="flex-1">
+                                <h4 class="font-serif text-sm font-bold">${item.title}</h4>
+                                <p class="text-xs text-brand-muted mt-1">Qty: ${item.qty}</p>
+                                <p class="text-xs font-semibold mt-1">₹${(item.price * item.qty).toLocaleString()}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            document.getElementById('cart-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
+        }
+
+        function proceedToCheckout() {
+            if(cart.length === 0) { alert('Your cart is empty!'); return; }
+            toggleCart();
+            switchView('checkout');
+            renderCheckoutSummary();
+        }
+
+        function renderCheckoutSummary() {
+            const list = document.getElementById('checkout-items-list');
+            let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            list.innerHTML = cart.map(item => `
+                <div class="flex justify-between text-xs">
+                    <span>${item.title} (x${item.qty})</span>
+                    <span>₹${item.price * item.qty}</span>
+                </div>
+            `).join('');
+            document.getElementById('checkout-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
+            document.getElementById('checkout-total').innerText = `₹${subtotal.toLocaleString()}`;
+        }
+
+        // Process Order
+        function processOrder(e) {
+            e.preventDefault();
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            if(paymentMethod === 'Razorpay') {
+                alert('[Razorpay Test Gateway] Simulated secure payment window triggered. Approving transaction...');
+            }
+
+            const newOrder = {
+                id: 'ALX-' + Math.floor(100000 + Math.random() * 900000),
+                items: [...cart],
+                total: cart.reduce((acc, item) => acc + (item.price * item.qty), 0),
+                payment: paymentMethod,
+                date: new Date().toLocaleDateString()
+            };
+
+            orders.push(newOrder);
+            cart = [];
+            document.getElementById('cart-count').innerText = 0;
+            alert('Order placed successfully! Thank you for shopping with Alixon.');
+            switchView('orders');
+        }
+
+        // Render Orders History
+        function renderOrders() {
+            const container = document.getElementById('orders-list');
+            if(orders.length === 0) {
+                container.innerHTML = `<div class="bg-white p-8 border text-center text-brand-muted text-sm">No orders placed yet.</div>`;
+                return;
+            }
+            container.innerHTML = orders.map(o => `
+                <div class="bg-white border border-gray-200 p-6 space-y-4">
+                    <div class="flex justify-between border-b pb-3 text-xs uppercase tracking-wider font-semibold">
+                        <span>Order ID: ${o.id}</span>
+                        <span class="text-brand-gold">${o.payment}</span>
+                    </div>
+                    <div class="space-y-2">
+                        ${o.items.map(i => `<div class="text-sm flex justify-between"><span>${i.title} (Qty: ${i.qty})</span><span>₹${i.price * i.qty}</span></div>`).join('')}
+                    </div>
+                    <div class="border-t pt-3 flex justify-between font-bold text-sm">
+                        <span>Total Paid</span>
+                        <span>₹${o.total.toLocaleString()}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Admin Actions
+        function addNewProduct(e) {
+            e.preventDefault();
+            const title = document.getElementById('admin-p-title').value;
+            const category = document.getElementById('admin-p-cat').value;
+            const price = Number(document.getElementById('admin-p-price').value);
+            const image = document.getElementById('admin-p-img').value;
+
+            products.push({ id: products.length + 1, title, category, price, image });
+            alert('New luxury product added successfully!');
+            e.target.reset();
+            renderAdminTable();
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('admin-product-table');
+            tbody.innerHTML = products.map(p => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="p-4 flex items-center space-x-3">
+                        <img src="${p.image}" class="w-10 h-12 object-cover">
+                        <span class="font-semibold">${p.title}</span>
+                    </td>
+                    <td class="p-4">${p.category}</td>
+                    <td class="p-4 font-semibold">₹${p.price.toLocaleString()}</td>
+                    <td class="p-4 text-right">
+                        <button onclick="deleteProduct(${p.id})" class="text-red-500 hover:text-red-700 text-xs uppercase tracking-wider font-semibold">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function deleteProduct(id) {
+            products = products.filter(p => p.id !== id);
+            renderAdminTable();
+        }
+    </head>
+</body>
+</html>
