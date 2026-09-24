@@ -289,7 +289,6 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Initial Mock Data
         let products = [
             { id: 1, title: 'Signature Silk Blend T-Shirt', category: 'T-Shirt', price: 1899, image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800' },
             { id: 2, title: 'Tailored Luxury Chino Pant', category: 'Pant', price: 3499, image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=800' },
@@ -300,7 +299,6 @@
         let orders = [];
         let currentUser = null;
 
-        // View Router
         function switchView(viewId) {
             document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
             document.getElementById(`view-${viewId}`).classList.remove('hidden');
@@ -310,7 +308,6 @@
             if(viewId === 'orders') renderOrders();
         }
 
-        // Auth Tabs
         function toggleAuthTab(tab) {
             if(tab === 'login') {
                 document.getElementById('tab-login').className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-brand-dark uppercase tracking-wider";
@@ -332,7 +329,6 @@
             switchView('home');
         }
 
-        // Render Shop Products
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             document.getElementById('product-count').innerText = products.length;
@@ -353,7 +349,6 @@
             `).join('');
         }
 
-        // Cart Actions
         function toggleCart() {
             const drawer = document.getElementById('cart-drawer');
             drawer.classList.toggle('hidden');
@@ -415,7 +410,6 @@
             document.getElementById('checkout-total').innerText = `₹${subtotal.toLocaleString()}`;
         }
 
-        // Process Order
         function processOrder(e) {
             e.preventDefault();
             const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
@@ -439,7 +433,6 @@
             switchView('orders');
         }
 
-        // Render Orders History
         function renderOrders() {
             const container = document.getElementById('orders-list');
             if(orders.length === 0) {
@@ -463,7 +456,6 @@
             `).join('');
         }
 
-        // Admin Actions
         function addNewProduct(e) {
             e.preventDefault();
             const title = document.getElementById('admin-p-title').value;
@@ -498,6 +490,6 @@
             products = products.filter(p => p.id !== id);
             renderAdminTable();
         }
-    </head>
+    </script>
 </body>
 </html>
