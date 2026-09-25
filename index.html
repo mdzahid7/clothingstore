@@ -63,7 +63,7 @@
       <span class="font-heritage text-3xl font-bold tracking-widest text-[#1C2434]">É</span>
     </div>
     <p class="font-heritage text-xs uppercase tracking-[0.5em] text-[#1C2434] font-bold mt-1">ÉPURE ATELIER</p>
-    <span class="text-[9px] uppercase tracking-[0.4em] text-[#B58A4A] font-semibold mt-1">PAN-INDIA BESPOKE LUXURY</span>
+    <span class="text-[9px] uppercase tracking-[0.4em] text-[#B58A4A] font-semibold mt-1">INTERNATIONAL LUXURY BESPOKE</span>
   </div>
 
   <!-- ================= ADMIN LOGIN & DASHBOARD MODAL ================= -->
@@ -103,12 +103,12 @@
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Selling Price (₹)</label>
-              <input required type="text" id="newPrice" placeholder="e.g. ₹2,499" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded-lg focus:outline-none focus:border-neutral-900" />
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Selling Price (€)</label>
+              <input required type="text" id="newPrice" placeholder="e.g. €29" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded-lg focus:outline-none focus:border-neutral-900" />
             </div>
             <div>
-              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Original Price (₹)</label>
-              <input type="text" id="newOldPrice" placeholder="e.g. ₹3,999" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded-lg focus:outline-none focus:border-neutral-900" />
+              <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Original Price (€)</label>
+              <input type="text" id="newOldPrice" placeholder="e.g. €45" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3 py-2 rounded-lg focus:outline-none focus:border-neutral-900" />
             </div>
           </div>
           <div>
@@ -184,7 +184,7 @@
         </div>
         <div class="pt-2 text-[11px] text-neutral-600 flex justify-between">
           <span>Delivery Mode:</span>
-          <span class="font-semibold text-neutral-900">Express Air Courier (Pan-India)</span>
+          <span class="font-semibold text-neutral-900">Express International Air Courier</span>
         </div>
       </div>
       <div class="flex flex-col gap-2.5">
@@ -203,27 +203,27 @@
       <div class="border-b border-[#EFE8DD] pb-4 mb-5 text-center">
         <span class="text-[9px] uppercase tracking-[0.3em] text-[#9A7338] font-bold block mb-1">Instant Secure Checkout</span>
         <h3 class="font-heritage text-2xl text-neutral-900 font-semibold" id="modalProductTitle">Selected Garment</h3>
-        <p class="text-base font-bold text-neutral-900 mt-1" id="modalProductPrice">₹0</p>
-        <span class="inline-block text-[9px] text-emerald-700 bg-emerald-50 font-bold px-2.5 py-0.5 rounded mt-1">Free Express Pan-India Delivery</span>
+        <p class="text-base font-bold text-neutral-900 mt-1" id="modalProductPrice">€0</p>
+        <span class="inline-block text-[9px] text-emerald-700 bg-emerald-50 font-bold px-2.5 py-0.5 rounded mt-1">Free Express International Delivery</span>
       </div>
       <form onsubmit="handleDirectPayment(event)" class="space-y-4 text-xs">
         <div>
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Full Name</label>
-          <input required type="text" id="custName" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
+          <input required type="text" id="custName" placeholder="e.g. Jean Dupont" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Mobile Number</label>
-            <input required type="tel" id="custPhone" placeholder="+91 98765 43210" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
+            <input required type="tel" id="custPhone" placeholder="+33 6 12 34 56 78" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
           </div>
           <div>
-            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">City & Pincode</label>
-            <input required type="text" id="custCity" placeholder="e.g. Mumbai, 400001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
+            <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">City & Postal Code</label>
+            <input required type="text" id="custCity" placeholder="e.g. Paris, 75001" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900" />
           </div>
         </div>
         <div>
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-1 text-[10px]">Delivery Address</label>
-          <textarea required rows="2" id="custAddress" placeholder="House/Flat No, Apartment, Street, Landmark" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900"></textarea>
+          <textarea required rows="2" id="custAddress" placeholder="Street Name, Apartment/Suite" class="w-full bg-[#FAF9F6] border border-[#DDD3C2] px-3.5 py-2.5 rounded-lg focus:outline-none focus:border-neutral-900"></textarea>
         </div>
         <div class="pt-2">
           <label class="block uppercase tracking-wider font-semibold text-neutral-700 mb-2 text-[10px]">Select Payment Gateway</label>
@@ -231,7 +231,7 @@
             <label class="flex items-center justify-between border border-[#DDD3C2] p-3 rounded-lg cursor-pointer bg-[#FAF9F6] hover:bg-neutral-100 transition">
               <div class="flex items-center gap-2.5">
                 <input type="radio" name="paymentOption" value="razorpay" checked class="accent-neutral-900" />
-                <span class="font-bold text-neutral-900 text-[11px]">Razorpay Gateway (UPI / Cards / NetBanking)</span>
+                <span class="font-bold text-neutral-900 text-[11px]">Razorpay Gateway (Cards / International Pay)</span>
               </div>
               <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Instant</span>
             </label>
@@ -267,16 +267,16 @@
   <div class="bg-[#0B1323] text-[#E2E8F0] text-[10px] uppercase tracking-[0.24em] py-2 px-4 border-b border-neutral-800 flex justify-between items-center sm:px-10">
     <div class="hidden md:flex items-center gap-2 text-[#C89B55]">
       <i data-lucide="truck" class="w-3.5 h-3.5"></i>
-      <span>Express Air Shipping Across All Indian Pin Codes</span>
+      <span>Worldwide Express Air Shipping</span>
     </div>
     <span class="mx-auto md:mx-0 font-semibold tracking-[0.25em]">NO RETURNS &bull; EASY SIZE EXCHANGE ONLY</span>
     <div class="hidden md:flex items-center space-x-3 text-[10px] text-[#C89B55]">
-      <span class="text-neutral-400">GATEWAY:</span>
-      <span class="font-bold text-white">Razorpay &bull; UPI &bull; COD</span>
+      <span class="text-neutral-400">CURRENCY:</span>
+      <span class="font-bold text-white">EUR (€)</span>
     </div>
   </div>
 
-  <!-- ================= LUXURY NAVIGATION BAR (WITH ALL SECTIONS) ================= -->
+  <!-- ================= LUXURY NAVIGATION BAR ================= -->
   <header class="sticky top-0 z-30 bg-[#F9F7F2]/90 backdrop-blur-md border-b border-[#E7DECE]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
       
@@ -285,14 +285,14 @@
         <a href="#" class="font-heritage text-xl md:text-2xl tracking-[0.35em] font-bold text-[#0B1323] block uppercase">ÉPURE ATELIER</a>
       </div>
 
-      <!-- Navigation Links (All Sections Included) -->
+      <!-- Navigation Links -->
       <nav class="hidden lg:flex space-x-8 text-[11px] tracking-[0.22em] uppercase font-semibold text-[#334155]">
         <a href="#collection" class="hover:text-[#0B1323] transition">The Drop</a>
         <a href="#quote" class="hover:text-[#0B1323] transition">Philosophy</a>
         <a href="#policy" class="hover:text-[#0B1323] transition">Exchange Policy</a>
       </nav>
 
-      <!-- Navigation Action Buttons (Admin & Bookings in Navbar) -->
+      <!-- Navigation Action Buttons -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         <button onclick="openBookingsModal()" class="bg-[#111827] hover:bg-black text-white px-3.5 py-2 rounded-lg text-[10px] tracking-[0.12em] uppercase font-bold flex items-center gap-1.5 shadow-sm transition">
           <i data-lucide="package" class="w-3 h-3 text-[#C89B55]"></i> My Bookings
@@ -326,20 +326,20 @@
       <h3 class="font-heritage text-2xl sm:text-3xl font-normal text-[#181715] tracking-tight leading-relaxed italic">“Curated in silence. Cut for presence.”</h3>
       <div class="flex items-center justify-center gap-3 mt-3">
         <span class="h-px w-10 bg-[#B58A4A]/50"></span>
-        <span class="text-[10px] uppercase tracking-[0.3em] text-[#6B5A49] font-medium">Bespoke Pan-India Drops &bull; Limited Run</span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-[#6B5A49] font-medium">Bespoke Global Drops &bull; Limited Run</span>
         <span class="h-px w-10 bg-[#B58A4A]/50"></span>
       </div>
     </div>
   </section>
 
-  <!-- ================= COLLECTION GRID (DYNAMIC & STATIC) ================= -->
+  <!-- ================= COLLECTION GRID ================= -->
   <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-[#E2D7C5] pb-5">
       <div>
         <span class="text-[10px] uppercase tracking-[0.35em] text-[#8C6D46] font-bold block mb-1">Exclusive Drops</span>
         <h2 class="font-heritage text-3xl md:text-4xl text-[#0B1323] font-medium">Autumn / Winter Capsule</h2>
       </div>
-      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; Razorpay &bull; COD</p>
+      <p class="text-[11px] text-neutral-600 uppercase tracking-widest mt-2 md:mt-0 font-semibold">Tap photo to zoom &bull; Euro Pricing</p>
     </div>
 
     <!-- Product Grid Container -->
@@ -358,8 +358,8 @@
           <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">380 GSM Heavyweight Cotton Fleece</p>
           <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Delicious Moments" Polo Sweatshirt</h3>
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,499</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,999</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">€29</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">€45</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
           </div>
           <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
@@ -369,10 +369,10 @@
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Delicious Moments Polo Sweatshirt', '₹2,499')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
+          <button onclick="openCheckout('Delicious Moments Polo Sweatshirt', '€29')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Moments%20Polo%20Sweatshirt%20(₹2,499)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Delicious%20Moments%20Polo%20Sweatshirt%20(€29)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
@@ -391,8 +391,8 @@
           <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">100% Combed Premium Cotton Pique</p>
           <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Pasadena 1996" Retro Knit Polo</h3>
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,899</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,899</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">€22</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">€34</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(34% Off)</span>
           </div>
           <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
@@ -402,10 +402,10 @@
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Pasadena 1996 Retro Knit Polo', '₹1,899')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
+          <button onclick="openCheckout('Pasadena 1996 Retro Knit Polo', '€22')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Retro%20Knit%20Polo%20(₹1,899)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Pasadena%201996%20Retro%20Knit%20Polo%20(€22)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
@@ -424,8 +424,8 @@
           <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">340 GSM Heavy French Terry Cotton</p>
           <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">Ethnic Jacquard Trim Sweatpants</h3>
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹2,199</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹3,499</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">€25</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">€40</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(37% Off)</span>
           </div>
           <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
@@ -435,10 +435,10 @@
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Ethnic Jacquard Trim Sweatpants', '₹2,199')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
+          <button onclick="openCheckout('Ethnic Jacquard Trim Sweatpants', '€25')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Ethnic%20Jacquard%20Trim%20Sweatpants%20(₹2,199)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Ethnic%20Jacquard%20Trim%20Sweatpants%20(€25)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
@@ -457,8 +457,8 @@
           <p class="text-[9px] uppercase tracking-[0.22em] text-[#8C6D46] font-bold mb-0.5">280 GSM Premium Interlock Cotton</p>
           <h3 class="font-heritage text-lg text-[#0B1323] font-semibold leading-snug">"Racing Crew" Contrast Piping Long-Sleeve</h3>
           <div class="flex items-baseline gap-2 mt-1.5">
-            <span class="text-base font-bold text-[#0B1323] tracking-wider">₹1,799</span>
-            <span class="text-xs text-neutral-400 line-through tracking-wider">₹2,799</span>
+            <span class="text-base font-bold text-[#0B1323] tracking-wider">€21</span>
+            <span class="text-xs text-neutral-400 line-through tracking-wider">€32</span>
             <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">(35% Off)</span>
           </div>
           <div class="mt-3 pt-2.5 border-t border-[#EAE2D2] text-[10px] text-neutral-600 space-y-1">
@@ -468,10 +468,10 @@
           </div>
         </div>
         <div class="mt-4 space-y-2">
-          <button onclick="openCheckout('Racing Crew Contrast Piping Long-Sleeve', '₹1,799')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
+          <button onclick="openCheckout('Racing Crew Contrast Piping Long-Sleeve', '€21')" class="w-full bg-[#0B1323] hover:bg-black text-[#FAF7F0] text-[10px] uppercase tracking-[0.2em] font-bold py-3 shadow-sm rounded-lg flex items-center justify-center gap-2 transition">
             <i data-lucide="credit-card" class="w-3.5 h-3.5 text-[#C89B55]"></i> Buy Online (Razorpay)
           </button>
-          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Long-Sleeve%20(₹1,799)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
+          <a href="https://wa.me/918271988708?text=Hello%20ÉPURE%20ATELIER,%20I%20want%20to%20order%20the%20Racing%20Crew%20Long-Sleeve%20(€21)." target="_blank" class="w-full border border-[#0B1323] text-[#0B1323] hover:bg-[#FAF5EC] text-[10px] uppercase tracking-[0.2em] font-bold py-2.5 flex items-center justify-center gap-2 text-center rounded-lg transition">
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Order Via WhatsApp
           </a>
         </div>
@@ -499,7 +499,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
       <div>
         <h4 class="font-heritage text-2xl text-white tracking-[0.3em] mb-3">ÉPURE ATELIER</h4>
-        <p class="text-neutral-400 font-light leading-relaxed mb-3">Independent aesthetic streetwear and bespoke menswear. Dispatched across all cities and pin codes in India.</p>
+        <p class="text-neutral-400 font-light leading-relaxed mb-3">Independent aesthetic streetwear and bespoke menswear. Dispatched worldwide.</p>
         <span class="text-[10px] text-neutral-500">&copy; 2026 ÉPURE ATELIER.</span>
       </div>
       <div>
@@ -507,14 +507,14 @@
         <ul class="space-y-2 font-light">
           <li>WhatsApp: +91 8271988708</li>
           <li>care@epureatelier.com</li>
-          <li>Pan-India Express Air Courier</li>
+          <li>Express International Air Courier</li>
         </ul>
       </div>
       <div>
         <h5 class="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-3">Accepted Payments</h5>
         <ul class="space-y-1.5 font-light text-neutral-400">
-          <li>&bull; RuPay Debit & Credit Cards</li>
-          <li>&bull; Google Pay, PhonePe, Paytm (UPI)</li>
+          <li>&bull; Credit & Debit Cards (Visa, Mastercard)</li>
+          <li>&bull; Razorpay Global Secure Checkout</li>
           <li>&bull; Cash on Delivery (COD)</li>
         </ul>
       </div>
@@ -686,7 +686,6 @@
       const customList = JSON.parse(localStorage.getItem('epure_custom_products') || '[]');
       const grid = document.getElementById('productGrid');
       
-      // Remove previous custom cards to prevent duplication on reload
       const existingCustomCards = grid.querySelectorAll('.custom-prod-card');
       existingCustomCards.forEach(card => card.remove());
 
@@ -814,7 +813,7 @@
         const options = {
           "key": "rzp_test_1DP5mmOlF5G5ag",
           "amount": numericPrice, 
-          "currency": "INR",
+          "currency": "EUR",
           "name": "ÉPURE ATELIER",
           "description": `Purchase of ${productTitle}`,
           "image": "https://i.ibb.co/twD1Dm2k/IMG-0610.jpg",
@@ -839,7 +838,7 @@
     async function finalizeOrder(product, price, name, phone, city, address, paymentMethod) {
       const newOrder = {
         product, price, name, phone, city, address, paymentMethod,
-        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+        date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
       };
       let userOrders = JSON.parse(localStorage.getItem('epure_user_orders') || '[]');
       userOrders.unshift(newOrder);
@@ -851,12 +850,12 @@
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
             access_key: "c6ab2781-bf27-4a83-b69c-46f9ba588dcc",
-            subject: `NEW PAID ORDER: ${product} - ${name}`,
+            subject: `NEW EURO ORDER: ${product} - ${name}`,
             Product_Ordered: product,
             Price: price,
             Customer_Name: name,
             Mobile_Number: phone,
-            City_Pincode: city,
+            City_Postal: city,
             Delivery_Address: address,
             Payment_Chosen: paymentMethod
           })
